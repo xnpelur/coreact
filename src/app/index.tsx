@@ -1,7 +1,7 @@
-import { createElement } from "@runtime/jsx-runtime";
+import { createElement, VirtualElement } from "@runtime/jsx-runtime";
 import { useState } from "@runtime/component";
 
-function Counter() {
+function Counter(): VirtualElement {
     const [count, setCount] = useState(0);
 
     return (
@@ -11,6 +11,7 @@ function Counter() {
                 onClick={() => {
                     // Does not work for now, because rerender is not implemented
                     setCount(count + 1);
+                    console.log("button clicked");
                 }}
             >
                 Increment
@@ -19,7 +20,7 @@ function Counter() {
     );
 }
 
-export function App() {
+export function App(): VirtualElement {
     return (
         <div>
             <h1>My Framework App</h1>
