@@ -1,17 +1,30 @@
 import { Fragment, Props, VirtualNode } from "./jsx-runtime";
 
-export function render(
-    vnode: VirtualNode,
-    parent: HTMLElement
-): HTMLElement | Text | null {
+type DOMNode = HTMLElement | Text;
+
+export function mount(vnode: VirtualNode, parent: HTMLElement) {
+    const rendered = render(vnode);
+    rendered.forEach((element) => parent.appendChild(element));
+}
+
+function render(vnode: VirtualNode): DOMNode[] {
     if (vnode === null || vnode === undefined) {
-        return null;
+        return [];
     }
 
     if (typeof vnode === "string" || typeof vnode === "number") {
-        const textNode = document.createTextNode(vnode.toString());
-        parent.appendChild(textNode);
-        return textNode;
+        return [document.createTextNode(vnode.toString())];
+    }
+
+    if (vnode.tag === Fragment) {
+        const rendered: DOMNode[] = [];
+
+        vnode.children.forEach((child) => {
+            const renderedPart = render(child);
+            rendered.push(...renderedPart);
+        });
+
+        return rendered;
     }
 
     if (typeof vnode.tag === "string") {
@@ -20,28 +33,16 @@ export function render(
         setProps(element, vnode.props);
 
         vnode.children.forEach((child) => {
-            render(child, element);
+            mount(child, element);
         });
 
-        parent.appendChild(element);
-
-        return element;
-    }
-
-    if (vnode.tag === Fragment) {
-        vnode.children.forEach((child) => {
-            render(child, parent);
-        });
-
-        return parent;
+        return [element];
     }
 
     const Component = vnode.tag;
     const componentNode = Component(vnode.props);
 
-    render(componentNode, parent);
-
-    return null;
+    return render(componentNode);
 }
 
 function setProps(element: HTMLElement, props: Props) {

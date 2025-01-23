@@ -1,7 +1,7 @@
-import { createElement, VirtualElement } from "@runtime/jsx-runtime";
+import { createElement, VirtualNode } from "@runtime/jsx-runtime";
 import { useState } from "@runtime/component";
 
-function Counter(): VirtualElement {
+function Counter(): VirtualNode {
     const [count, setCount] = useState(0);
 
     return (
@@ -20,7 +20,7 @@ function Counter(): VirtualElement {
     );
 }
 
-export function App(): VirtualElement {
+export function App(): VirtualNode {
     return (
         <div>
             <h1>My Framework App</h1>
