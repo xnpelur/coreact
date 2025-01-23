@@ -1,4 +1,4 @@
-import { Fragment, Props, VirtualNode } from "./jsx-runtime";
+import { Fragment, isElement, isText, Props, VirtualNode } from "./jsx-runtime";
 
 type DOMNode = HTMLElement | Text;
 
@@ -7,13 +7,25 @@ export function mount(vnode: VirtualNode, parent: HTMLElement) {
     rendered.forEach((element) => parent.appendChild(element));
 }
 
+export function unmount(vnode: VirtualNode) {
+    if (vnode?.element) {
+        vnode.element.remove();
+    }
+
+    if (isElement(vnode)) {
+        vnode.children.forEach(unmount);
+        unmount(vnode.componentInstance?.node);
+    }
+}
+
 function render(vnode: VirtualNode): DOMNode[] {
     if (vnode === null || vnode === undefined) {
         return [];
     }
 
-    if (typeof vnode === "string" || typeof vnode === "number") {
-        return [document.createTextNode(vnode.toString())];
+    if (isText(vnode)) {
+        vnode.element = document.createTextNode(vnode.value);
+        return [vnode.element];
     }
 
     if (vnode.tag === Fragment) {
@@ -36,11 +48,17 @@ function render(vnode: VirtualNode): DOMNode[] {
             mount(child, element);
         });
 
+        vnode.element = element;
+
         return [element];
     }
 
     const Component = vnode.tag;
     const componentNode = Component(vnode.props);
+
+    vnode.componentInstance = {
+        node: componentNode,
+    };
 
     return render(componentNode);
 }

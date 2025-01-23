@@ -1,8 +1,9 @@
 import { createElement } from "@runtime/jsx-runtime";
 import { App } from "@app/index";
-import { mount } from "@runtime/dom";
+import { mount, unmount } from "@runtime/dom";
 
 const root = document.getElementById("app");
 if (root) {
-    mount(createElement(App, {}), root);
+    const app = createElement(App, {});
+    mount(app, root);
 }

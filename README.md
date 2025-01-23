@@ -4,6 +4,7 @@ This is a simple implementation of a React-like framework in TypeScript.
 
 -   [x] JSX
 -   [x] Mounting Virtual DOM
+-   [ ] Unmounting Virtual DOM
 -   [ ] Rerender
 -   [ ] State
 -   [ ] Reconciliation
