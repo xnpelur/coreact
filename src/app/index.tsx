@@ -1,5 +1,5 @@
 import { createElement, VirtualNode } from "@runtime/jsx-runtime";
-import { useState } from "@runtime/component";
+import { useState } from "@runtime/state";
 
 function Counter(): VirtualNode {
     const [count, setCount] = useState(0);
@@ -7,15 +7,7 @@ function Counter(): VirtualNode {
     return (
         <div>
             <h1>Count: {count}</h1>
-            <button
-                onClick={() => {
-                    // Does not work for now, because rerender is not implemented
-                    setCount(count + 1);
-                    console.log("button clicked");
-                }}
-            >
-                Increment
-            </button>
+            <button onClick={() => setCount(count + 1)}>Increment</button>
         </div>
     );
 }

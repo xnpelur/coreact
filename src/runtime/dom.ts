@@ -2,8 +2,22 @@ import { Fragment, isElement, isText, Props, VirtualNode } from "./jsx-runtime";
 
 type DOMNode = HTMLElement | Text;
 
-export function mount(vnode: VirtualNode, parent: HTMLElement) {
-    const rendered = render(vnode);
+export type ComponentInfo = {
+    fn: Function;
+    parentElement: HTMLElement;
+    path: number[];
+};
+
+let currentComponentInfo: ComponentInfo | null = null;
+
+const componentsVirtualNodes = new Map<ComponentInfo, VirtualNode>();
+
+export function getCurrentComponentInfo(): ComponentInfo | null {
+    return currentComponentInfo;
+}
+
+export function mount(vnode: VirtualNode, parent: HTMLElement, index?: number) {
+    const rendered = render(vnode, parent, index ?? 0);
     rendered.forEach((element) => parent.appendChild(element));
 }
 
@@ -18,7 +32,28 @@ export function unmount(vnode: VirtualNode) {
     }
 }
 
-function render(vnode: VirtualNode): DOMNode[] {
+export function rerender(componentInfo: ComponentInfo) {
+    const vnode = componentsVirtualNodes.get(componentInfo);
+    if (!isElement(vnode)) {
+        throw new Error("Component not found");
+    }
+
+    const parentElement = vnode.componentInstance?.node?.element?.parentElement;
+    if (!parentElement) {
+        throw new Error("Parent element not found");
+    }
+
+    const index = componentInfo.path[componentInfo.path.length - 1];
+
+    unmount(vnode);
+    mount(vnode, parentElement, index);
+}
+
+function render(
+    vnode: VirtualNode,
+    parentElement: HTMLElement,
+    index: number
+): DOMNode[] {
     if (vnode === null || vnode === undefined) {
         return [];
     }
@@ -32,7 +67,7 @@ function render(vnode: VirtualNode): DOMNode[] {
         const rendered: DOMNode[] = [];
 
         vnode.children.forEach((child) => {
-            const renderedPart = render(child);
+            const renderedPart = render(child, parentElement, index); // TODO: add path handling
             rendered.push(...renderedPart);
         });
 
@@ -44,8 +79,8 @@ function render(vnode: VirtualNode): DOMNode[] {
 
         setProps(element, vnode.props);
 
-        vnode.children.forEach((child) => {
-            mount(child, element);
+        vnode.children.forEach((child, childIndex) => {
+            mount(child, element, childIndex);
         });
 
         vnode.element = element;
@@ -54,13 +89,24 @@ function render(vnode: VirtualNode): DOMNode[] {
     }
 
     const Component = vnode.tag;
+
+    currentComponentInfo = {
+        fn: Component,
+        parentElement,
+        path: [index],
+    };
+
     const componentNode = Component(vnode.props);
+
+    componentsVirtualNodes.set(currentComponentInfo, vnode);
+
+    currentComponentInfo = null;
 
     vnode.componentInstance = {
         node: componentNode,
     };
 
-    return render(componentNode);
+    return render(componentNode, parentElement, index);
 }
 
 function setProps(element: HTMLElement, props: Props) {
