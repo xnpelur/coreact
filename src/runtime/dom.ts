@@ -18,7 +18,19 @@ export function getCurrentComponentInfo(): ComponentInfo | null {
 
 export function mount(vnode: VirtualNode, parent: HTMLElement, index?: number) {
     const rendered = render(vnode, parent, index ?? 0);
-    rendered.forEach((element) => parent.appendChild(element));
+
+    let child: Element | undefined;
+    if (index !== undefined) {
+        child = parent.children[index];
+    }
+
+    rendered.forEach((element) => {
+        if (child) {
+            parent.insertBefore(element, child);
+        } else {
+            parent.appendChild(element);
+        }
+    });
 }
 
 export function unmount(vnode: VirtualNode) {

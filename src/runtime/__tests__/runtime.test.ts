@@ -3,16 +3,18 @@
  */
 
 import { describe, it, expect, beforeEach, afterEach, vi } from "vitest";
-import { createElement, Fragment } from "../jsx-runtime";
-import { mount, unmount } from "../dom";
-import { useState } from "../state";
+import { createElement, Fragment } from "@runtime/jsx-runtime";
+import { mount, unmount } from "@runtime/dom";
+import { clearState, useState } from "@runtime/state";
 
 describe("Runtime", () => {
     let container: HTMLElement;
 
-    beforeEach(() => {
+    beforeEach(async () => {
         container = document.createElement("div");
         document.body.appendChild(container);
+
+        clearState();
     });
 
     afterEach(() => {
@@ -88,5 +90,39 @@ describe("Runtime", () => {
         button?.click();
 
         expect(container.innerHTML).toBe("<button>1</button>");
+    });
+
+    it("should handle multiple states in a single parent", () => {
+        const Counter = () => {
+            const [count, setCount] = useState(0);
+            return createElement(
+                "button",
+                { onClick: () => setCount(count + 1) },
+                count.toString()
+            );
+        };
+
+        const vnode = createElement(
+            "div",
+            {},
+            createElement(Counter, {}),
+            createElement(Counter, {})
+        );
+
+        mount(vnode, container);
+
+        let buttons = container.querySelectorAll("button");
+        expect(buttons[0].textContent).toBe("0");
+        expect(buttons[1].textContent).toBe("0");
+
+        buttons[0].click();
+        buttons = container.querySelectorAll("button");
+        expect(buttons[0].textContent).toBe("1");
+        expect(buttons[1].textContent).toBe("0");
+
+        buttons[1].click();
+        buttons = container.querySelectorAll("button");
+        expect(buttons[0].textContent).toBe("1");
+        expect(buttons[1].textContent).toBe("1");
     });
 });

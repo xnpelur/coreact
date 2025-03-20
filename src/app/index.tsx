@@ -1,12 +1,14 @@
 import { createElement, VirtualNode } from "@runtime/jsx-runtime";
 import { useState } from "@runtime/state";
 
-function Counter(): VirtualNode {
+function Counter({ n }: { n: number }): VirtualNode {
     const [count, setCount] = useState(0);
 
     return (
         <div>
-            <h1>Count: {count}</h1>
+            <h1>
+                Count {n}: {count}
+            </h1>
             <button onClick={() => setCount(count + 1)}>Increment</button>
         </div>
     );
@@ -15,8 +17,8 @@ function Counter(): VirtualNode {
 export function App(): VirtualNode {
     return (
         <div>
-            <h1>My Framework App</h1>
-            <Counter />
+            <Counter n={1} />
+            <Counter n={2} />
         </div>
     );
 }

@@ -10,8 +10,7 @@ export function useState(initialValue: any) {
 
     const json = JSON.stringify(componentInfo);
 
-    const state = stateMap.get(json);
-    if (!state) {
+    if (!stateMap.has(json)) {
         stateMap.set(json, initialValue);
     }
 
@@ -21,4 +20,13 @@ export function useState(initialValue: any) {
     };
 
     return [stateMap.get(json), setValue];
+}
+
+export function clearState() {
+    if (process.env.NODE_ENV !== "test") {
+        throw new Error(
+            "clearState function is not supposed to be used in this environment"
+        );
+    }
+    stateMap.clear();
 }
