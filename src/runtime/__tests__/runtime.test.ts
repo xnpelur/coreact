@@ -125,4 +125,78 @@ describe("Runtime", () => {
         expect(buttons[0].textContent).toBe("1");
         expect(buttons[1].textContent).toBe("1");
     });
+
+    it("should handle multiple independent counters in conditional rendering", () => {
+        const Counter = () => {
+            const [count, setCount] = useState(0);
+            return createElement(
+                "button",
+                { onClick: () => setCount(count + 1) },
+                count.toString()
+            );
+        };
+
+        const App = ({ condition1 = true, condition2 = true }) => {
+            return createElement(
+                Fragment,
+                {},
+                createElement(Counter, {}),
+                condition1 &&
+                    createElement(
+                        Fragment,
+                        {},
+                        false && createElement(Counter, {}),
+                        createElement(Counter, {})
+                    ),
+                condition2 && createElement(Counter, {})
+            );
+        };
+
+        const vnode = createElement(App, {
+            condition1: true,
+            condition2: true,
+        });
+        mount(vnode, container);
+
+        let buttons = container.querySelectorAll("button");
+        expect(buttons.length).toBe(3);
+
+        buttons[0].click();
+        buttons = container.querySelectorAll("button");
+        expect(buttons[0].textContent).toBe("1");
+        expect(buttons[1].textContent).toBe("0");
+        expect(buttons[2].textContent).toBe("0");
+
+        buttons[1].click();
+        buttons = container.querySelectorAll("button");
+        expect(buttons[0].textContent).toBe("1");
+        expect(buttons[1].textContent).toBe("1");
+        expect(buttons[2].textContent).toBe("0");
+
+        buttons[2].click();
+        buttons = container.querySelectorAll("button");
+        expect(buttons[0].textContent).toBe("1");
+        expect(buttons[1].textContent).toBe("1");
+        expect(buttons[2].textContent).toBe("1");
+
+        const vnodeCondition1False = createElement(App, {
+            condition1: false,
+            condition2: true,
+        });
+        mount(vnodeCondition1False, container);
+
+        const buttonsAfterCondition1False =
+            container.querySelectorAll("button");
+        expect(buttonsAfterCondition1False.length).toBe(2);
+
+        const vnodeCondition2False = createElement(App, {
+            condition1: true,
+            condition2: false,
+        });
+        mount(vnodeCondition2False, container);
+
+        const buttonsAfterCondition2False =
+            container.querySelectorAll("button");
+        expect(buttonsAfterCondition2False.length).toBe(2);
+    });
 });
