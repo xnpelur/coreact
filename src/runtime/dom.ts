@@ -108,6 +108,7 @@ function render(
         path: [index],
     };
 
+    vnode.props.children = vnode.children;
     const componentNode = Component(vnode.props);
 
     componentsVirtualNodes.set(currentComponentInfo, vnode);

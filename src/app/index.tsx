@@ -1,24 +1,21 @@
 import { createElement, VirtualNode } from "@runtime/jsx-runtime";
-import { useState } from "@runtime/state";
+import { Router, createRouter } from "@runtime/router";
+import { Home } from "./pages/Home";
+import { About } from "./pages/About";
+import { CounterPage } from "./pages/CounterPage";
+import { UserProfile } from "./pages/UserProfile";
+import { NotFound } from "./pages/NotFound";
 
-function Counter({ n }: { n: number }): VirtualNode {
-    const [count, setCount] = useState(0);
-
-    return (
-        <div>
-            <h1>
-                Count {n}: {count}
-            </h1>
-            <button onClick={() => setCount(count + 1)}>Increment</button>
-        </div>
-    );
-}
+createRouter({
+    routes: [
+        { path: "/", component: Home },
+        { path: "/about", component: About },
+        { path: "/counter", component: CounterPage },
+        { path: "/user/:id", component: UserProfile },
+    ],
+    notFound: NotFound,
+});
 
 export function App(): VirtualNode {
-    return (
-        <div>
-            <Counter n={1} />
-            <Counter n={2} />
-        </div>
-    );
+    return <Router />;
 }

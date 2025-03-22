@@ -1,9 +1,21 @@
 import { createElement } from "@runtime/jsx-runtime";
 import { App } from "@app/index";
-import { mount, unmount } from "@runtime/dom";
+import { mount } from "@runtime/dom";
 
-const root = document.getElementById("app");
-if (root) {
-    const app = createElement(App, {});
-    mount(app, root);
+function mountApp() {
+    const root = document.getElementById("app");
+    if (root) {
+        while (root.firstChild) {
+            root.removeChild(root.firstChild);
+        }
+
+        const app = createElement(App, {});
+        mount(app, root);
+    }
 }
+
+window.addEventListener("router-update", () => {
+    mountApp();
+});
+
+mountApp();
