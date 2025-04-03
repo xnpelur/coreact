@@ -1,3 +1,4 @@
+import { clearEffects } from "./effect";
 import { Fragment, isElement, isText, Props, VirtualNode } from "./jsx-runtime";
 
 type DOMNode = HTMLElement | Text;
@@ -34,6 +35,33 @@ export function mount(vnode: VirtualNode, parent: HTMLElement, index?: number) {
 }
 
 export function unmount(vnode: VirtualNode) {
+    if (
+        isElement(vnode) &&
+        typeof vnode.tag === "function" &&
+        vnode.componentInstance?.node?.element
+    ) {
+        const element = vnode.componentInstance.node.element;
+
+        if (!element.parentElement) {
+            throw new Error(
+                "Unmounted element should always have parent element"
+            );
+        }
+
+        const parentElement = element.parentElement;
+        const parentChildren = Array.from(parentElement.children);
+
+        const index = parentChildren.findIndex((value) => value === element);
+
+        const componentInfo: ComponentInfo = {
+            fn: vnode.tag,
+            parentElement: element.parentElement,
+            path: [index],
+        };
+
+        clearEffects(componentInfo);
+    }
+
     if (vnode?.element) {
         vnode.element.remove();
     }
