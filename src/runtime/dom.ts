@@ -34,7 +34,7 @@ export function mount(vnode: VirtualNode, parent: HTMLElement, index?: number) {
     });
 }
 
-export function unmount(vnode: VirtualNode) {
+export function unmount(vnode: VirtualNode, keepEffects: boolean = false) {
     if (
         isElement(vnode) &&
         typeof vnode.tag === "function" &&
@@ -59,7 +59,9 @@ export function unmount(vnode: VirtualNode) {
             path: [index],
         };
 
-        clearEffects(componentInfo);
+        if (!keepEffects) {
+            clearEffects(componentInfo);
+        }
     }
 
     if (vnode?.element) {
@@ -67,7 +69,7 @@ export function unmount(vnode: VirtualNode) {
     }
 
     if (isElement(vnode)) {
-        vnode.children.forEach(unmount);
+        vnode.children.forEach((child) => unmount(child, keepEffects));
         unmount(vnode.componentInstance?.node);
     }
 }
@@ -85,7 +87,7 @@ export function rerender(componentInfo: ComponentInfo) {
 
     const index = componentInfo.path[componentInfo.path.length - 1];
 
-    unmount(vnode);
+    unmount(vnode, true);
     mount(vnode, parentElement, index);
 }
 
