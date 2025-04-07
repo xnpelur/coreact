@@ -1,5 +1,6 @@
 import { clearEffects } from "./effect";
 import { Fragment, isElement, isText, Props, VirtualNode } from "./jsx-runtime";
+import { cleanupComponent } from "./store";
 
 type DOMNode = HTMLElement | Text;
 
@@ -61,6 +62,7 @@ export function unmount(vnode: VirtualNode, keepEffects: boolean = false) {
 
         if (!keepEffects) {
             clearEffects(componentInfo);
+            cleanupComponent(componentInfo);
         }
     }
 
