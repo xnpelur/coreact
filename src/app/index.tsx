@@ -2,29 +2,23 @@ import { useEffect } from "@runtime/effect";
 import { createElement, VirtualNode } from "@runtime/jsx-runtime";
 import { useState } from "@runtime/state";
 
-function Counter({ n }: { n: number }): VirtualNode {
-    const [count, setCount] = useState(0);
+export function App(): VirtualNode {
+    const [value, setValue] = useState("");
 
     useEffect(() => {
-        console.log("effect");
-        return () => console.log("cleanup");
-    }, [count]);
+        console.log(value);
+    }, [value]);
 
     return (
         <div>
-            <h1>
-                Count {n}: {count}
-            </h1>
-            <button onClick={() => setCount(count + 1)}>Increment</button>
-        </div>
-    );
-}
-
-export function App(): VirtualNode {
-    return (
-        <div>
-            <Counter n={1} />
-            <Counter n={2} />
+            <h1>Controlled Input</h1>
+            <input
+                type="text"
+                value={value}
+                onInput={({ target }: { target: HTMLInputElement }) =>
+                    setValue(target.value)
+                }
+            />
         </div>
     );
 }

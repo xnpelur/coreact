@@ -1,5 +1,6 @@
 import { clearEffects } from "./effect";
 import { Fragment, isElement, isText, Props, VirtualNode } from "./jsx-runtime";
+import { reconcile } from "./reconciliation";
 
 type DOMNode = HTMLElement | Text;
 
@@ -87,8 +88,34 @@ export function rerender(componentInfo: ComponentInfo) {
 
     const index = componentInfo.path[componentInfo.path.length - 1];
 
-    unmount(vnode, true);
-    mount(vnode, parentElement, index);
+    // Store the old component instance node for reconciliation
+    const oldComponentNode = vnode.componentInstance?.node;
+
+    // Create a new component instance
+    currentComponentInfo = componentInfo;
+    const Component = vnode.tag as Function;
+    const newComponentNode = Component(vnode.props);
+    currentComponentInfo = null;
+
+    // Update the component instance with the new node
+    vnode.componentInstance = {
+        node: newComponentNode,
+    };
+
+    // Reconcile the old and new nodes
+    if (oldComponentNode) {
+        reconcile(
+            oldComponentNode,
+            newComponentNode,
+            parentElement,
+            index,
+            mount,
+            unmount
+        );
+    } else {
+        // Fallback to mount if there's no old node to reconcile with
+        mount(newComponentNode, parentElement, index);
+    }
 }
 
 function render(
@@ -156,6 +183,9 @@ function setProps(element: HTMLElement, props: Props) {
         if (key.startsWith("on") && typeof value === "function") {
             const eventName = key.toLowerCase().substring(2);
             element.addEventListener(eventName, value);
+        } else if (key === "value" && element instanceof HTMLInputElement) {
+            // Special handling for input value to maintain cursor position
+            element.value = value as string;
         } else {
             element.setAttribute(key, value);
         }
