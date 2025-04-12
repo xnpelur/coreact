@@ -20,7 +20,8 @@ export function reconcile(
 
     // Handle text nodes
     if (isText(oldNode) && isText(newNode)) {
-        if (oldNode.element && oldNode.value !== newNode.value) {
+        if (oldNode.element) {
+            // Always update the text content to ensure proper rendering
             oldNode.element.nodeValue = newNode.value;
             newNode.element = oldNode.element;
         }

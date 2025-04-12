@@ -1,6 +1,7 @@
 import { clearEffects } from "./effect";
 import { Fragment, isElement, isText, Props, VirtualNode } from "./jsx-runtime";
 import { reconcile } from "./reconciliation";
+import { resetHookIndices } from "./state";
 
 type DOMNode = HTMLElement | Text;
 
@@ -93,6 +94,9 @@ export function rerender(componentInfo: ComponentInfo) {
 
     // Create a new component instance
     currentComponentInfo = componentInfo;
+    const componentKey = JSON.stringify(componentInfo);
+    // Reset hook indices before rendering the component
+    resetHookIndices(componentKey);
     const Component = vnode.tag as Function;
     const newComponentNode = Component(vnode.props);
     currentComponentInfo = null;
@@ -164,6 +168,10 @@ function render(
         parentElement,
         path: [index],
     };
+    
+    const componentKey = JSON.stringify(currentComponentInfo);
+    // Reset hook indices before rendering the component
+    resetHookIndices(componentKey);
 
     const componentNode = Component(vnode.props);
 

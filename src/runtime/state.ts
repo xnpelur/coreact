@@ -1,25 +1,46 @@
 import { getCurrentComponentInfo, rerender } from "./dom";
 
-const stateMap = new Map<string, any>();
+// Store states as a map of component keys to arrays of state values
+const stateMap = new Map<string, any[]>();
+// Track the current hook index for each component during render
+const hookIndexMap = new Map<string, number>();
 
-export function useState(initialValue: any) {
+export function useState<T>(initialValue: T): [T, (value: T) => void] {
     const componentInfo = getCurrentComponentInfo();
     if (!componentInfo) {
         throw new Error("useState must be called within a component");
     }
 
-    const json = JSON.stringify(componentInfo);
-
-    if (!stateMap.has(json)) {
-        stateMap.set(json, initialValue);
+    const componentKey = JSON.stringify(componentInfo);
+    
+    // Initialize hook index for this component if not already set
+    if (!hookIndexMap.has(componentKey)) {
+        hookIndexMap.set(componentKey, 0);
     }
-
-    const setValue = (value: any) => {
-        stateMap.set(json, value);
+    
+    // Get the current hook index and increment it for the next hook
+    const hookIndex = hookIndexMap.get(componentKey)!;
+    hookIndexMap.set(componentKey, hookIndex + 1);
+    
+    // Initialize state array for this component if not already set
+    if (!stateMap.has(componentKey)) {
+        stateMap.set(componentKey, []);
+    }
+    
+    const states = stateMap.get(componentKey)!;
+    
+    // Initialize this specific state if not already set
+    if (states.length <= hookIndex) {
+        states[hookIndex] = initialValue;
+    }
+    
+    const setValue = (value: T) => {
+        const states = stateMap.get(componentKey)!;
+        states[hookIndex] = value;
         rerender(componentInfo);
     };
 
-    return [stateMap.get(json), setValue];
+    return [states[hookIndex], setValue];
 }
 
 export function clearState() {
@@ -29,4 +50,10 @@ export function clearState() {
         );
     }
     stateMap.clear();
+    hookIndexMap.clear();
+}
+
+// Reset hook indices before each component render
+export function resetHookIndices(componentKey: string) {
+    hookIndexMap.set(componentKey, 0);
 }

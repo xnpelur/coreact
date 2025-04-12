@@ -4,10 +4,11 @@ import { useState } from "@runtime/state";
 
 export function App(): VirtualNode {
     const [value, setValue] = useState("");
+    const [count, setCount] = useState(0);
 
     useEffect(() => {
-        console.log(value);
-    }, [value]);
+        console.log(value, count);
+    }, [value, count]);
 
     return (
         <div>
@@ -19,6 +20,15 @@ export function App(): VirtualNode {
                     setValue(target.value)
                 }
             />
+            <h1>Counter</h1>
+            <span>{count}</span>
+            <button
+                onClick={() => {
+                    setCount(count + 1);
+                }}
+            >
+                Increment
+            </button>
         </div>
     );
 }
