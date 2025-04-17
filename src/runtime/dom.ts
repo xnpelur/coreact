@@ -2,6 +2,7 @@ import { clearEffects } from "./effect";
 import { Fragment, isElement, isText, Props, VirtualNode } from "./jsx-runtime";
 import { reconcile } from "./reconciliation";
 import { resetHookIndices } from "./state";
+import { cleanupComponent } from "./store";
 
 type DOMNode = HTMLElement | Text;
 
@@ -63,6 +64,7 @@ export function unmount(vnode: VirtualNode, keepEffects: boolean = false) {
 
         if (!keepEffects) {
             clearEffects(componentInfo);
+            cleanupComponent(componentInfo);
         }
     }
 
@@ -168,7 +170,7 @@ function render(
         parentElement,
         path: [index],
     };
-    
+
     const componentKey = JSON.stringify(currentComponentInfo);
     // Reset hook indices before rendering the component
     resetHookIndices(componentKey);
