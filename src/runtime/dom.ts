@@ -175,6 +175,7 @@ function render(
     // Reset hook indices before rendering the component
     resetHookIndices(componentKey);
 
+    vnode.props.children = vnode.children;
     const componentNode = Component(vnode.props);
 
     componentsVirtualNodes.set(currentComponentInfo, vnode);

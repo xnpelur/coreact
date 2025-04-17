@@ -1,34 +1,21 @@
-import { useEffect } from "@runtime/effect";
 import { createElement, VirtualNode } from "@runtime/jsx-runtime";
-import { useState } from "@runtime/state";
+import { Router, createRouter } from "@runtime/router";
+import { Home } from "./pages/Home";
+import { About } from "./pages/About";
+import { CounterPage } from "./pages/CounterPage";
+import { UserProfile } from "./pages/UserProfile";
+import { NotFound } from "./pages/NotFound";
+
+createRouter({
+    routes: [
+        { path: "/", component: Home },
+        { path: "/about", component: About },
+        { path: "/counter", component: CounterPage },
+        { path: "/user/:id", component: UserProfile },
+    ],
+    notFound: NotFound,
+});
 
 export function App(): VirtualNode {
-    const [value, setValue] = useState("");
-    const [count, setCount] = useState(0);
-
-    useEffect(() => {
-        console.log(value, count);
-    }, [value, count]);
-
-    return (
-        <div>
-            <h1>Controlled Input</h1>
-            <input
-                type="text"
-                value={value}
-                onInput={({ target }: { target: HTMLInputElement }) =>
-                    setValue(target.value)
-                }
-            />
-            <h1>Counter</h1>
-            <span>{count}</span>
-            <button
-                onClick={() => {
-                    setCount(count + 1);
-                }}
-            >
-                Increment
-            </button>
-        </div>
-    );
+    return <Router />;
 }
