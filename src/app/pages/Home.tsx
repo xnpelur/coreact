@@ -9,7 +9,9 @@ export function Home(): VirtualNode {
             <nav>
                 <ul>
                     <li>
-                        <Link to="/about">Go to About</Link>
+                        <Link to="/controlled-input">
+                            Go to Controlled Input
+                        </Link>
                     </li>
                     <li>
                         <Link to="/counter">Go to Counter</Link>
