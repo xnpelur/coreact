@@ -6,6 +6,10 @@ import { cleanupComponent } from "./store";
 
 type DOMNode = HTMLElement | Text;
 
+/**
+ * Information about a component being rendered.
+ * This includes the component function, its parent element, and its path in the DOM.
+ */
 export type ComponentInfo = {
     fn: Function;
     parentElement: HTMLElement;
@@ -16,10 +20,26 @@ let currentComponentInfo: ComponentInfo | null = null;
 
 const componentsVirtualNodes = new Map<ComponentInfo, VirtualNode>();
 
+/**
+ * Gets the current component information being rendered.
+ * This is used internally by the framework to track the current component
+ * context during rendering operations.
+ *
+ * @returns {ComponentInfo | null} The current component information or null if none
+ */
 export function getCurrentComponentInfo(): ComponentInfo | null {
     return currentComponentInfo;
 }
 
+/**
+ * Mounts a virtual node (VNode) into the DOM.
+ * This function takes a VNode and renders it into the specified parent element.
+ * It handles the actual DOM insertion of the rendered elements.
+ *
+ * @param {VirtualNode} vnode - The virtual node to mount
+ * @param {HTMLElement} parent - The parent element to mount the vnode into
+ * @param {number} [index=0] - Optional index to insert the node at
+ */
 export function mount(vnode: VirtualNode, parent: HTMLElement, index?: number) {
     const rendered = render(vnode, parent, index ?? 0);
 
@@ -37,6 +57,15 @@ export function mount(vnode: VirtualNode, parent: HTMLElement, index?: number) {
     });
 }
 
+/**
+ * Unmounts a virtual node from the DOM.
+ * This function removes the virtual node and its children from the DOM.
+ * It can optionally keep effects if needed.
+ *
+ * @param {VirtualNode} vnode - The virtual node to unmount
+ * @param {boolean} [keepEffects=false] - Whether to keep effects when unmounting
+ * @throws {Error} If the unmounted element doesn't have a parent element
+ */
 export function unmount(vnode: VirtualNode, keepEffects: boolean = false) {
     if (
         isElement(vnode) &&
@@ -78,6 +107,14 @@ export function unmount(vnode: VirtualNode, keepEffects: boolean = false) {
     }
 }
 
+/**
+ * Re-renders a component by updating its virtual node and reconciling with the DOM.
+ * This function handles the complete re-rendering process of a component,
+ * including creating new instances, reconciling with the old state, and updating the DOM.
+ *
+ * @param {ComponentInfo} componentInfo - Information about the component to rerender
+ * @throws {Error} If the component is not found or parent element is not found
+ */
 export function rerender(componentInfo: ComponentInfo) {
     const vnode = componentsVirtualNodes.get(componentInfo);
     if (!isElement(vnode)) {

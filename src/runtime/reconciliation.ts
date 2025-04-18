@@ -1,7 +1,16 @@
 import { isElement, isText, Props, VirtualNode } from "./jsx-runtime";
 
 /**
- * Reconciles an old virtual node with a new one, updating the DOM efficiently
+ * Reconciles an old virtual node with a new one, updating the DOM efficiently.
+ * This function compares two virtual nodes and updates the DOM only when necessary,
+ * making it more performant than completely replacing nodes.
+ *
+ * @param {VirtualNode} oldNode - The old virtual node to reconcile from
+ * @param {VirtualNode} newNode - The new virtual node to reconcile to
+ * @param {HTMLElement} parentElement - The parent element containing the nodes
+ * @param {number} index - The index of the node in its parent
+ * @param {Function} mount - The mount function to use for new nodes
+ * @param {Function} unmount - The unmount function to use for removed nodes
  */
 export function reconcile(
     oldNode: VirtualNode,
@@ -69,7 +78,13 @@ export function reconcile(
 }
 
 /**
- * Compares two virtual nodes and returns true if they represent the same DOM element
+ * Compares two virtual nodes and returns true if they represent the same DOM element.
+ * This function is used by the reconciliation algorithm to determine if nodes should be
+ * updated or replaced.
+ *
+ * @param {VirtualNode} oldNode - The old virtual node to compare
+ * @param {VirtualNode} newNode - The new virtual node to compare
+ * @returns {boolean} True if the nodes represent the same DOM element
  */
 function isSameNode(oldNode: VirtualNode, newNode: VirtualNode): boolean {
     if (oldNode === null || newNode === null) {
@@ -104,7 +119,12 @@ function isSameNode(oldNode: VirtualNode, newNode: VirtualNode): boolean {
 }
 
 /**
- * Updates props on an existing DOM element
+ * Updates props on an existing DOM element.
+ * This function removes old props that are no longer present and adds or updates new props.
+ *
+ * @param {HTMLElement} element - The DOM element to update props on
+ * @param {Props} oldProps - The old props to remove or update
+ * @param {Props} newProps - The new props to add or update
  */
 function updateProps(
     element: HTMLElement,
@@ -164,7 +184,14 @@ function updateProps(
 }
 
 /**
- * Reconciles children of a virtual node
+ * Reconciles children of a virtual node.
+ * This function compares the old and new children and updates the DOM accordingly.
+ *
+ * @param {HTMLElement} parentElement - The parent element containing the children
+ * @param {VirtualNode[]} oldChildren - The old children to reconcile from
+ * @param {VirtualNode[]} newChildren - The new children to reconcile to
+ * @param {Function} mount - The mount function to use for new nodes
+ * @param {Function} unmount - The unmount function to use for removed nodes
  */
 function reconcileChildren(
     parentElement: HTMLElement,

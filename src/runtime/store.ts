@@ -7,6 +7,13 @@ type Store<T> = {
 
 const storeRegistry: Store<any>[] = [];
 
+/**
+ * Creates a new state store with the specified initial state.
+ * This function creates a store that can be used to manage global state in the application.
+ *
+ * @param {T} initialState - The initial state value
+ * @returns {Function} A function that returns the current state and a function to update it
+ */
 export function createStore<T>(
     initialState: T
 ): () => [T, (newState: T) => void] {
@@ -46,6 +53,12 @@ export function createStore<T>(
     return useStore;
 }
 
+/**
+ * Cleans up a component's subscriptions from all stores.
+ * This function is called when a component is unmounted to prevent memory leaks.
+ *
+ * @param {ComponentInfo} componentInfo - Information about the component to cleanup
+ */
 export function cleanupComponent(componentInfo: ComponentInfo) {
     const key = JSON.stringify(componentInfo);
 

@@ -20,6 +20,16 @@ const routerState: RouterState = {
 
 let isRouterInitialized = false;
 
+/**
+ * Creates a new router instance with specified routes and optional not found component.
+ * This function initializes the router and sets up navigation handling.
+ *
+ * @param {Object} options - Router configuration options
+ * @param {Array} options.routes - Array of route configurations
+ * @param {string} options.routes.path - The path pattern for the route
+ * @param {Function} options.routes.component - The component to render for this route
+ * @param {Function} [options.notFound] - Optional component to render when no route matches
+ */
 export function createRouter(options: {
     routes: { path: string; component: (props: any) => VirtualNode }[];
     notFound?: (props: any) => VirtualNode;
@@ -83,11 +93,26 @@ function matchRoute(path: string) {
     window.dispatchEvent(new CustomEvent("route-changed"));
 }
 
+/**
+ * Navigates to a new path in the application.
+ * This function updates the browser's URL and triggers route matching.
+ *
+ * @param {string} path - The path to navigate to
+ */
 export function navigate(path: string) {
     window.history.pushState(null, "", path);
     matchRoute(path);
 }
 
+/**
+ * Creates a link component that handles navigation when clicked.
+ * This component is used to create clickable links that navigate between routes.
+ *
+ * @param {Object} props - Component props
+ * @param {string} props.to - The destination path
+ * @param {any} [props.children] - The content to display inside the link
+ * @returns {VirtualNode} The created link component
+ */
 export function Link({
     to,
     children,
@@ -110,6 +135,22 @@ export function Link({
     );
 }
 
+/**
+ * Returns the current route's parameters.
+ * This function is used to access route parameters in components.
+ *
+ * @returns {Object} The current route's parameters
+ */
+export function useParams() {
+    return routerState.currentRoute?.params || {};
+}
+
+/**
+ * Renders the current route's component or the not found component if no route matches.
+ * This component is used to render the current route's content.
+ *
+ * @returns {VirtualNode} The rendered component
+ */
 export function Router() {
     window.addEventListener("route-changed", () => {
         const event = new CustomEvent("router-update");
@@ -126,8 +167,4 @@ export function Router() {
     }
 
     return createElement("div", {}, "Page not found");
-}
-
-export function useParams() {
-    return routerState.currentRoute?.params || {};
 }
