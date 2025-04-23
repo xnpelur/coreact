@@ -41,6 +41,8 @@ export function useEffect(effect: () => void | (() => void), deps?: any[]) {
     if (hasChanged) {
         if (previousEffect?.cleanup) {
             previousEffect.cleanup();
+            // Mark as cleaned up to avoid double cleanup during unmount
+            previousEffect.cleanup = undefined;
         }
         const cleanup = effect();
         effectList.push({

@@ -122,7 +122,6 @@ export function Link({
     children?: any;
     [key: string]: any;
 }) {
-    console.log(to, children);
     const handleClick = (e: MouseEvent) => {
         e.preventDefault();
         navigate(to);

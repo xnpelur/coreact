@@ -229,7 +229,7 @@ describe("Runtime", () => {
         expect(container.innerHTML).toContain("Count: 2");
     });
 
-    it.todo("should handle useEffect", () => {
+    it("should handle useEffect", () => {
         const mockEffect = vi.fn();
         const mockCleanup = vi.fn();
 
