@@ -234,6 +234,26 @@ function setProps(element: HTMLElement, props: Props) {
         } else if (key === "value" && element instanceof HTMLInputElement) {
             // Special handling for input value to maintain cursor position
             element.value = value as string;
+        } else if (key === "className" && typeof value === "string") {
+            element.setAttribute("class", value);
+            // Import dynamically to avoid circular dependencies
+            import("./tailwind")
+                .then(({ tw }) => {
+                    const styles = tw(value);
+                    Object.entries(styles).forEach(
+                        ([styleName, styleValue]) => {
+                            element.style[styleName as any] =
+                                styleValue as string;
+                        }
+                    );
+                })
+                .catch((err) => {
+                    console.warn("Tailwind module not available:", err);
+                });
+        } else if (key === "style" && typeof value === "object") {
+            Object.entries(value).forEach(([styleName, styleValue]) => {
+                element.style[styleName as any] = styleValue as string;
+            });
         } else {
             element.setAttribute(key, value);
         }

@@ -1,6 +1,10 @@
 import { createElement } from "@runtime/jsx-runtime";
 import { App } from "@app/index";
 import { mount } from "@runtime/dom";
+import { injectTailwindBase } from "@runtime/tailwind";
+import { createTailwindElementFactory } from "@runtime/tailwind-jsx";
+
+const createElementWithTailwind = createTailwindElementFactory(createElement);
 
 function mountApp() {
     const root = document.getElementById("app");
@@ -9,7 +13,10 @@ function mountApp() {
             root.removeChild(root.firstChild);
         }
 
-        const app = createElement(App, {});
+        // Inject Tailwind base styles
+        injectTailwindBase();
+
+        const app = createElementWithTailwind(App, {});
         mount(app, root);
     }
 }
