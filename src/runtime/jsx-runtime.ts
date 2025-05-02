@@ -1,6 +1,11 @@
 export type Props = Record<string, any>;
 
-export type VirtualNode = VirtualElement | VirtualText | null | undefined;
+export type VirtualNode =
+    | VirtualElement
+    | VirtualText
+    | boolean
+    | null
+    | undefined;
 
 export type VirtualText = {
     value: string;
@@ -13,7 +18,7 @@ export type VirtualElement = {
     children: VirtualNode[];
     element: HTMLElement | null;
     componentInstance?: {
-        node: VirtualNode;
+        node: VirtualElement;
     };
 };
 
@@ -57,7 +62,10 @@ export function createElement(
         tag,
         props: props || {},
         children: children.map((child) =>
-            child === null || child === undefined || typeof child === "object"
+            child === null ||
+            child === undefined ||
+            typeof child === "object" ||
+            typeof child === "boolean"
                 ? child
                 : {
                       value: child.toString(),

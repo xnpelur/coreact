@@ -106,7 +106,7 @@ export function unmount(
         }
     }
 
-    if (vnode?.element) {
+    if (isElement(vnode) && vnode.element) {
         vnode.element.remove();
     }
 
@@ -179,7 +179,7 @@ function render(
     index: number,
     parentPath: number[] = []
 ): DOMNode[] {
-    if (vnode === null || vnode === undefined) {
+    if (typeof vnode === "boolean" || vnode === null || vnode === undefined) {
         return [];
     }
 
