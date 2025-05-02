@@ -40,8 +40,13 @@ export function getCurrentComponentInfo(): ComponentInfo | null {
  * @param {HTMLElement} parent - The parent element to mount the vnode into
  * @param {number} [index=0] - Optional index to insert the node at
  */
-export function mount(vnode: VirtualNode, parent: HTMLElement, index?: number) {
-    const rendered = render(vnode, parent, index ?? 0);
+export function mount(
+    vnode: VirtualNode,
+    parent: HTMLElement,
+    index?: number,
+    parentPath: number[] = []
+) {
+    const rendered = render(vnode, parent, index ?? 0, parentPath);
 
     let child: Element | undefined;
     if (index !== undefined) {
@@ -66,7 +71,11 @@ export function mount(vnode: VirtualNode, parent: HTMLElement, index?: number) {
  * @param {boolean} [keepEffects=false] - Whether to keep effects when unmounting
  * @throws {Error} If the unmounted element doesn't have a parent element
  */
-export function unmount(vnode: VirtualNode, keepEffects: boolean = false) {
+export function unmount(
+    vnode: VirtualNode,
+    keepEffects: boolean = false,
+    parentPath: number[] = []
+) {
     if (
         isElement(vnode) &&
         typeof vnode.tag === "function" &&
@@ -88,7 +97,7 @@ export function unmount(vnode: VirtualNode, keepEffects: boolean = false) {
         const componentInfo: ComponentInfo = {
             fn: vnode.tag,
             parentElement: element.parentElement,
-            path: [index],
+            path: [...parentPath, index],
         };
 
         if (!keepEffects) {
@@ -102,8 +111,10 @@ export function unmount(vnode: VirtualNode, keepEffects: boolean = false) {
     }
 
     if (isElement(vnode)) {
-        vnode.children.forEach((child) => unmount(child, keepEffects));
-        unmount(vnode.componentInstance?.node);
+        vnode.children.forEach((child, childIndex) =>
+            unmount(child, keepEffects, parentPath.concat(childIndex))
+        );
+        unmount(vnode.componentInstance?.node, keepEffects, parentPath);
     }
 }
 
@@ -127,6 +138,7 @@ export function rerender(componentInfo: ComponentInfo) {
     }
 
     const index = componentInfo.path[componentInfo.path.length - 1];
+    const parentPath = componentInfo.path.slice(0, -1);
 
     // Store the old component instance node for reconciliation
     const oldComponentNode = vnode.componentInstance?.node;
@@ -152,19 +164,20 @@ export function rerender(componentInfo: ComponentInfo) {
             newComponentNode,
             parentElement,
             index,
-            mount,
-            unmount
+            (v, p, i) => mount(v, p, i, parentPath),
+            (v, k) => unmount(v, k, parentPath)
         );
     } else {
         // Fallback to mount if there's no old node to reconcile with
-        mount(newComponentNode, parentElement, index);
+        mount(newComponentNode, parentElement, index, parentPath);
     }
 }
 
 function render(
     vnode: VirtualNode,
     parentElement: HTMLElement,
-    index: number
+    index: number,
+    parentPath: number[] = []
 ): DOMNode[] {
     if (vnode === null || vnode === undefined) {
         return [];
@@ -178,8 +191,13 @@ function render(
     if (vnode.tag === Fragment) {
         const rendered: DOMNode[] = [];
 
-        vnode.children.forEach((child) => {
-            const renderedPart = render(child, parentElement, index); // TODO: add path handling
+        vnode.children.forEach((child, childIndex) => {
+            const renderedPart = render(
+                child,
+                parentElement,
+                childIndex,
+                parentPath.concat(childIndex)
+            );
             rendered.push(...renderedPart);
         });
 
@@ -192,7 +210,7 @@ function render(
         setProps(element, vnode.props);
 
         vnode.children.forEach((child, childIndex) => {
-            mount(child, element, childIndex);
+            mount(child, element, childIndex, parentPath.concat(childIndex));
         });
 
         vnode.element = element;
@@ -202,10 +220,11 @@ function render(
 
     const Component = vnode.tag;
 
+    const fullPath = parentPath.concat(index);
     currentComponentInfo = {
         fn: Component,
         parentElement,
-        path: [index],
+        path: fullPath,
     };
 
     const componentKey = JSON.stringify(currentComponentInfo);
@@ -223,7 +242,7 @@ function render(
         node: componentNode,
     };
 
-    return render(componentNode, parentElement, index);
+    return render(componentNode, parentElement, index, fullPath);
 }
 
 function setProps(element: HTMLElement, props: Props) {

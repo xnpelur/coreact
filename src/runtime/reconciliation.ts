@@ -96,6 +96,12 @@ function isSameNode(oldNode: VirtualNode, newNode: VirtualNode): boolean {
     }
 
     if (isElement(oldNode) && isElement(newNode)) {
+        const oldKey = oldNode.props && oldNode.props.key;
+        const newKey = newNode.props && newNode.props.key;
+        if (oldKey !== undefined || newKey !== undefined) {
+            return oldKey === newKey;
+        }
+
         if (typeof oldNode.tag !== typeof newNode.tag) {
             return false;
         }
