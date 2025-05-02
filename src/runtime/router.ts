@@ -1,4 +1,6 @@
-import { createElement, VirtualNode } from "./jsx-runtime";
+import { createElement, isElement, VirtualNode } from "./jsx-runtime";
+import { unmount } from "./dom";
+import { clearStoreSubscribers } from "./store";
 
 type RouteConfig = {
     path: string;
@@ -144,6 +146,8 @@ export function useParams() {
     return routerState.currentRoute?.params || {};
 }
 
+let lastVNode: VirtualNode | null = null;
+
 /**
  * Renders the current route's component or the not found component if no route matches.
  * This component is used to render the current route's content.
@@ -156,14 +160,32 @@ export function Router() {
         window.dispatchEvent(event);
     });
 
+    let vnode: VirtualNode;
     if (routerState.currentRoute) {
-        return createElement(
+        vnode = createElement(
             routerState.currentRoute.component,
             routerState.currentRoute.params || {}
         );
     } else if (routerState.notFoundComponent) {
-        return createElement(routerState.notFoundComponent, {});
+        vnode = createElement(routerState.notFoundComponent, {});
+    } else {
+        vnode = createElement("div", {}, "Page not found");
     }
 
-    return createElement("div", {}, "Page not found");
+    if (lastVNode) {
+        if (isElement(lastVNode) && typeof lastVNode.tag === "function") {
+            // Last vnode is a component
+            const actualNode = lastVNode.componentInstance?.node;
+            if (actualNode) {
+                unmount(actualNode);
+            }
+        } else {
+            unmount(lastVNode);
+        }
+    }
+    lastVNode = vnode;
+
+    clearStoreSubscribers();
+
+    return vnode;
 }

@@ -68,3 +68,12 @@ export function cleanupComponent(componentInfo: ComponentInfo) {
         }
     });
 }
+
+/**
+ * Clears all subscribers from all stores.
+ */
+export function clearStoreSubscribers() {
+    storeRegistry.forEach((store) => {
+        store.subscribers.clear();
+    });
+}
