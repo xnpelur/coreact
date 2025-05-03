@@ -1,7 +1,7 @@
 import { createElement, VirtualNode } from "@runtime/jsx-runtime";
 import { Link } from "@runtime/router";
 
-export function Home(): VirtualNode {
+export function HomePage(): VirtualNode {
     return (
         <div>
             <h1 className="text-4xl m-4 text-blue-500">Home Page</h1>
@@ -18,6 +18,9 @@ export function Home(): VirtualNode {
                     </li>
                     <li>
                         <Link to="/user/123">User Profile</Link>
+                    </li>
+                    <li>
+                        <Link to="/landing">Landing</Link>
                     </li>
                 </ul>
             </nav>

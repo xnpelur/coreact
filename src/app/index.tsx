@@ -1,19 +1,21 @@
 import { createElement, VirtualNode } from "@runtime/jsx-runtime";
 import { Router, createRouter } from "@runtime/router";
-import { Home } from "./pages/Home";
-import { CounterPage } from "./pages/CounterPage";
-import { UserProfile } from "./pages/UserProfile";
-import { NotFound } from "./pages/NotFound";
-import { ControlledInputPage } from "./pages/ControlledInputPage";
+import { HomePage } from "./pages/home-page";
+import { CounterPage } from "./pages/counter-page";
+import { UserProfilePage } from "./pages/user-profile-page";
+import { NotFoundPage } from "./pages/not-found-page";
+import { ControlledInputPage } from "./pages/controlled-input-page";
+import { LandingPage } from "./pages/landing-page";
 
 createRouter({
     routes: [
-        { path: "/", component: Home },
+        { path: "/", component: HomePage },
         { path: "/controlled-input", component: ControlledInputPage },
         { path: "/counter", component: CounterPage },
-        { path: "/user/:id", component: UserProfile },
+        { path: "/user/:id", component: UserProfilePage },
+        { path: "/landing", component: LandingPage },
     ],
-    notFound: NotFound,
+    notFound: NotFoundPage,
 });
 
 export function App(): VirtualNode {

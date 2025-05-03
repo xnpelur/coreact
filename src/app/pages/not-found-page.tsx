@@ -1,7 +1,7 @@
 import { createElement, VirtualNode } from "@runtime/jsx-runtime";
 import { Link } from "@runtime/router";
 
-export function NotFound(): VirtualNode {
+export function NotFoundPage(): VirtualNode {
     return (
         <div>
             <h1>404 - Page Not Found</h1>

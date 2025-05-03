@@ -1,4 +1,4 @@
-import { useCounterStore } from "@app/stores";
+import { useCounterStore } from "@app/stores/counter-store";
 import { createElement, VirtualNode } from "@runtime/jsx-runtime";
 import { Link } from "@runtime/router";
 import { useState } from "@runtime/state";
