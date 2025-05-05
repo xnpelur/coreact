@@ -1,8 +1,8 @@
 import { createElement } from "@runtime/jsx-runtime";
 import { App } from "@app/index";
 import { mount } from "@runtime/dom";
-import { injectTailwindBase } from "@runtime/tailwind";
 import { createTailwindElementFactory } from "@runtime/tailwind-jsx";
+import "@runtime/styles/index.css";
 
 const createElementWithTailwind = createTailwindElementFactory(createElement);
 
@@ -12,9 +12,6 @@ function mountApp() {
         while (root.firstChild) {
             root.removeChild(root.firstChild);
         }
-
-        // Inject Tailwind base styles
-        injectTailwindBase();
 
         const app = createElementWithTailwind(App, {});
         mount(app, root);
