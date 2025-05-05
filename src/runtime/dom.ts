@@ -44,9 +44,10 @@ export function mount(
     vnode: VirtualNode,
     parent: HTMLElement,
     index?: number,
-    parentPath: number[] = []
+    parentPath: number[] = [],
+    inSVG: boolean = false
 ) {
-    const rendered = render(vnode, parent, index ?? 0, parentPath);
+    const rendered = render(vnode, parent, index ?? 0, parentPath, inSVG);
 
     let child: Element | undefined;
     if (index !== undefined) {
@@ -177,7 +178,8 @@ function render(
     vnode: VirtualNode,
     parentElement: HTMLElement,
     index: number,
-    parentPath: number[] = []
+    parentPath: number[] = [],
+    inSVG: boolean = false
 ): DOMNode[] {
     if (typeof vnode === "boolean" || vnode === null || vnode === undefined) {
         return [];
@@ -196,7 +198,8 @@ function render(
                 child,
                 parentElement,
                 childIndex,
-                parentPath.concat(childIndex)
+                parentPath.concat(childIndex),
+                inSVG
             );
             rendered.push(...renderedPart);
         });
@@ -205,12 +208,28 @@ function render(
     }
 
     if (typeof vnode.tag === "string") {
-        const element = document.createElement(vnode.tag);
+        // Detect if this or any parent is an SVG element
+        const isSVG = inSVG || vnode.tag === "svg";
+        let element: HTMLElement;
+        if (isSVG) {
+            element = document.createElementNS(
+                "http://www.w3.org/2000/svg",
+                vnode.tag
+            ) as unknown as HTMLElement;
+        } else {
+            element = document.createElement(vnode.tag);
+        }
 
         setProps(element, vnode.props);
 
         vnode.children.forEach((child, childIndex) => {
-            mount(child, element, childIndex, parentPath.concat(childIndex));
+            mount(
+                child,
+                element,
+                childIndex,
+                parentPath.concat(childIndex),
+                isSVG
+            );
         });
 
         vnode.element = element;
@@ -242,7 +261,7 @@ function render(
         node: componentNode,
     };
 
-    return render(componentNode, parentElement, index, fullPath);
+    return render(componentNode, parentElement, index, fullPath, inSVG);
 }
 
 function setProps(element: HTMLElement, props: Props) {
