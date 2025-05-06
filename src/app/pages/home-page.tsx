@@ -4,7 +4,7 @@ import { Link } from "@runtime/router";
 export function HomePage(): VirtualNode {
     return (
         <div>
-            <h1 className="text-4xl m-4 text-blue-500">Home Page</h1>
+            <h1 className="text-4xl m-4 text-cyan-600">Home Page</h1>
             <p>Welcome to our application!</p>
             <nav>
                 <ul>

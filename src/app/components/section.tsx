@@ -4,13 +4,13 @@ import { CodeResult } from "./code-result";
 
 export function Section() {
     return (
-        <div className="mx-auto flex flex-col w-full bg-gradient-left dark:bg-gradient-left-dark border-t border-primary/10 dark:border-primary-dark/10">
+        <div className="mx-auto flex flex-col w-full bg-gradient-left dark:bg-gradient-left-dark border-t border-primary/10 dark:border-text-gray-50/10">
             <div className="flex-col gap-2 flex grow w-full my-20 lg:my-32 mx-auto items-center">
                 <div className="px-5 lg:px-0 max-w-4xl lg:text-center text-white text-opacity-80 flex flex-col items-center justify-center">
-                    <h2 className="leading-xl font-display text-primary dark:text-primary-dark font-semibold text-5xl lg:text-6xl -mt-4 mb-7 w-full max-w-3xl lg:max-w-xl">
+                    <h2 className="leading-xl font-display text-gray-950 dark:text-gray-50 font-semibold text-5xl lg:text-6xl -mt-4 mb-7 w-full max-w-3xl lg:max-w-xl">
                         Create user interfaces from components
                     </h2>
-                    <p className="max-w-3xl mx-auto text-lg lg:text-xl text-secondary dark:text-secondary-dark leading-normal">
+                    <p className="max-w-3xl mx-auto text-lg lg:text-xl text-gray-700 dark:text-secondary-dark leading-normal">
                         X lets you build user interfaces out of individual
                         pieces called components. Create your own X components
                         like{" "}
@@ -49,7 +49,7 @@ export function Section() {
                     </div>
                 </div>
                 <div className="px-5 lg:px-0 max-w-4xl lg:text-center text-white text-opacity-80 flex flex-col items-center justify-center">
-                    <p className="max-w-3xl mx-auto text-lg lg:text-xl text-secondary dark:text-secondary-dark leading-normal">
+                    <p className="max-w-3xl mx-auto text-lg lg:text-xl text-gray-700 dark:text-secondary-dark leading-normal">
                         Whether you work on your own or with thousands of other
                         developers, using X feels the same. It is designed to
                         let you seamlessly combine components written by

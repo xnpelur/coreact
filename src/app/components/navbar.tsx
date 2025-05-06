@@ -9,7 +9,7 @@ export function Navbar() {
                         <button
                             type="button"
                             aria-label="Menu"
-                            className="active:scale-95 transition-transform flex lg:hidden w-12 h-12 rounded-full items-center justify-center hover:bg-primary/5 hover:dark:bg-primary-dark/5 outline-link"
+                            className="active:scale-95 transition-transform flex lg:hidden w-12 h-12 rounded-full items-center justify-center hover:bg-primary/5 hover:dark:bg-text-gray-50/5 outline-cyan-600"
                         >
                             <svg
                                 width="1.33em"
@@ -30,7 +30,7 @@ export function Navbar() {
                             <div className="flex items-center">
                                 <div className="uwu-hidden">
                                     <a
-                                        className="active:scale-95 overflow-hidden transition-transform relative items-center text-primary dark:text-primary-dark p-1 whitespace-nowrap outline-link rounded-xl inline-flex text-lg font-normal gap-2"
+                                        className="active:scale-95 overflow-hidden transition-transform relative items-center text-gray-950 dark:text-gray-50 p-1 whitespace-nowrap outline-cyan-600 rounded-xl inline-flex text-lg font-normal gap-2"
                                         href="/"
                                     >
                                         <svg
@@ -39,7 +39,7 @@ export function Navbar() {
                                             viewBox="-10.5 -9.45 21 18.9"
                                             fill="none"
                                             xmlns="http://www.w3.org/2000/svg"
-                                            className="text-sm me-0 w-10 h-10 text-brand dark:text-brand-dark flex origin-center transition-all ease-in-out"
+                                            className="text-sm me-0 w-10 h-10 text-cyan-600 dark:text-cyan-600-dark flex origin-center transition-all ease-in-out"
                                         >
                                             <circle
                                                 cx="0"
@@ -75,7 +75,7 @@ export function Navbar() {
                         </span>
                         <div className="flex flex-column justify-center items-center">
                             <a
-                                className="flex py-2 flex-column justify-center items-center text-gray-50 dark:text-gray-30 hover:text-link hover:dark:text-link-dark hover:underline text-sm ms-1 cursor-pointer"
+                                className="flex py-2 flex-column justify-center items-center text-gray-50 dark:text-gray-30 hover:text-cyan-600 hover:dark:text-blue-400 hover:underline text-sm ms-1 cursor-pointer"
                                 href="/versions"
                             >
                                 v19.1
@@ -86,7 +86,7 @@ export function Navbar() {
                         <div className="mx-2.5 gap-1.5 hidden lg:flex">
                             <div className="flex flex-auto sm:flex-1">
                                 <a
-                                    className="active:scale-95 transition-transform w-full text-center outline-link py-1.5 px-3 sm:px-4 rounded-full capitalize whitespace-nowrap hover:bg-primary/5 hover:dark:bg-primary-dark/5"
+                                    className="active:scale-95 transition-transform w-full text-center outline-cyan-600 py-1.5 px-3 sm:px-4 rounded-full capitalize whitespace-nowrap hover:bg-primary/5 hover:dark:bg-text-gray-50/5"
                                     href="/learn"
                                 >
                                     Learn
@@ -94,7 +94,7 @@ export function Navbar() {
                             </div>
                             <div className="flex flex-auto sm:flex-1">
                                 <a
-                                    className="active:scale-95 transition-transform w-full text-center outline-link py-1.5 px-3 sm:px-4 rounded-full capitalize whitespace-nowrap hover:bg-primary/5 hover:dark:bg-primary-dark/5"
+                                    className="active:scale-95 transition-transform w-full text-center outline-cyan-600 py-1.5 px-3 sm:px-4 rounded-full capitalize whitespace-nowrap hover:bg-primary/5 hover:dark:bg-text-gray-50/5"
                                     href="/reference/x"
                                 >
                                     Reference
@@ -102,7 +102,7 @@ export function Navbar() {
                             </div>
                             <div className="flex flex-auto sm:flex-1">
                                 <a
-                                    className="active:scale-95 transition-transform w-full text-center outline-link py-1.5 px-3 sm:px-4 rounded-full capitalize whitespace-nowrap hover:bg-primary/5 hover:dark:bg-primary-dark/5"
+                                    className="active:scale-95 transition-transform w-full text-center outline-cyan-600 py-1.5 px-3 sm:px-4 rounded-full capitalize whitespace-nowrap hover:bg-primary/5 hover:dark:bg-text-gray-50/5"
                                     href="/community"
                                 >
                                     Community
@@ -110,7 +110,7 @@ export function Navbar() {
                             </div>
                             <div className="flex flex-auto sm:flex-1">
                                 <a
-                                    className="active:scale-95 transition-transform w-full text-center outline-link py-1.5 px-3 sm:px-4 rounded-full capitalize whitespace-nowrap hover:bg-primary/5 hover:dark:bg-primary-dark/5"
+                                    className="active:scale-95 transition-transform w-full text-center outline-cyan-600 py-1.5 px-3 sm:px-4 rounded-full capitalize whitespace-nowrap hover:bg-primary/5 hover:dark:bg-text-gray-50/5"
                                     href="/blog"
                                 >
                                     Blog
@@ -123,7 +123,7 @@ export function Navbar() {
                                 <button
                                     aria-label="Search"
                                     type="button"
-                                    className="flex items-center justify-center w-12 h-12 transition-transform rounded-full active:scale-95 md:hidden hover:bg-secondary-button hover:dark:bg-secondary-button-dark outline-link"
+                                    className="flex items-center justify-center w-12 h-12 transition-transform rounded-full active:scale-95 md:hidden hover:bg-secondary-button hover:dark:bg-secondary-button-dark outline-cyan-600"
                                 >
                                     <svg
                                         width="1em"
@@ -147,7 +147,7 @@ export function Navbar() {
                                 <button
                                     type="button"
                                     aria-label="Use Dark Mode"
-                                    className="flex items-center justify-center w-12 h-12 transition-transform rounded-full active:scale-95 hover:bg-primary/5 hover:dark:bg-primary-dark/5 outline-link"
+                                    className="flex items-center justify-center w-12 h-12 transition-transform rounded-full active:scale-95 hover:bg-primary/5 hover:dark:bg-text-gray-50/5 outline-cyan-600"
                                 >
                                     <svg
                                         xmlns="http://www.w3.org/2000/svg"
@@ -177,7 +177,7 @@ export function Navbar() {
                                 <button
                                     type="button"
                                     aria-label="Use Light Mode"
-                                    className="flex items-center justify-center w-12 h-12 transition-transform rounded-full active:scale-95 hover:bg-primary/5 hover:dark:bg-primary-dark/5 outline-link"
+                                    className="flex items-center justify-center w-12 h-12 transition-transform rounded-full active:scale-95 hover:bg-primary/5 hover:dark:bg-text-gray-50/5 outline-cyan-600"
                                 >
                                     <svg
                                         xmlns="http://www.w3.org/2000/svg"
@@ -213,7 +213,7 @@ export function Navbar() {
                             </div>
                             <div className="flex">
                                 <a
-                                    className="active:scale-95 transition-transform flex w-12 h-12 rounded-full items-center justify-center hover:bg-primary/5 hover:dark:bg-primary-dark/5 outline-link"
+                                    className="active:scale-95 transition-transform flex w-12 h-12 rounded-full items-center justify-center hover:bg-primary/5 hover:dark:bg-text-gray-50/5 outline-cyan-600"
                                     aria-label="Translations"
                                     href="/community/translations"
                                 >
@@ -232,7 +232,7 @@ export function Navbar() {
                             </div>
                             <div className="flex">
                                 <a
-                                    className="flex items-center justify-center w-12 h-12 transition-transform rounded-full active:scale-95 hover:bg-primary/5 hover:dark:bg-primary-dark/5 outline-link"
+                                    className="flex items-center justify-center w-12 h-12 transition-transform rounded-full active:scale-95 hover:bg-primary/5 hover:dark:bg-text-gray-50/5 outline-cyan-600"
                                     target="_blank"
                                     rel="noreferrer noopener"
                                     aria-label="Open on GitHub"

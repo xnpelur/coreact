@@ -3,7 +3,7 @@ import { createElement } from "@runtime/jsx-runtime";
 export function CodeResult() {
     return (
         <div className="relative mt-0 lg:-my-20 w-full p-5 lg:p-10 flex grow justify-center">
-            <div className="max-w-3xl rounded-2xl mx-auto text-secondary leading-normal bg-white overflow-hidden w-full overflow-y-auto shadow-nav dark:shadow-nav-dark">
+            <div className="max-w-3xl rounded-2xl mx-auto text-gray-700 leading-normal bg-white overflow-hidden w-full overflow-y-auto shadow-nav dark:shadow-nav-dark">
                 <div className="p-4">
                     <div
                         className="flex flex-row items-center gap-3"
@@ -14,7 +14,7 @@ export function CodeResult() {
                             target="_blank"
                             rel="noreferrer"
                             aria-hidden="true"
-                            className="outline-link dark:outline-link outline-offset-2 aspect-video w-36 select-none flex-col shadow-inner-border rounded-lg flex items-center overflow-hidden justify-center align-middle text-white/50 bg-cover bg-white bg-[conic-gradient(at_top_right,_var(--tw-gradient-stops))] from-yellow-50 via-blue-50 to-purple-60"
+                            className="outline-cyan-600 dark:outline-cyan-600 outline-offset-2 aspect-video w-36 select-none flex-col shadow-inner-border rounded-lg flex items-center overflow-hidden justify-center align-middle text-white/50 bg-cover bg-white bg-[conic-gradient(at_top_right,_var(--tw-gradient-stops))] from-yellow-50 via-blue-50 to-purple-60"
                         >
                             <svg
                                 className="drop-shadow-xl"
@@ -35,11 +35,11 @@ export function CodeResult() {
                         <a
                             target="_blank"
                             rel="noreferrer"
-                            className="outline-link dark:outline-link outline-offset-4 group flex flex-col flex-1 gap-0.5"
+                            className="outline-cyan-600 dark:outline-cyan-600 outline-offset-4 group flex flex-col flex-1 gap-0.5"
                             data-hover="a"
                         >
                             <h3
-                                className="text-base leading-tight text-primary font-bold"
+                                className="text-base leading-tight text-gray-950 font-bold"
                                 data-hover="h3"
                             >
                                 My video
