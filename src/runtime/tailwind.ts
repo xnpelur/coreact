@@ -3,64 +3,30 @@
  * This provides the core functionality of Tailwind with a minimal footprint
  */
 
-const colors = {
-    transparent: "transparent",
-    current: "currentColor",
-    black: "#000",
-    white: "#fff",
-    gray: {
-        100: "#f7fafc",
-        200: "#edf2f7",
-        300: "#e2e8f0",
-        400: "#cbd5e0",
-        500: "#a0aec0",
-        600: "#718096",
-        700: "#4a5568",
-        800: "#2d3748",
-        900: "#1a202c",
-    },
-    blue: {
-        100: "#ebf8ff",
-        200: "#bee3f8",
-        300: "#90cdf4",
-        400: "#63b3ed",
-        500: "#4299e1",
-        600: "#3182ce",
-        700: "#2b6cb0",
-        800: "#2c5282",
-        900: "#2a4365",
-    },
-    red: {
-        100: "#fff5f5",
-        200: "#fed7d7",
-        300: "#feb2b2",
-        400: "#fc8181",
-        500: "#f56565",
-        600: "#e53e3e",
-        700: "#c53030",
-        800: "#9b2c2c",
-        900: "#742a2a",
-    },
+const propsWithColor = {
+    bg: ["backgroundColor"],
+    text: ["color"],
+    border: ["borderColor"],
 };
 
-const spacing = {
-    0: "0",
-    1: "0.25rem",
-    2: "0.5rem",
-    3: "0.75rem",
-    4: "1rem",
-    5: "1.25rem",
-    6: "1.5rem",
-    8: "2rem",
-    10: "2.5rem",
-    12: "3rem",
-    16: "4rem",
-    20: "5rem",
-    24: "6rem",
-    32: "8rem",
-    40: "10rem",
-    48: "12rem",
-    64: "16rem",
+const propsWithSpacing = {
+    m: ["margin"],
+    p: ["padding"],
+    mx: ["marginLeft", "marginRight"],
+    my: ["marginTop", "marginBottom"],
+    px: ["paddingLeft", "paddingRight"],
+    py: ["paddingTop", "paddingBottom"],
+    mt: ["marginTop"],
+    mr: ["marginRight"],
+    mb: ["marginBottom"],
+    ml: ["marginLeft"],
+    pt: ["paddingTop"],
+    pr: ["paddingRight"],
+    pb: ["paddingBottom"],
+    pl: ["paddingLeft"],
+    gap: ["gap"],
+    w: ["width"],
+    h: ["height"],
 };
 
 const fontSize = {
@@ -115,15 +81,13 @@ const utilities: Record<string, StyleObject> = {
     "items-end": { alignItems: "flex-end" },
     "items-stretch": { alignItems: "stretch" },
 
-    // Margin and Padding
-    "m-0": { margin: spacing[0] },
-    "m-1": { margin: spacing[1] },
-    "m-2": { margin: spacing[2] },
-    "m-4": { margin: spacing[4] },
-    "p-0": { padding: spacing[0] },
-    "p-1": { padding: spacing[1] },
-    "p-2": { padding: spacing[2] },
-    "p-4": { padding: spacing[4] },
+    // Align self
+    "self-auto": { alignSelf: "auto" },
+    "self-start": { alignSelf: "flex-start" },
+    "self-center": { alignSelf: "center" },
+    "self-end": { alignSelf: "flex-end" },
+    "self-stretch": { alignSelf: "stretch" },
+    "self-baseline": { alignSelf: "baseline" },
 
     // Text alignment
     "text-left": { textAlign: "left" },
@@ -148,33 +112,63 @@ const utilities: Record<string, StyleObject> = {
     "font-medium": { fontWeight: fontWeight.medium },
     "font-bold": { fontWeight: fontWeight.bold },
 
-    // Text color
-    "text-black": { color: colors.black },
-    "text-white": { color: colors.white },
-    "text-gray-500": { color: colors.gray[500] },
-    "text-blue-500": { color: colors.blue[500] },
-    "text-red-500": { color: colors.red[500] },
-
-    // Background color
-    "bg-transparent": { backgroundColor: colors.transparent },
-    "bg-black": { backgroundColor: colors.black },
-    "bg-white": { backgroundColor: colors.white },
-    "bg-gray-100": { backgroundColor: colors.gray[100] },
-    "bg-blue-500": { backgroundColor: colors.blue[500] },
-    "bg-red-500": { backgroundColor: colors.red[500] },
-
     // Border
     border: { borderWidth: "1px" },
     "border-0": { borderWidth: "0" },
     "border-2": { borderWidth: "2px" },
     "border-4": { borderWidth: "4px" },
-    "border-black": { borderColor: colors.black },
-    "border-gray-300": { borderColor: colors.gray[300] },
     rounded: { borderRadius: "0.25rem" },
     "rounded-md": { borderRadius: "0.375rem" },
     "rounded-lg": { borderRadius: "0.5rem" },
     "rounded-full": { borderRadius: "9999px" },
 };
+
+function parse(className: string): [string, string][] {
+    // Handle spacing classes
+    const spacingMatch = className.match(
+        /^(-?)(m|p|mx|my|px|py|mt|mr|mb|ml|gap|w|h)-(\d{1,2}|full|auto)$/
+    );
+    if (spacingMatch) {
+        const [, minus, prefix, value] = spacingMatch;
+        if (prefix in propsWithSpacing) {
+            let cssValue: string;
+            if (value === "full") {
+                cssValue = "100%";
+            } else if (value === "auto") {
+                cssValue = "auto";
+            } else {
+                cssValue = `calc(var(--spacing)*${
+                    parseInt(value) * (minus ? -1 : 1)
+                })`;
+            }
+
+            const result = [];
+            for (const prop of propsWithSpacing[
+                prefix as keyof typeof propsWithSpacing
+            ]) {
+                result.push([prop, cssValue] as [string, string]);
+            }
+            return result;
+        }
+    }
+
+    // Handle color classes
+    const colorMatch = className.match(/^([a-z]+)-([a-z]+)-(\d{2,3}|50)$/);
+    if (colorMatch) {
+        const [, prefix, color, shade] = colorMatch;
+        if (prefix in propsWithColor) {
+            const cssValue = `var(--color-${color}-${shade})`;
+            const result = [];
+            for (const prop of propsWithSpacing[
+                prefix as keyof typeof propsWithSpacing
+            ]) {
+                result.push([prop, cssValue] as [string, string]);
+            }
+            return result;
+        }
+    }
+    return [];
+}
 
 /**
  * Parse a string of Tailwind class names and return a CSS object
@@ -186,20 +180,14 @@ export function tw(classNames: string): Record<string, any> {
     const styles: Record<string, any> = {};
 
     for (const className of classes) {
-        if (className in utilities) {
+        let result = parse(className);
+        for (const [prop, value] of result) {
+            styles[prop] = value;
+        }
+        if (result.length === 0 && className in utilities) {
             Object.assign(styles, utilities[className]);
         }
     }
 
     return styles;
-}
-
-/**
- * Apply Tailwind styles to an HTML element
- * @param element - HTML element to style
- * @param classNames - Space-separated Tailwind class names
- */
-export function applyTailwind(element: HTMLElement, classNames: string): void {
-    const styles = tw(classNames);
-    Object.assign(element.style, styles);
 }
