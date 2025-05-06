@@ -153,11 +153,16 @@ function parse(className: string): [string, string][] {
     }
 
     // Handle color classes
-    const colorMatch = className.match(/^([a-z]+)-([a-z]+)-(\d{2,3}|50)$/);
+    const colorMatch = className.match(/^([a-z]+)-([a-z]+)(?:-(\d{2,3}))?$/);
     if (colorMatch) {
         const [, prefix, color, shade] = colorMatch;
-        if (prefix in propsWithColor) {
-            const cssValue = `var(--color-${color}-${shade})`;
+        if (
+            prefix in propsWithColor &&
+            (shade || color === "white" || color === "black")
+        ) {
+            const cssValue = shade
+                ? `var(--color-${color}-${shade})`
+                : `var(--color-${color})`;
             const result = [];
             for (const prop of propsWithColor[
                 prefix as keyof typeof propsWithColor
