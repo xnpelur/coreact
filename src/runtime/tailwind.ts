@@ -159,8 +159,8 @@ function parse(className: string): [string, string][] {
         if (prefix in propsWithColor) {
             const cssValue = `var(--color-${color}-${shade})`;
             const result = [];
-            for (const prop of propsWithSpacing[
-                prefix as keyof typeof propsWithSpacing
+            for (const prop of propsWithColor[
+                prefix as keyof typeof propsWithColor
             ]) {
                 result.push([prop, cssValue] as [string, string]);
             }
