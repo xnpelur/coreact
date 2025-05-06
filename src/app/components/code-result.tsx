@@ -2,7 +2,7 @@ import { createElement } from "@runtime/jsx-runtime";
 
 export function CodeResult() {
     return (
-        <div className="relative mt-0 lg:-my-20 w-full p-5 lg:p-10 flex grow justify-center">
+        <div className="relative -my-20 w-full p-10 flex grow justify-center">
             <div className="max-w-3xl rounded-2xl mx-auto text-gray-700 leading-normal bg-white overflow-hidden w-full overflow-y-auto shadow-nav dark:shadow-nav-dark">
                 <div className="p-4">
                     <div

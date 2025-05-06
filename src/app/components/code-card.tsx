@@ -2,8 +2,8 @@ import { createElement } from "@runtime/jsx-runtime";
 
 export function CodeCard() {
     return (
-        <div className="lg:-m-5 h-full shadow-nav dark:shadow-nav-dark lg:rounded-2xl bg-wash dark:bg-gray-95 w-full flex grow flex-col">
-            <div className="w-full bg-card dark:bg-wash-dark lg:rounded-t-2xl border-b border-black/5 dark:border-white/5">
+        <div className="-m-5 h-full shadow-nav dark:shadow-nav-dark rounded-2xl bg-wash dark:bg-gray-95 w-full flex grow flex-col">
+            <div className="w-full bg-card dark:bg-wash-dark rounded-t-2xl border-b border-black/5 dark:border-white/5">
                 <h3 className="text-sm my-2 mx-5 text-tertiary dark:text-tertiary-dark select-none text-start">
                     Video.js
                 </h3>

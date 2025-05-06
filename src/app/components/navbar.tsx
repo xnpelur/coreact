@@ -3,29 +3,9 @@ import { createElement } from "@runtime/jsx-runtime";
 export function Navbar() {
     return (
         <div className="z-40 sticky top-0">
-            <nav className="duration-300 backdrop-filter backdrop-blur-lg backdrop-saturate-200 transition-shadow bg-opacity-90 items-center w-full flex justify-between bg-wash dark:bg-wash-dark dark:bg-opacity-95 px-1.5 lg:pe-5 lg:ps-4 z-40">
-                <div className="flex items-center justify-between w-full h-16 gap-0 sm:gap-3">
+            <nav className="duration-300 backdrop-filter backdrop-blur-lg backdrop-saturate-200 transition-shadow bg-opacity-90 items-center w-full flex justify-between bg-wash dark:bg-wash-dark dark:bg-opacity-95 pr-5 pl-4 z-40">
+                <div className="flex items-center justify-between w-full h-16 gap-3">
                     <div className="flex flex-row flex-1 items-centers">
-                        <button
-                            type="button"
-                            aria-label="Menu"
-                            className="active:scale-95 transition-transform flex lg:hidden w-12 h-12 rounded-full items-center justify-center hover:bg-primary/5 hover:dark:bg-text-gray-50/5 outline-cyan-600"
-                        >
-                            <svg
-                                width="1.33em"
-                                height="1.33em"
-                                viewBox="0 0 24 24"
-                                fill="none"
-                                stroke="currentColor"
-                                stroke-width="2"
-                                stroke-linecap="round"
-                                stroke-linejoin="round"
-                            >
-                                <line x1="3" y1="12" x2="21" y2="12"></line>
-                                <line x1="3" y1="6" x2="21" y2="6"></line>
-                                <line x1="3" y1="18" x2="21" y2="18"></line>
-                            </svg>
-                        </button>
                         <span data-state="closed" className="flex items-center">
                             <div className="flex items-center">
                                 <div className="uwu-hidden">
@@ -83,66 +63,41 @@ export function Navbar() {
                         </div>
                     </div>
                     <div className="text-base items-center gap-1.5 flex flex-1 flex-row justify-end">
-                        <div className="mx-2.5 gap-1.5 hidden lg:flex">
-                            <div className="flex flex-auto sm:flex-1">
+                        <div className="mx-2.5 gap-1.5 flex">
+                            <div className="flex flex-1">
                                 <a
-                                    className="active:scale-95 transition-transform w-full text-center outline-cyan-600 py-1.5 px-3 sm:px-4 rounded-full capitalize whitespace-nowrap hover:bg-primary/5 hover:dark:bg-text-gray-50/5"
+                                    className="active:scale-95 transition-transform w-full text-center outline-cyan-600 py-1.5 px-4 rounded-full capitalize whitespace-nowrap hover:bg-primary/5 hover:dark:bg-text-gray-50/5"
                                     href="/learn"
                                 >
                                     Learn
                                 </a>
                             </div>
-                            <div className="flex flex-auto sm:flex-1">
+                            <div className="flex flex-1">
                                 <a
-                                    className="active:scale-95 transition-transform w-full text-center outline-cyan-600 py-1.5 px-3 sm:px-4 rounded-full capitalize whitespace-nowrap hover:bg-primary/5 hover:dark:bg-text-gray-50/5"
+                                    className="active:scale-95 transition-transform w-full text-center outline-cyan-600 py-1.5 px-4 rounded-full capitalize whitespace-nowrap hover:bg-primary/5 hover:dark:bg-text-gray-50/5"
                                     href="/reference/x"
                                 >
                                     Reference
                                 </a>
                             </div>
-                            <div className="flex flex-auto sm:flex-1">
+                            <div className="flex flex-1">
                                 <a
-                                    className="active:scale-95 transition-transform w-full text-center outline-cyan-600 py-1.5 px-3 sm:px-4 rounded-full capitalize whitespace-nowrap hover:bg-primary/5 hover:dark:bg-text-gray-50/5"
+                                    className="active:scale-95 transition-transform w-full text-center outline-cyan-600 py-1.5 px-4 rounded-full capitalize whitespace-nowrap hover:bg-primary/5 hover:dark:bg-text-gray-50/5"
                                     href="/community"
                                 >
                                     Community
                                 </a>
                             </div>
-                            <div className="flex flex-auto sm:flex-1">
+                            <div className="flex flex-1">
                                 <a
-                                    className="active:scale-95 transition-transform w-full text-center outline-cyan-600 py-1.5 px-3 sm:px-4 rounded-full capitalize whitespace-nowrap hover:bg-primary/5 hover:dark:bg-text-gray-50/5"
+                                    className="active:scale-95 transition-transform w-full text-center outline-cyan-600 py-1.5 px-4 rounded-full capitalize whitespace-nowrap hover:bg-primary/5 hover:dark:bg-text-gray-50/5"
                                     href="/blog"
                                 >
                                     Blog
                                 </a>
                             </div>
                         </div>
-                        <div className="flex w-full md:hidden"></div>
                         <div className="flex items-center space-x-0">
-                            <div className="flex md:hidden">
-                                <button
-                                    aria-label="Search"
-                                    type="button"
-                                    className="flex items-center justify-center w-12 h-12 transition-transform rounded-full active:scale-95 md:hidden hover:bg-secondary-button hover:dark:bg-secondary-button-dark outline-cyan-600"
-                                >
-                                    <svg
-                                        width="1em"
-                                        height="1em"
-                                        viewBox="0 0 20 20"
-                                        className="w-5 h-5 align-middle"
-                                    >
-                                        <path
-                                            d="M14.386 14.386l4.0877 4.0877-4.0877-4.0877c-2.9418 2.9419-7.7115 2.9419-10.6533 0-2.9419-2.9418-2.9419-7.7115 0-10.6533 2.9418-2.9419 7.7115-2.9419 10.6533 0 2.9419 2.9418 2.9419 7.7115 0 10.6533z"
-                                            stroke="currentColor"
-                                            fill="none"
-                                            stroke-width="2"
-                                            fill-rule="evenodd"
-                                            stroke-linecap="round"
-                                            stroke-linejoin="round"
-                                        ></path>
-                                    </svg>
-                                </button>
-                            </div>
                             <div className="flex dark:hidden">
                                 <button
                                     type="button"
