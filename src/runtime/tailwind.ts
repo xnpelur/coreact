@@ -29,19 +29,6 @@ const propsWithSpacing = {
     h: ["height"],
 };
 
-const fontSize = {
-    xs: "0.75rem",
-    sm: "0.875rem",
-    base: "1rem",
-    lg: "1.125rem",
-    xl: "1.25rem",
-    "2xl": "1.5rem",
-    "3xl": "1.875rem",
-    "4xl": "2.25rem",
-    "5xl": "3rem",
-    "6xl": "4rem",
-};
-
 const fontWeight = {
     hairline: "100",
     thin: "200",
@@ -94,18 +81,6 @@ const utilities: Record<string, StyleObject> = {
     "text-center": { textAlign: "center" },
     "text-right": { textAlign: "right" },
     "text-justify": { textAlign: "justify" },
-
-    // Font size
-    "text-xs": { fontSize: fontSize.xs },
-    "text-sm": { fontSize: fontSize.sm },
-    "text-base": { fontSize: fontSize.base },
-    "text-lg": { fontSize: fontSize.lg },
-    "text-xl": { fontSize: fontSize.xl },
-    "text-2xl": { fontSize: fontSize["2xl"] },
-    "text-3xl": { fontSize: fontSize["3xl"] },
-    "text-4xl": { fontSize: fontSize["4xl"] },
-    "text-5xl": { fontSize: fontSize["5xl"] },
-    "text-6xl": { fontSize: fontSize["6xl"] },
 
     // Font weight
     "font-normal": { fontWeight: fontWeight.normal },
@@ -172,6 +147,19 @@ function parse(className: string): [string, string][] {
             return result;
         }
     }
+
+    // Font size
+    const fontSizeMatch = className.match(
+        /^text-(xs|sm|base|lg|xl|2xl|3xl|4xl|5xl|6xl|7xl|8xl|9xl)$/
+    );
+    if (fontSizeMatch) {
+        const [, size] = fontSizeMatch;
+        return [
+            ["fontSize", `var(--text-${size})`],
+            ["lineHeight", `var(--text-${size}--line-height)`],
+        ];
+    }
+
     return [];
 }
 
