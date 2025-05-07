@@ -152,6 +152,15 @@ function parse(className: string): [string, string][] {
         return [["fontWeight", `var(--font-weight-${weight})`]];
     }
 
+    // Line height
+    const lineHeightMatch = className.match(
+        /^leading-(tight|snug|normal|relaxed|loose)$/
+    );
+    if (lineHeightMatch) {
+        const [, lineHeight] = lineHeightMatch;
+        return [["lineHeight", `var(--leading-${lineHeight})`]];
+    }
+
     return [];
 }
 
