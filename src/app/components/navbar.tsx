@@ -10,7 +10,7 @@ export function Navbar() {
                             <div className="flex items-center">
                                 <div className="uwu-hidden">
                                     <a
-                                        className="active:scale-95 overflow-hidden transition-transform relative items-center text-gray-950 dark:text-gray-50 p-1 whitespace-nowrap outline-cyan-600 rounded-xl inline-flex text-lg font-normal gap-2"
+                                        className="scale-95 overflow-hidden transition-transform relative items-center text-gray-950 dark:text-gray-50 p-1 whitespace-nowrap outline-cyan-600 rounded-xl inline-flex text-lg font-normal gap-2"
                                         href="/"
                                     >
                                         <svg
@@ -68,7 +68,7 @@ export function Navbar() {
                         <div className="mx-2.5 gap-1.5 flex">
                             <div className="flex flex-1">
                                 <a
-                                    className="active:scale-95 transition-transform w-full text-center outline-cyan-600 py-1.5 px-4 rounded-full capitalize whitespace-nowrap hover:bg-primary/5 hover:dark:bg-text-gray-50/5"
+                                    className="scale-95 transition-transform w-full text-center outline-cyan-600 py-1.5 px-4 rounded-full capitalize whitespace-nowrap hover:bg-primary/5 hover:dark:bg-text-gray-50/5"
                                     href="#"
                                 >
                                     Learn
@@ -76,7 +76,7 @@ export function Navbar() {
                             </div>
                             <div className="flex flex-1">
                                 <a
-                                    className="active:scale-95 transition-transform w-full text-center outline-cyan-600 py-1.5 px-4 rounded-full capitalize whitespace-nowrap hover:bg-primary/5 hover:dark:bg-text-gray-50/5"
+                                    className="scale-95 transition-transform w-full text-center outline-cyan-600 py-1.5 px-4 rounded-full capitalize whitespace-nowrap hover:bg-primary/5 hover:dark:bg-text-gray-50/5"
                                     href="#"
                                 >
                                     Reference
@@ -84,7 +84,7 @@ export function Navbar() {
                             </div>
                             <div className="flex flex-1">
                                 <a
-                                    className="active:scale-95 transition-transform w-full text-center outline-cyan-600 py-1.5 px-4 rounded-full capitalize whitespace-nowrap hover:bg-primary/5 hover:dark:bg-text-gray-50/5"
+                                    className="scale-95 transition-transform w-full text-center outline-cyan-600 py-1.5 px-4 rounded-full capitalize whitespace-nowrap hover:bg-primary/5 hover:dark:bg-text-gray-50/5"
                                     href="#"
                                 >
                                     Community
@@ -92,7 +92,7 @@ export function Navbar() {
                             </div>
                             <div className="flex flex-1">
                                 <a
-                                    className="active:scale-95 transition-transform w-full text-center outline-cyan-600 py-1.5 px-4 rounded-full capitalize whitespace-nowrap hover:bg-primary/5 hover:dark:bg-text-gray-50/5"
+                                    className="scale-95 transition-transform w-full text-center outline-cyan-600 py-1.5 px-4 rounded-full capitalize whitespace-nowrap hover:bg-primary/5 hover:dark:bg-text-gray-50/5"
                                     href="#"
                                 >
                                     Blog
@@ -104,7 +104,7 @@ export function Navbar() {
                                 <button
                                     type="button"
                                     aria-label="Use Dark Mode"
-                                    className="flex items-center justify-center w-12 h-12 transition-transform rounded-full active:scale-95 hover:bg-primary/5 hover:dark:bg-text-gray-50/5 outline-cyan-600"
+                                    className="flex items-center justify-center w-12 h-12 transition-transform rounded-full scale-95 hover:bg-primary/5 hover:dark:bg-text-gray-50/5 outline-cyan-600"
                                 >
                                     <svg
                                         xmlns="http://www.w3.org/2000/svg"
@@ -134,7 +134,7 @@ export function Navbar() {
                                 <button
                                     type="button"
                                     aria-label="Use Light Mode"
-                                    className="flex items-center justify-center w-12 h-12 transition-transform rounded-full active:scale-95 hover:bg-primary/5 hover:dark:bg-text-gray-50/5 outline-cyan-600"
+                                    className="flex items-center justify-center w-12 h-12 transition-transform rounded-full scale-95 hover:bg-primary/5 hover:dark:bg-text-gray-50/5 outline-cyan-600"
                                 >
                                     <svg
                                         xmlns="http://www.w3.org/2000/svg"
@@ -170,7 +170,7 @@ export function Navbar() {
                             </div>
                             <div className="flex">
                                 <a
-                                    className="active:scale-95 transition-transform flex w-12 h-12 rounded-full items-center justify-center hover:bg-primary/5 hover:dark:bg-text-gray-50/5 outline-cyan-600"
+                                    className="scale-95 transition-transform flex w-12 h-12 rounded-full items-center justify-center hover:bg-primary/5 hover:dark:bg-text-gray-50/5 outline-cyan-600"
                                     aria-label="Translations"
                                     href="#"
                                 >
@@ -189,7 +189,7 @@ export function Navbar() {
                             </div>
                             <div className="flex">
                                 <a
-                                    className="flex items-center justify-center w-12 h-12 transition-transform rounded-full active:scale-95 hover:bg-primary/5 hover:dark:bg-text-gray-50/5 outline-cyan-600"
+                                    className="flex items-center justify-center w-12 h-12 transition-transform rounded-full scale-95 hover:bg-primary/5 hover:dark:bg-text-gray-50/5 outline-cyan-600"
                                     target="_blank"
                                     rel="noreferrer noopener"
                                     aria-label="Open on GitHub"

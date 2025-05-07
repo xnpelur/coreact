@@ -29,9 +29,7 @@ const propsWithSpacing = {
     h: ["height"],
 };
 
-type StyleObject = Record<string, string | number>;
-
-const utilities: Record<string, StyleObject> = {
+const utilities: Record<string, Record<string, string | number>> = {
     // Display
     block: { display: "block" },
     "inline-block": { display: "inline-block" },
@@ -69,16 +67,6 @@ const utilities: Record<string, StyleObject> = {
     "text-center": { textAlign: "center" },
     "text-right": { textAlign: "right" },
     "text-justify": { textAlign: "justify" },
-
-    // Border
-    border: { borderWidth: "1px" },
-    "border-0": { borderWidth: "0" },
-    "border-2": { borderWidth: "2px" },
-    "border-4": { borderWidth: "4px" },
-    rounded: { borderRadius: "0.25rem" },
-    "rounded-md": { borderRadius: "0.375rem" },
-    "rounded-lg": { borderRadius: "0.5rem" },
-    "rounded-full": { borderRadius: "9999px" },
 };
 
 function parse(className: string): [string, string][] {
@@ -173,6 +161,31 @@ function parse(className: string): [string, string][] {
             return [["maxWidth", "100%"]];
         }
         return [["maxWidth", `var(--container-${size})`]];
+    }
+
+    // Border width
+    const borderWidthMatch = className.match(/^border(?:-(\d{1,2}))?$/);
+    if (borderWidthMatch) {
+        const [, value] = borderWidthMatch;
+        const cssValue = value ? `${value}px` : "1px";
+        return [["borderWidth", cssValue]];
+    }
+
+    // Border radius
+    const borderRadiusMatch = className.match(
+        /^rounded-(xs|sm|md|lg|xl|2xl|3xl|4xl|none|full)$/
+    );
+    if (borderRadiusMatch) {
+        const [, size] = borderRadiusMatch;
+        let cssValue: string;
+        if (size === "none") {
+            cssValue = "0";
+        } else if (size === "full") {
+            cssValue = "9999px";
+        } else {
+            cssValue = `var(--radius-${size})`;
+        }
+        return [["borderRadius", cssValue]];
     }
 
     return [];
