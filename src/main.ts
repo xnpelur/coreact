@@ -1,10 +1,7 @@
-import { createElement } from "@runtime/jsx-runtime";
 import { App } from "@app/index";
 import { mount } from "@runtime/dom";
-import { createTailwindElementFactory } from "@runtime/tailwind-jsx";
+import { createElement } from "@runtime/jsx-runtime";
 import "@runtime/styles/index.css";
-
-const createElementWithTailwind = createTailwindElementFactory(createElement);
 
 function mountApp() {
     const root = document.getElementById("app");
@@ -13,7 +10,7 @@ function mountApp() {
             root.removeChild(root.firstChild);
         }
 
-        const app = createElementWithTailwind(App, {});
+        const app = createElement(App, {});
         mount(app, root);
     }
 }
