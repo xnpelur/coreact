@@ -84,7 +84,7 @@ const utilities: Record<string, StyleObject> = {
 function parse(className: string): [string, string][] {
     // Handle spacing classes
     const spacingMatch = className.match(
-        /^(-?)(m|p|mx|my|px|py|mt|mr|mb|ml|gap|w|h)-(\d{1,2}|full|auto)$/
+        /^(-?)(m|mx|my|mt|mr|mb|ml|p|px|py|pt|pr|pb|pl|gap|w|h)-(\d{1,2}|full|auto)$/
     );
     if (spacingMatch) {
         const [, minus, prefix, value] = spacingMatch;

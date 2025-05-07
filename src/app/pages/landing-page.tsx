@@ -11,7 +11,7 @@ export function LandingPage(): VirtualNode {
             <Navbar />
             <main className="min-w-0 isolate">
                 <article className="font-normal break-words text-gray-950 dark:text-gray-50">
-                    <div className="ps-0">
+                    <div className="pl-0">
                         <Hero />
                         <Section />
                         <Welcome />

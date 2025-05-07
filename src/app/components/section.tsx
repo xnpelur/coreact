@@ -39,7 +39,7 @@ export function Section() {
                     </p>
                 </div>
                 <div className="max-w-7xl mx-auto flex flex-col w-full">
-                    <div className="ps-10 pe-5 w-full">
+                    <div className="pl-10 pr-5 w-full">
                         <div className="my-16 max-w-7xl mx-auto flex flex-col w-full rounded-2xl bg-card dark:bg-card-dark">
                             <div className="gap-5 rounded-2xl bg-gray-10 dark:bg-gray-70 shadow-inner-border dark:shadow-inner-border-dark flex-row flex grow w-full mx-auto items-center bg-cover  bg-right ltr:bg-[length:60%_100%] bg-no-repeat meta-gradient">
                                 <CodeCard />
