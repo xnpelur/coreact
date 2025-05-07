@@ -11,9 +11,9 @@ export function Section() {
                         Create user interfaces from components
                     </h2>
                     <p className="max-w-3xl mx-auto text-xl text-gray-700 dark:text-secondary-dark leading-normal">
-                        X lets you build user interfaces out of individual
-                        pieces called components. Create your own X components
-                        like{" "}
+                        Coreact lets you build user interfaces out of individual
+                        pieces called components. Create your own Coreact
+                        components like{" "}
                         <code
                             dir="ltr"
                             className="font-mono inline rounded-lg bg-gray-15/40 dark:bg-secondary-button-dark py-0.5 px-1 text-left"
@@ -51,8 +51,8 @@ export function Section() {
                 <div className=":px-0 max-w-4xl text-center text-white text-opacity-80 flex flex-col items-center justify-center">
                     <p className="max-w-3xl mx-auto text-xl text-gray-700 dark:text-secondary-dark leading-normal">
                         Whether you work on your own or with thousands of other
-                        developers, using X feels the same. It is designed to
-                        let you seamlessly combine components written by
+                        developers, using Coreact feels the same. It is designed
+                        to let you seamlessly combine components written by
                         independent people, teams, and organizations.
                     </p>
                 </div>

@@ -10,7 +10,7 @@ export function Footer() {
                             <p className="text-sm text-gray-700 dark:text-secondary-dark">
                                 Made with{" "}
                                 <a href="#" className="font-bold">
-                                    X
+                                    Coreact
                                 </a>
                                 ️ by{" "}
                                 <a href="#" className="font-bold">

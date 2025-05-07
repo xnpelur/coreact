@@ -48,17 +48,19 @@ export function Navbar() {
                                                 ></ellipse>
                                             </g>
                                         </svg>
-                                        <span className="not-sr-only">X</span>
+                                        <span className="not-sr-only">
+                                            Coreact
+                                        </span>
                                     </a>
                                 </div>
                             </div>
                         </span>
                         <div className="flex flex-column justify-center items-center">
                             <a
-                                className="flex py-2 flex-column justify-center items-center text-gray-50 dark:text-gray-30 hover:text-cyan-600 hover:dark:text-blue-400 hover:underline text-sm ms-1 cursor-pointer"
-                                href="/versions"
+                                className="flex py-2 flex-column justify-center items-center text-gray-400 dark:text-gray-30 hover:text-cyan-600 hover:dark:text-blue-400 hover:underline text-sm ms-1 cursor-pointer"
+                                href="#"
                             >
-                                v19.1
+                                v1.0
                             </a>
                         </div>
                     </div>
@@ -67,7 +69,7 @@ export function Navbar() {
                             <div className="flex flex-1">
                                 <a
                                     className="active:scale-95 transition-transform w-full text-center outline-cyan-600 py-1.5 px-4 rounded-full capitalize whitespace-nowrap hover:bg-primary/5 hover:dark:bg-text-gray-50/5"
-                                    href="/learn"
+                                    href="#"
                                 >
                                     Learn
                                 </a>
@@ -75,7 +77,7 @@ export function Navbar() {
                             <div className="flex flex-1">
                                 <a
                                     className="active:scale-95 transition-transform w-full text-center outline-cyan-600 py-1.5 px-4 rounded-full capitalize whitespace-nowrap hover:bg-primary/5 hover:dark:bg-text-gray-50/5"
-                                    href="/reference/x"
+                                    href="#"
                                 >
                                     Reference
                                 </a>
@@ -83,7 +85,7 @@ export function Navbar() {
                             <div className="flex flex-1">
                                 <a
                                     className="active:scale-95 transition-transform w-full text-center outline-cyan-600 py-1.5 px-4 rounded-full capitalize whitespace-nowrap hover:bg-primary/5 hover:dark:bg-text-gray-50/5"
-                                    href="/community"
+                                    href="#"
                                 >
                                     Community
                                 </a>
@@ -91,7 +93,7 @@ export function Navbar() {
                             <div className="flex flex-1">
                                 <a
                                     className="active:scale-95 transition-transform w-full text-center outline-cyan-600 py-1.5 px-4 rounded-full capitalize whitespace-nowrap hover:bg-primary/5 hover:dark:bg-text-gray-50/5"
-                                    href="/blog"
+                                    href="#"
                                 >
                                     Blog
                                 </a>
@@ -170,7 +172,7 @@ export function Navbar() {
                                 <a
                                     className="active:scale-95 transition-transform flex w-12 h-12 rounded-full items-center justify-center hover:bg-primary/5 hover:dark:bg-text-gray-50/5 outline-cyan-600"
                                     aria-label="Translations"
-                                    href="/community/translations"
+                                    href="#"
                                 >
                                     <svg
                                         xmlns="http://www.w3.org/2000/svg"

@@ -35,13 +35,13 @@ export function Welcome() {
                     </svg>
                     <h2 className="leading-xl font-display text-gray-950 dark:text-gray-50 font-semibold text-6xl -mt-4 mb-7 w-full max-w-xl">
                         Welcome to the
-                        <br className="inline" /> X community
+                        <br className="inline" /> Coreact community
                     </h2>
                     <a
                         className="active:scale-[.98] transition-transform inline-flex font-bold items-center outline-none focus:outline-none focus-visible:outline focus-visible:outline-cyan-600 focus:outline-offset-2 focus-visible:dark:focus:outline-blue-400 leading-snug bg-cyan-600 text-white dark:bg-cyan-600-dark dark:text-gray-700 hover:bg-opacity-80 text-lg py-3 rounded-full px-6"
                         aria-label="Take the Tutorial"
                         target="_self"
-                        href="/learn"
+                        href="#"
                     >
                         Get Started
                     </a>
