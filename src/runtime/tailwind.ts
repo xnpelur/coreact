@@ -29,18 +29,6 @@ const propsWithSpacing = {
     h: ["height"],
 };
 
-const fontWeight = {
-    hairline: "100",
-    thin: "200",
-    light: "300",
-    normal: "400",
-    medium: "500",
-    semibold: "600",
-    bold: "700",
-    extrabold: "800",
-    black: "900",
-};
-
 type StyleObject = Record<string, string | number>;
 
 const utilities: Record<string, StyleObject> = {
@@ -81,11 +69,6 @@ const utilities: Record<string, StyleObject> = {
     "text-center": { textAlign: "center" },
     "text-right": { textAlign: "right" },
     "text-justify": { textAlign: "justify" },
-
-    // Font weight
-    "font-normal": { fontWeight: fontWeight.normal },
-    "font-medium": { fontWeight: fontWeight.medium },
-    "font-bold": { fontWeight: fontWeight.bold },
 
     // Border
     border: { borderWidth: "1px" },
@@ -158,6 +141,15 @@ function parse(className: string): [string, string][] {
             ["fontSize", `var(--text-${size})`],
             ["lineHeight", `var(--text-${size}--line-height)`],
         ];
+    }
+
+    // Font weight
+    const fontWeightMatch = className.match(
+        /^font-(thin|extralight|light|normal|medium|semibold|bold|extrabold|black)$/
+    );
+    if (fontWeightMatch) {
+        const [, weight] = fontWeightMatch;
+        return [["fontWeight", `var(--font-weight-${weight})`]];
     }
 
     return [];
