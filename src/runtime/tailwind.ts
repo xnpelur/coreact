@@ -161,6 +161,20 @@ function parse(className: string): [string, string][] {
         return [["lineHeight", `var(--leading-${lineHeight})`]];
     }
 
+    // Max width
+    const maxWidthMatch = className.match(
+        /^max-w-(3xs|2xs|xs|sm|md|lg|xl|2xl|3xl|4xl|5xl|6xl|7xl|screen|full)$/
+    );
+    if (maxWidthMatch) {
+        const [, size] = maxWidthMatch;
+        if (size === "screen") {
+            return [["maxWidth", "100vw"]];
+        } else if (size === "full") {
+            return [["maxWidth", "100%"]];
+        }
+        return [["maxWidth", `var(--container-${size})`]];
+    }
+
     return [];
 }
 
