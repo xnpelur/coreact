@@ -4,26 +4,26 @@
  */
 
 const propsWithColor = {
-    bg: ["backgroundColor"],
+    bg: ["background-color"],
     text: ["color"],
-    border: ["borderColor"],
+    border: ["border-color"],
 };
 
 const propsWithSpacing = {
     m: ["margin"],
     p: ["padding"],
-    mx: ["marginLeft", "marginRight"],
-    my: ["marginTop", "marginBottom"],
-    px: ["paddingLeft", "paddingRight"],
-    py: ["paddingTop", "paddingBottom"],
-    mt: ["marginTop"],
-    mr: ["marginRight"],
-    mb: ["marginBottom"],
-    ml: ["marginLeft"],
-    pt: ["paddingTop"],
-    pr: ["paddingRight"],
-    pb: ["paddingBottom"],
-    pl: ["paddingLeft"],
+    mx: ["margin-left", "margin-right"],
+    my: ["margin-top", "margin-bottom"],
+    px: ["padding-left", "padding-right"],
+    py: ["padding-top", "padding-bottom"],
+    mt: ["margin-top"],
+    mr: ["margin-right"],
+    mb: ["margin-bottom"],
+    ml: ["margin-left"],
+    pt: ["padding-top"],
+    pr: ["padding-right"],
+    pb: ["padding-bottom"],
+    pl: ["padding-left"],
     gap: ["gap"],
     w: ["width"],
     h: ["height"],
@@ -40,33 +40,33 @@ const utilities: Record<string, Record<string, string | number>> = {
     hidden: { display: "none" },
 
     // Flex
-    "flex-row": { flexDirection: "row" },
-    "flex-col": { flexDirection: "column" },
-    "flex-wrap": { flexWrap: "wrap" },
-    "flex-nowrap": { flexWrap: "nowrap" },
-    "justify-start": { justifyContent: "flex-start" },
-    "justify-center": { justifyContent: "center" },
-    "justify-end": { justifyContent: "flex-end" },
-    "justify-between": { justifyContent: "space-between" },
-    "justify-around": { justifyContent: "space-around" },
-    "items-start": { alignItems: "flex-start" },
-    "items-center": { alignItems: "center" },
-    "items-end": { alignItems: "flex-end" },
-    "items-stretch": { alignItems: "stretch" },
+    "flex-row": { "flex-direction": "row" },
+    "flex-col": { "flex-direction": "column" },
+    "flex-wrap": { "flex-wrap": "wrap" },
+    "flex-nowrap": { "flex-wrap": "nowrap" },
+    "justify-start": { "justify-content": "flex-start" },
+    "justify-center": { "justify-content": "center" },
+    "justify-end": { "justify-content": "flex-end" },
+    "justify-between": { "justify-content": "space-between" },
+    "justify-around": { "justify-content": "space-around" },
+    "items-start": { "align-items": "flex-start" },
+    "items-center": { "align-items": "center" },
+    "items-end": { "align-items": "flex-end" },
+    "items-stretch": { "align-items": "stretch" },
 
     // Align self
-    "self-auto": { alignSelf: "auto" },
-    "self-start": { alignSelf: "flex-start" },
-    "self-center": { alignSelf: "center" },
-    "self-end": { alignSelf: "flex-end" },
-    "self-stretch": { alignSelf: "stretch" },
-    "self-baseline": { alignSelf: "baseline" },
+    "self-auto": { "align-self": "auto" },
+    "self-start": { "align-self": "flex-start" },
+    "self-center": { "align-self": "center" },
+    "self-end": { "align-self": "flex-end" },
+    "self-stretch": { "align-self": "stretch" },
+    "self-baseline": { "align-self": "baseline" },
 
     // Text alignment
-    "text-left": { textAlign: "left" },
-    "text-center": { textAlign: "center" },
-    "text-right": { textAlign: "right" },
-    "text-justify": { textAlign: "justify" },
+    "text-left": { "text-align": "left" },
+    "text-center": { "text-align": "center" },
+    "text-right": { "text-align": "right" },
+    "text-justify": { "text-align": "justify" },
 };
 
 function parse(className: string): [string, string][] {
@@ -126,8 +126,8 @@ function parse(className: string): [string, string][] {
     if (fontSizeMatch) {
         const [, size] = fontSizeMatch;
         return [
-            ["fontSize", `var(--text-${size})`],
-            ["lineHeight", `var(--text-${size}--line-height)`],
+            ["font-size", `var(--text-${size})`],
+            ["line-height", `var(--text-${size}--line-height)`],
         ];
     }
 
@@ -137,7 +137,7 @@ function parse(className: string): [string, string][] {
     );
     if (fontWeightMatch) {
         const [, weight] = fontWeightMatch;
-        return [["fontWeight", `var(--font-weight-${weight})`]];
+        return [["font-weight", `var(--font-weight-${weight})`]];
     }
 
     // Line height
@@ -146,7 +146,7 @@ function parse(className: string): [string, string][] {
     );
     if (lineHeightMatch) {
         const [, lineHeight] = lineHeightMatch;
-        return [["lineHeight", `var(--leading-${lineHeight})`]];
+        return [["line-height", `var(--leading-${lineHeight})`]];
     }
 
     // Max width
@@ -156,11 +156,11 @@ function parse(className: string): [string, string][] {
     if (maxWidthMatch) {
         const [, size] = maxWidthMatch;
         if (size === "screen") {
-            return [["maxWidth", "100vw"]];
+            return [["max-width", "100vw"]];
         } else if (size === "full") {
-            return [["maxWidth", "100%"]];
+            return [["max-width", "100%"]];
         }
-        return [["maxWidth", `var(--container-${size})`]];
+        return [["max-width", `var(--container-${size})`]];
     }
 
     // Border width
@@ -168,7 +168,7 @@ function parse(className: string): [string, string][] {
     if (borderWidthMatch) {
         const [, value] = borderWidthMatch;
         const cssValue = value ? `${value}px` : "1px";
-        return [["borderWidth", cssValue]];
+        return [["border-width", cssValue]];
     }
 
     // Border radius
@@ -185,7 +185,7 @@ function parse(className: string): [string, string][] {
         } else {
             cssValue = `var(--radius-${size})`;
         }
-        return [["borderRadius", cssValue]];
+        return [["border-radius", cssValue]];
     }
 
     return [];
@@ -193,21 +193,18 @@ function parse(className: string): [string, string][] {
 
 /**
  * Parse a string of Tailwind class names and return a CSS object
- * @param classNames - Space-separated Tailwind class names
+ * @param className - Tailwind class name
  * @returns CSS object with styles
  */
-export function tw(classNames: string): Record<string, any> {
-    const classes = classNames.split(" ").filter(Boolean);
+export function tw(className: string): Record<string, any> {
     const styles: Record<string, any> = {};
 
-    for (const className of classes) {
-        let result = parse(className);
-        for (const [prop, value] of result) {
-            styles[prop] = value;
-        }
-        if (result.length === 0 && className in utilities) {
-            Object.assign(styles, utilities[className]);
-        }
+    let result = parse(className);
+    for (const [prop, value] of result) {
+        styles[prop] = value;
+    }
+    if (result.length === 0 && className in utilities) {
+        Object.assign(styles, utilities[className]);
     }
 
     return styles;
