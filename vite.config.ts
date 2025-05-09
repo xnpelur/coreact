@@ -1,4 +1,5 @@
 import { defineConfig } from "vite";
+import GenerateCSSPlugin from "./src/plugins/vite-generate-css";
 
 export default defineConfig({
     esbuild: {
@@ -11,4 +12,5 @@ export default defineConfig({
             "@app": "/src/app",
         },
     },
+    plugins: [GenerateCSSPlugin()],
 });

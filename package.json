@@ -5,8 +5,8 @@
     "type": "module",
     "scripts": {
         "test": "vitest run",
-        "dev": "npx vite-node src/scripts/generate-css.ts && vite",
-        "build": "npx vite-node src/scripts/generate-css.ts && tsc && vite build",
+        "dev": "vite",
+        "build": "tsc && vite build",
         "preview": "vite preview"
     },
     "devDependencies": {

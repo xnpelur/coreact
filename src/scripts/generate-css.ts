@@ -1,6 +1,6 @@
 import fs from "fs";
 import path from "path";
-import { tw } from "@runtime/tailwind";
+import { tw } from "../runtime/tailwind";
 
 function walk(dir: string, extensions: string[]): string[] {
     const files = [];
@@ -35,7 +35,7 @@ async function extractClasses() {
     return classNames;
 }
 
-async function generateCSS() {
+export async function generateCSS(outputPath: string) {
     const classes = await extractClasses();
     const cssLines: string[] = [];
 
@@ -49,9 +49,6 @@ async function generateCSS() {
         }
     }
 
-    const outputPath = path.join("public", "generated.css");
     fs.mkdirSync(path.dirname(outputPath), { recursive: true });
     fs.writeFileSync(outputPath, cssLines.join("\n"), "utf-8");
 }
-
-generateCSS();
