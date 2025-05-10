@@ -1,4 +1,4 @@
-# Framework
+# Coreact
 
 A lightweight, React-like framework implemented in TypeScript.
 
@@ -15,7 +15,7 @@ A lightweight, React-like framework implemented in TypeScript.
 ## Project Structure
 
 ```
-framework/
+coreact/
 ├── src/
 │   ├── app/           # Application components and pages
 │   └── runtime/       # Framework core implementation
