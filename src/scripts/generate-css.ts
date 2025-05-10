@@ -37,16 +37,31 @@ async function extractClasses() {
 
 export async function generateCSS(outputPath: string) {
     const classes = await extractClasses();
-    const cssLines: string[] = [];
+    const cssLinesByPropertiesLength: Map<number, string[]> = new Map();
 
     for (const cls of classes) {
-        const result = tw(cls);
-        if (Object.keys(result).length > 0) {
-            const css = `.${cls} { ${Object.entries(result)
+        const properties = tw(cls);
+        const propertiesLength = Object.keys(properties).length;
+        if (propertiesLength > 0) {
+            const css = `.${cls} { ${Object.entries(properties)
                 .map(([key, value]) => `${key}: ${value};`)
                 .join(" ")} }`;
-            cssLines.push(css);
+
+            if (!cssLinesByPropertiesLength.has(propertiesLength)) {
+                cssLinesByPropertiesLength.set(propertiesLength, []);
+            }
+            cssLinesByPropertiesLength.get(propertiesLength)!.push(css);
         }
+    }
+
+    // Sort the CSS lines by the number of properties in descending order
+    // Less specific classes should come first
+    const cssLines: string[] = [];
+    for (const length of Array.from(cssLinesByPropertiesLength.keys()).sort(
+        (a, b) => b - a
+    )) {
+        const lines = cssLinesByPropertiesLength.get(length)!;
+        cssLines.push(...lines);
     }
 
     fs.mkdirSync(path.dirname(outputPath), { recursive: true });
