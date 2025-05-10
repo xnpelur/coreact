@@ -28,6 +28,10 @@ const propsWithSpacing = {
     w: ["width"],
     h: ["height"],
     leading: ["line-height"],
+    top: ["top"],
+    right: ["right"],
+    bottom: ["bottom"],
+    left: ["left"],
 };
 
 const utilities: Record<string, Record<string, string | number>> = {
@@ -39,6 +43,12 @@ const utilities: Record<string, Record<string, string | number>> = {
     "inline-flex": { display: "inline-flex" },
     grid: { display: "grid" },
     hidden: { display: "none" },
+
+    // Position
+    sticky: { position: "sticky" },
+    absolute: { position: "absolute" },
+    relative: { position: "relative" },
+    fixed: { position: "fixed" },
 
     // Flex
     "flex-row": { "flex-direction": "row" },
@@ -87,7 +97,7 @@ const utilities: Record<string, Record<string, string | number>> = {
 function parse(className: string): [string, string][] {
     // Handle spacing classes
     const spacingMatch = className.match(
-        /^(-?)(m|mx|my|mt|mr|mb|ml|p|px|py|pt|pr|pb|pl|gap|w|h|leading)-(\d{1,2}|full|auto)$/
+        /^(-?)(m|mx|my|mt|mr|mb|ml|p|px|py|pt|pr|pb|pl|gap|w|h|leading|top|right|bottom|left)-(\d{1,2}|full|auto)$/
     );
     if (spacingMatch) {
         const [, minus, prefix, value] = spacingMatch;
@@ -119,6 +129,7 @@ function parse(className: string): [string, string][] {
         const [, prefix, color, shade] = colorMatch;
         if (
             prefix in propsWithColor &&
+            color !== "opacity" &&
             (shade || color === "white" || color === "black")
         ) {
             const cssValue = shade
@@ -225,6 +236,16 @@ function parse(className: string): [string, string][] {
         }
 
         return [["border-radius", cssValue]];
+    }
+
+    // Z-index
+    const zIndexMatch = className.match(/^z-(\d{1,2}|auto)$/);
+    if (zIndexMatch) {
+        const [, value] = zIndexMatch;
+        if (value === "auto") {
+            return [["z-index", "auto"]];
+        }
+        return [["z-index", value]];
     }
 
     return [];

@@ -4,7 +4,7 @@ import { Logo } from "./logo";
 export function Navbar() {
     return (
         <div className="z-40 sticky top-0">
-            <nav className="duration-300 backdrop-filter backdrop-blur-lg backdrop-saturate-200 transition-shadow bg-opacity-90 items-center w-full flex justify-between bg-wash dark:bg-wash-dark dark:bg-opacity-95 pr-5 pl-4 z-40">
+            <nav className="duration-300 backdrop-filter backdrop-blur-lg backdrop-saturate-200 transition-shadow bg-opacity-90 items-center w-full flex justify-between bg-white dark:bg-wash-dark dark:bg-opacity-95 pr-5 pl-4 z-40">
                 <div className="flex items-center justify-between w-full h-16 gap-3">
                     <div className="flex flex-row flex-1 items-centers">
                         <span data-state="closed" className="flex items-center">
