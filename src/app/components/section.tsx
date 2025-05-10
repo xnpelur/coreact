@@ -48,7 +48,7 @@ export function Section() {
                         </div>
                     </div>
                 </div>
-                <div className=":px-0 max-w-4xl text-center text-white text-opacity-80 flex flex-col items-center justify-center">
+                <div className="px-0 max-w-4xl text-center text-white text-opacity-80 flex flex-col items-center justify-center">
                     <p className="max-w-3xl mx-auto text-xl text-gray-700 dark:text-secondary-dark leading-normal">
                         Whether you work on your own or with thousands of other
                         developers, using Coreact feels the same. It is designed

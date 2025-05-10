@@ -35,22 +35,38 @@ async function extractClasses() {
     return classNames;
 }
 
+function getCSS(
+    className: string,
+    variant: string | null,
+    properties: [string, string][]
+) {
+    const escapedClassName = className.replace(":", "\\:");
+    const lines = properties.map(([key, value]) => `${key}: ${value};`);
+
+    if (variant === "dark") {
+        return `.dark .${escapedClassName} { ${lines.join(" ")} }`;
+    }
+
+    if (variant) {
+        return `.${escapedClassName}:${variant} { ${lines.join(" ")} }`;
+    }
+
+    return `.${escapedClassName} { ${lines.join(" ")} }`;
+}
+
 export async function generateCSS(outputPath: string) {
     const classes = await extractClasses();
     const cssLinesByPropertiesLength: Map<number, string[]> = new Map();
 
     for (const cls of classes) {
-        const properties = tw(cls);
-        const propertiesLength = Object.keys(properties).length;
-        if (propertiesLength > 0) {
-            const css = `.${cls} { ${Object.entries(properties)
-                .map(([key, value]) => `${key}: ${value};`)
-                .join(" ")} }`;
+        const { variant, properties } = tw(cls);
+        if (properties.length > 0) {
+            const css = getCSS(cls, variant, properties);
 
-            if (!cssLinesByPropertiesLength.has(propertiesLength)) {
-                cssLinesByPropertiesLength.set(propertiesLength, []);
+            if (!cssLinesByPropertiesLength.has(properties.length)) {
+                cssLinesByPropertiesLength.set(properties.length, []);
             }
-            cssLinesByPropertiesLength.get(propertiesLength)!.push(css);
+            cssLinesByPropertiesLength.get(properties.length)!.push(css);
         }
     }
 

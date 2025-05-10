@@ -34,7 +34,7 @@ const propsWithSpacing = {
     left: ["left"],
 };
 
-const utilities: Record<string, Record<string, string | number>> = {
+const utilities: Record<string, Record<string, string>> = {
     // Display
     block: { display: "block" },
     "inline-block": { display: "inline-block" },
@@ -64,8 +64,8 @@ const utilities: Record<string, Record<string, string | number>> = {
     "items-center": { "align-items": "center" },
     "items-end": { "align-items": "flex-end" },
     "items-stretch": { "align-items": "stretch" },
-    "flex-1": { flex: 1 },
-    grow: { "flex-grow": 1 },
+    "flex-1": { flex: "1" },
+    grow: { "flex-grow": "1" },
 
     // Align self
     "self-auto": { "align-self": "auto" },
@@ -248,24 +248,34 @@ function parse(className: string): [string, string][] {
         return [["z-index", value]];
     }
 
+    if (className in utilities) {
+        return Object.entries(utilities[className]);
+    }
+
     return [];
 }
+
+type ParseResult = {
+    variant: string | null;
+    properties: [string, string][];
+};
 
 /**
  * Parse a string of Tailwind class names and return a CSS object
  * @param className - Tailwind class name
  * @returns CSS object with styles
  */
-export function tw(className: string): Record<string, any> {
-    const styles: Record<string, any> = {};
-
-    let result = parse(className);
-    for (const [prop, value] of result) {
-        styles[prop] = value;
-    }
-    if (result.length === 0 && className in utilities) {
-        Object.assign(styles, utilities[className]);
+export function tw(className: string): ParseResult {
+    if (className.includes(":")) {
+        const [variant, rest] = className.split(":");
+        return {
+            variant,
+            properties: parse(rest),
+        };
     }
 
-    return styles;
+    return {
+        variant: null,
+        properties: parse(className),
+    };
 }
