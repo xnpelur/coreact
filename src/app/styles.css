@@ -1,0 +1,54 @@
+@import url("https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&display=swap");
+
+.codeblock {
+    font-family: "Source Code Pro", monospace;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.bg-meta-gradient {
+    background: linear-gradient(
+        135deg,
+        rgba(255, 109, 175, 0.8),
+        rgba(213, 231, 255, 0.8),
+        rgba(212, 254, 236, 0.8)
+    );
+}
+
+.bg-gradient-left {
+    background: conic-gradient(
+        from 90deg at -10% 100%,
+        #bcc1cd 0deg,
+        #bcc1cd 90deg,
+        #ffffff 360deg
+    );
+}
+
+.shadow-nav {
+    box-shadow: 0 16px 32px -16px rgba(0, 0, 0, 0.1),
+        0 0 0 1px rgba(0, 0, 0, 0.1);
+}
+
+.dark .bg-meta-gradient {
+    background: linear-gradient(
+        135deg,
+        rgba(188, 35, 205, 0.9),
+        rgba(10, 40, 70, 0.9),
+        rgba(16, 61, 57, 0.9)
+    );
+}
+
+.dark .bg-gradient-left {
+    background: conic-gradient(
+        from 90deg at -10% 100%,
+        #2b303b 0deg,
+        #2b303b 90deg,
+        #16181d 360deg
+    );
+}
+
+.dark .shadow-nav {
+    box-shadow: 0 16px 32px -16px rgba(0, 0, 0, 0.1),
+        0 0 0 1px rgba(255, 255, 255, 0.05);
+}

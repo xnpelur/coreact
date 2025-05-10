@@ -3,20 +3,16 @@ import { createElement } from "@runtime/jsx-runtime";
 export function CodeCard() {
     return (
         <div className="-m-5 h-full shadow-nav dark:shadow-nav-dark rounded-2xl bg-wash dark:bg-gray-95 w-full flex grow flex-col">
-            <div className="w-full bg-card dark:bg-wash-dark rounded-t-2xl border-b border-black/5 dark:border-white/5">
+            <div className="w-full bg-gray-50 dark:bg-wash-dark rounded-t-2xl border-b border-black/5 dark:border-white/5">
                 <h3 className="text-sm my-2 mx-5 text-tertiary dark:text-tertiary-dark select-none text-start">
                     Video.js
                 </h3>
             </div>
-
-            <div
-                dir="ltr"
-                className="codeblock rounded-2xl h-full w-full overflow-x-auto flex items-center bg-white dark:bg-gray-900 shadow-lg overflow-hidden"
-            >
+            <div className="codeblock rounded-b-2xl h-full w-full overflow-x-auto flex items-center bg-white dark:bg-gray-900 shadow-lg overflow-hidden">
                 <div className="w-full">
                     <div className="flex flex-col w-full">
                         <div className="flex-1 relative overflow-auto bg-white dark:bg-gray-900">
-                            <pre className="flex align-start font-mono text-[13.6px] leading-6 p-4">
+                            <pre className="flex align-start font-mono text-sm leading-6 p-4">
                                 <code className="grow-[2]">
                                     <div className="pl-5">
                                         <span className="text-pink-600">

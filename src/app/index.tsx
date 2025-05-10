@@ -6,6 +6,7 @@ import { UserProfilePage } from "./pages/user-profile-page";
 import { NotFoundPage } from "./pages/not-found-page";
 import { ControlledInputPage } from "./pages/controlled-input-page";
 import { LandingPage } from "./pages/landing-page";
+import "./styles.css";
 
 createRouter({
     routes: [

@@ -27,6 +27,7 @@ const propsWithSpacing = {
     gap: ["gap"],
     w: ["width"],
     h: ["height"],
+    leading: ["line-height"],
 };
 
 const utilities: Record<string, Record<string, string | number>> = {
@@ -53,6 +54,8 @@ const utilities: Record<string, Record<string, string | number>> = {
     "items-center": { "align-items": "center" },
     "items-end": { "align-items": "flex-end" },
     "items-stretch": { "align-items": "stretch" },
+    "flex-1": { flex: 1 },
+    grow: { "flex-grow": 1 },
 
     // Align self
     "self-auto": { "align-self": "auto" },
@@ -67,12 +70,24 @@ const utilities: Record<string, Record<string, string | number>> = {
     "text-center": { "text-align": "center" },
     "text-right": { "text-align": "right" },
     "text-justify": { "text-align": "justify" },
+
+    // Overflow
+    "overflow-hidden": { overflow: "hidden" },
+    "overflow-auto": { overflow: "auto" },
+    "overflow-scroll": { overflow: "scroll" },
+    "overflow-x-hidden": { "overflow-x": "hidden" },
+    "overflow-x-auto": { "overflow-x": "auto" },
+    "overflow-x-scroll": { "overflow-x": "scroll" },
+    "overflow-y-hidden": { "overflow-y": "hidden" },
+    "overflow-y-auto": { "overflow-y": "auto" },
+    "overflow-y-scroll": { "overflow-y": "scroll" },
+    "overflow-visible": { overflow: "visible" },
 };
 
 function parse(className: string): [string, string][] {
     // Handle spacing classes
     const spacingMatch = className.match(
-        /^(-?)(m|mx|my|mt|mr|mb|ml|p|px|py|pt|pr|pb|pl|gap|w|h)-(\d{1,2}|full|auto)$/
+        /^(-?)(m|mx|my|mt|mr|mb|ml|p|px|py|pt|pr|pb|pl|gap|w|h|leading)-(\d{1,2}|full|auto)$/
     );
     if (spacingMatch) {
         const [, minus, prefix, value] = spacingMatch;
@@ -83,7 +98,7 @@ function parse(className: string): [string, string][] {
             } else if (value === "auto") {
                 cssValue = "auto";
             } else {
-                cssValue = `calc(var(--spacing)*${
+                cssValue = `calc(var(--spacing) *${
                     parseInt(value) * (minus ? -1 : 1)
                 })`;
             }
@@ -173,10 +188,11 @@ function parse(className: string): [string, string][] {
 
     // Border radius
     const borderRadiusMatch = className.match(
-        /^rounded-(xs|sm|md|lg|xl|2xl|3xl|4xl|none|full)$/
+        /^rounded(?:-(t|r|b|l))?-(xs|sm|md|lg|xl|2xl|3xl|4xl|none|full)$/
     );
     if (borderRadiusMatch) {
-        const [, size] = borderRadiusMatch;
+        const [, side, size] = borderRadiusMatch;
+
         let cssValue: string;
         if (size === "none") {
             cssValue = "0";
@@ -185,6 +201,29 @@ function parse(className: string): [string, string][] {
         } else {
             cssValue = `var(--radius-${size})`;
         }
+
+        if (side === "t") {
+            return [
+                ["border-top-left-radius", cssValue],
+                ["border-top-right-radius", cssValue],
+            ];
+        } else if (side === "r") {
+            return [
+                ["border-top-right-radius", cssValue],
+                ["border-bottom-right-radius", cssValue],
+            ];
+        } else if (side === "b") {
+            return [
+                ["border-bottom-left-radius", cssValue],
+                ["border-bottom-right-radius", cssValue],
+            ];
+        } else if (side === "l") {
+            return [
+                ["border-top-left-radius", cssValue],
+                ["border-bottom-left-radius", cssValue],
+            ];
+        }
+
         return [["border-radius", cssValue]];
     }
 
