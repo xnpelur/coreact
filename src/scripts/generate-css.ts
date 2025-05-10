@@ -40,7 +40,7 @@ function getCSS(
     variants: string[],
     properties: [string, string][]
 ) {
-    const escapedClassName = className.replace(/:/g, "\\:");
+    const escapedClassName = className.replace(/[:/]/g, "\\$&");
     const lines = properties.map(([key, value]) => `${key}: ${value};`);
 
     // Variant types
