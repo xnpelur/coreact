@@ -1,0 +1,13 @@
+<svg
+    viewBox="-10.5 -10.5 21 21"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+>
+    <circle cx="0" cy="0" r="2" fill="darkcyan" stroke="darkcyan"></circle>
+    <g stroke="currentColor" stroke-width="1" fill="none">
+        <ellipse rx="10" ry="4.5" stroke="darkcyan"></ellipse>
+        <ellipse rx="10" ry="4.5" stroke="darkcyan" transform="rotate(45)"></ellipse>
+        <ellipse rx="10" ry="4.5" stroke="darkcyan" transform="rotate(90)"></ellipse>
+        <ellipse rx="10" ry="4.5" stroke="darkcyan" transform="rotate(135)"></ellipse>
+    </g>
+</svg>
