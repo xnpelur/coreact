@@ -37,21 +37,58 @@ async function extractClasses() {
 
 function getCSS(
     className: string,
-    variant: string | null,
+    variants: string[],
     properties: [string, string][]
 ) {
-    const escapedClassName = className.replace(":", "\\:");
+    const escapedClassName = className.replace(/:/g, "\\:");
     const lines = properties.map(([key, value]) => `${key}: ${value};`);
 
-    if (variant === "dark") {
-        return `.dark .${escapedClassName} { ${lines.join(" ")} }`;
+    // Variant types
+    const mediaVariants = ["sm", "md", "lg", "xl", "2xl"];
+    const pseudoVariants = [
+        "hover",
+        "focus",
+        "active",
+        "visited",
+        "disabled",
+        "checked",
+        "first",
+        "last",
+        "odd",
+        "even",
+        "focus-visible",
+        "focus-within",
+    ];
+    let selector = `.${escapedClassName}`;
+    let cssRule = "";
+    let rule = "";
+
+    const pseudo = variants.find((v) => pseudoVariants.includes(v));
+    if (pseudo) {
+        selector += `:${pseudo}`;
     }
 
-    if (variant) {
-        return `.${escapedClassName}:${variant} { ${lines.join(" ")} }`;
+    const isDark = variants.includes("dark");
+    if (isDark) {
+        selector = `.dark ${selector}`;
     }
 
-    return `.${escapedClassName} { ${lines.join(" ")} }`;
+    const media = variants.find((v) => mediaVariants.includes(v));
+    rule = `${selector} { ${lines.join(" ")} }`;
+    if (media) {
+        const breakpoints: Record<string, string> = {
+            sm: "(min-width: 40rem)",
+            md: "(min-width: 48rem)",
+            lg: "(min-width: 64rem)",
+            xl: "(min-width: 80rem)",
+            "2xl": "(min-width: 96rem)",
+        };
+        cssRule = `@media ${breakpoints[media]} { ${rule} }`;
+    } else {
+        cssRule = rule;
+    }
+
+    return cssRule;
 }
 
 export async function generateCSS(outputPath: string) {
@@ -59,9 +96,9 @@ export async function generateCSS(outputPath: string) {
     const cssLinesByPropertiesLength: Map<number, string[]> = new Map();
 
     for (const cls of classes) {
-        const { variant, properties } = tw(cls);
+        const { variants, properties } = tw(cls);
         if (properties.length > 0) {
-            const css = getCSS(cls, variant, properties);
+            const css = getCSS(cls, variants, properties);
 
             if (!cssLinesByPropertiesLength.has(properties.length)) {
                 cssLinesByPropertiesLength.set(properties.length, []);

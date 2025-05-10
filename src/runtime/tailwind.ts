@@ -256,7 +256,7 @@ function parse(className: string): [string, string][] {
 }
 
 type ParseResult = {
-    variant: string | null;
+    variants: string[];
     properties: [string, string][];
 };
 
@@ -267,15 +267,18 @@ type ParseResult = {
  */
 export function tw(className: string): ParseResult {
     if (className.includes(":")) {
-        const [variant, rest] = className.split(":");
+        const parts = className.split(":");
+        const actualClassName = parts.pop()!;
+        const variants = parts;
+
         return {
-            variant,
-            properties: parse(rest),
+            variants,
+            properties: parse(actualClassName),
         };
     }
 
     return {
-        variant: null,
+        variants: [],
         properties: parse(className),
     };
 }
