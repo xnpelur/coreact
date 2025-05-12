@@ -9,34 +9,13 @@ import { reconcile } from "@/runtime/reconciliation";
 import { resetHookIndices } from "@/runtime/hooks/state";
 import { clearEffects } from "@/runtime/hooks/effect";
 import { cleanupComponent } from "@/runtime/store";
+import { deserializeComponentId, serializeComponentId } from "@/runtime/utils";
 
 type DOMNode = HTMLElement | Text;
 
-/**
- * Information about a component being rendered.
- * This includes the component function, its parent element, and its path in the DOM.
- */
-export type ComponentInfo = {
-    fn: Function;
-    parentElement: HTMLElement;
-    path: number[];
-};
+export let currentComponentId: string | null = null;
 
-let currentComponentInfo: ComponentInfo | null = null;
-
-const componentsVirtualNodes = new Map<ComponentInfo, VirtualNode>();
-
-/**
- * Gets the current component information being rendered.
- * This is used internally by the framework to track the current component
- * context during rendering operations.
- *
- * @returns {ComponentInfo | null} The current component information or null if none
- */
-export function getCurrentComponentInfo(): ComponentInfo | null {
-    return currentComponentInfo;
-}
-
+const componentsVirtualNodes = new Map<string, VirtualNode>();
 /**
  * Mounts a virtual node (VNode) into the DOM.
  * This function takes a VNode and renders it into the specified parent element.
@@ -101,15 +80,15 @@ export function unmount(
 
         const index = parentChildren.findIndex((value) => value === element);
 
-        const componentInfo: ComponentInfo = {
-            fn: vnode.tag,
-            parentElement: element.parentElement,
-            path: [...parentPath, index],
-        };
+        const componentId = serializeComponentId(
+            vnode.tag,
+            element.parentElement,
+            [...parentPath, index]
+        );
 
         if (!keepEffects) {
-            clearEffects(componentInfo);
-            cleanupComponent(componentInfo);
+            clearEffects(componentId);
+            cleanupComponent(componentId);
         }
     }
 
@@ -130,11 +109,11 @@ export function unmount(
  * This function handles the complete re-rendering process of a component,
  * including creating new instances, reconciling with the old state, and updating the DOM.
  *
- * @param {ComponentInfo} componentInfo - Information about the component to rerender
+ * @param {string} componentId - Information about the component to rerender
  * @throws {Error} If the component is not found or parent element is not found
  */
-export function rerender(componentInfo: ComponentInfo) {
-    const vnode = componentsVirtualNodes.get(componentInfo);
+export function rerender(componentId: string) {
+    const vnode = componentsVirtualNodes.get(componentId);
     if (!isElement(vnode)) {
         throw new Error("Component not found");
     }
@@ -144,20 +123,22 @@ export function rerender(componentInfo: ComponentInfo) {
         throw new Error("Parent element not found");
     }
 
-    const index = componentInfo.path[componentInfo.path.length - 1];
-    const parentPath = componentInfo.path.slice(0, -1);
+    const { path } = deserializeComponentId(componentId);
+
+    const index = path[path.length - 1];
+    const parentPath = path.slice(0, -1);
 
     // Store the old component instance node for reconciliation
     const oldComponentNode = vnode.componentInstance?.node;
 
-    // Create a new component instance
-    currentComponentInfo = componentInfo;
-    const componentKey = JSON.stringify(componentInfo);
+    currentComponentId = componentId;
+
     // Reset hook indices before rendering the component
-    resetHookIndices(componentKey);
+    resetHookIndices(componentId);
     const Component = vnode.tag as Function;
     const newComponentNode = Component(vnode.props);
-    currentComponentInfo = null;
+
+    currentComponentId = null;
 
     // Update the component instance with the new node
     vnode.componentInstance = {
@@ -246,22 +227,22 @@ function render(
     const Component = vnode.tag;
 
     const fullPath = parentPath.concat(index);
-    currentComponentInfo = {
-        fn: Component,
-        parentElement,
-        path: fullPath,
-    };
 
-    const componentKey = JSON.stringify(currentComponentInfo);
+    currentComponentId = serializeComponentId(
+        Component,
+        parentElement,
+        fullPath
+    );
+
     // Reset hook indices before rendering the component
-    resetHookIndices(componentKey);
+    resetHookIndices(currentComponentId!);
 
     vnode.props.children = vnode.children;
     const componentNode = Component(vnode.props);
 
-    componentsVirtualNodes.set(currentComponentInfo, vnode);
+    componentsVirtualNodes.set(currentComponentId!, vnode);
 
-    currentComponentInfo = null;
+    currentComponentId = null;
 
     vnode.componentInstance = {
         node: componentNode,

@@ -1,4 +1,4 @@
-import { getCurrentComponentInfo } from "@/runtime/dom";
+import { currentComponentId } from "@/runtime/dom";
 
 const effectMap = new Map<
     string,
@@ -18,18 +18,15 @@ const effectMap = new Map<
  * @throws {Error} If called outside of a component context
  */
 export function useEffect(effect: () => void | (() => void), deps?: any[]) {
-    const componentInfo = getCurrentComponentInfo();
-    if (!componentInfo) {
+    if (!currentComponentId) {
         throw new Error("useEffect must be called within a component");
     }
 
-    const json = JSON.stringify(componentInfo);
-
-    if (!effectMap.has(json)) {
-        effectMap.set(json, []);
+    if (!effectMap.has(currentComponentId)) {
+        effectMap.set(currentComponentId, []);
     }
 
-    const effectList = effectMap.get(json)!;
+    const effectList = effectMap.get(currentComponentId)!;
     const previousEffect = effectList[effectList.length - 1];
 
     const hasChanged =
@@ -57,17 +54,16 @@ export function useEffect(effect: () => void | (() => void), deps?: any[]) {
  * Clears all effects associated with a component.
  * This function is called when a component is unmounted to clean up any side effects.
  *
- * @param {any} componentInfo - Information about the component to clear effects for
+ * @param {string} componentId - Information about the component to clear effects for
  */
-export function clearEffects(componentInfo: any) {
-    const json = JSON.stringify(componentInfo);
-    const effectList = effectMap.get(json);
+export function clearEffects(componentId: string) {
+    const effectList = effectMap.get(componentId);
     if (effectList) {
         for (const effectEntry of effectList) {
             if (effectEntry.cleanup) {
                 effectEntry.cleanup();
             }
         }
-        effectMap.delete(json);
+        effectMap.delete(componentId);
     }
 }

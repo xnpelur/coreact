@@ -1,4 +1,4 @@
-import { getCurrentComponentInfo, rerender } from "@/runtime/dom";
+import { currentComponentId, rerender } from "@/runtime/dom";
 
 // Store states as a map of component keys to arrays of state values
 const stateMap = new Map<string, any[]>();
@@ -14,38 +14,36 @@ const hookIndexMap = new Map<string, number>();
  * @throws {Error} If called outside of a component context
  */
 export function useState<T>(initialValue: T): [T, (value: T) => void] {
-    const componentInfo = getCurrentComponentInfo();
-    if (!componentInfo) {
+    if (!currentComponentId) {
         throw new Error("useState must be called within a component");
     }
 
-    const componentKey = JSON.stringify(componentInfo);
-
     // Initialize hook index for this component if not already set
-    if (!hookIndexMap.has(componentKey)) {
-        hookIndexMap.set(componentKey, 0);
+    if (!hookIndexMap.has(currentComponentId)) {
+        hookIndexMap.set(currentComponentId, 0);
     }
 
     // Get the current hook index and increment it for the next hook
-    const hookIndex = hookIndexMap.get(componentKey)!;
-    hookIndexMap.set(componentKey, hookIndex + 1);
+    const hookIndex = hookIndexMap.get(currentComponentId)!;
+    hookIndexMap.set(currentComponentId, hookIndex + 1);
 
     // Initialize state array for this component if not already set
-    if (!stateMap.has(componentKey)) {
-        stateMap.set(componentKey, []);
+    if (!stateMap.has(currentComponentId)) {
+        stateMap.set(currentComponentId, []);
     }
 
-    const states = stateMap.get(componentKey)!;
+    const states = stateMap.get(currentComponentId)!;
 
     // Initialize this specific state if not already set
     if (states.length <= hookIndex) {
         states[hookIndex] = initialValue;
     }
 
+    const id = currentComponentId;
     const setValue = (value: T) => {
-        const states = stateMap.get(componentKey)!;
+        const states = stateMap.get(id)!;
         states[hookIndex] = value;
-        rerender(componentInfo);
+        rerender(id);
     };
 
     return [states[hookIndex], setValue];
@@ -71,8 +69,8 @@ export function clearState() {
  * Resets the hook indices for a component before rendering.
  * This function is called internally to ensure hooks are called in the correct order.
  *
- * @param {string} componentKey - The unique key for the component
+ * @param {string} componentId - The unique key for the component
  */
-export function resetHookIndices(componentKey: string) {
-    hookIndexMap.set(componentKey, 0);
+export function resetHookIndices(componentId: string) {
+    hookIndexMap.set(componentId, 0);
 }

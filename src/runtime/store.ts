@@ -1,8 +1,4 @@
-import {
-    getCurrentComponentInfo,
-    rerender,
-    ComponentInfo,
-} from "@/runtime/dom";
+import { currentComponentId, rerender } from "@/runtime/dom";
 
 type Store<T> = {
     state: T;
@@ -29,27 +25,25 @@ export function createStore<T>(
     storeRegistry.push(store);
 
     const useStore = (): [T, (newState: T) => void] => {
-        const componentInfo = getCurrentComponentInfo();
-        if (!componentInfo) {
+        if (!currentComponentId) {
             throw new Error("useStore must be called within a component");
         }
-
-        const key = JSON.stringify(componentInfo);
 
         const setState = (newState: T) => {
             store.state = newState;
             store.subscribers.forEach((subscriber) => subscriber());
         };
 
-        if (store.subscribers.has(key)) {
+        if (store.subscribers.has(currentComponentId)) {
             return [store.state, setState];
         }
 
+        const id = currentComponentId;
         const rerenderComponent = () => {
-            rerender(componentInfo);
+            rerender(id);
         };
 
-        store.subscribers.set(key, rerenderComponent);
+        store.subscribers.set(currentComponentId, rerenderComponent);
 
         return [store.state, setState];
     };
@@ -61,14 +55,12 @@ export function createStore<T>(
  * Cleans up a component's subscriptions from all stores.
  * This function is called when a component is unmounted to prevent memory leaks.
  *
- * @param {ComponentInfo} componentInfo - Information about the component to cleanup
+ * @param {string} componentId - Information about the component to cleanup
  */
-export function cleanupComponent(componentInfo: ComponentInfo) {
-    const key = JSON.stringify(componentInfo);
-
+export function cleanupComponent(componentId: string) {
     storeRegistry.forEach((store) => {
-        if (store.subscribers.has(key)) {
-            store.subscribers.delete(key);
+        if (store.subscribers.has(componentId)) {
+            store.subscribers.delete(componentId);
         }
     });
 }
