@@ -20,7 +20,7 @@ export function Hero() {
                     Learn Coreact
                 </a>
                 <a
-                    className="w-auto justify-center scale-[.98] transition-transform inline-flex font-bold items-center outline-none focus:outline-none focus-visible:outline focus-visible:outline-cyan-600 focus:outline-offset-2 focus-visible:dark:focus:outline-blue-400 leading-snug text-gray-950 dark:text-gray-50 shadow-secondary-button-stroke dark:shadow-secondary-button-stroke-dark hover:bg-gray-400/10  hover:dark:bg-gray-60/5 dark:bg-gray-60/10 text-lg py-3 rounded-full px-6"
+                    className="w-auto justify-center scale-[.98] transition-transform inline-flex font-bold items-center outline-none focus:outline-none focus-visible:outline focus-visible:outline-cyan-600 focus:outline-offset-2 focus-visible:dark:focus:outline-blue-400 leading-snug text-gray-950 dark:text-gray-50 shadow-secondary-button-stroke hover:bg-gray-400/10  hover:dark:bg-gray-60/5 dark:bg-gray-60/10 text-lg py-3 rounded-full px-6"
                     aria-label="API Reference"
                     target="_self"
                     href="#"

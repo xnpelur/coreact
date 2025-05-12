@@ -45,7 +45,7 @@ export function CodeResult() {
                                 My video
                             </h3>
                             <p
-                                className="text-tertiary text-sm leading-snug"
+                                className="text-gray-500 text-sm leading-snug"
                                 data-hover="p"
                             >
                                 Video description
@@ -53,7 +53,7 @@ export function CodeResult() {
                         </a>
                         <button
                             data-hover="LikeButton"
-                            className="outline-none focus:bg-red-50/5 focus:text-red-50 relative flex items-center justify-center w-10 h-10 cursor-pointer rounded-full hover:bg-gray-50 scale-95 bg-red-50/5 text-red-50 text-tertiary"
+                            className="outline-none focus:bg-red-50/5 focus:text-red-50 relative flex items-center justify-center w-10 h-10 cursor-pointer rounded-full hover:bg-gray-50 scale-95 bg-red-50/5 text-red-50 text-gray-500"
                             aria-label="Save"
                         >
                             <svg

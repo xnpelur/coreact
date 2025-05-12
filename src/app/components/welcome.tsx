@@ -3,7 +3,7 @@ import { Logo } from "@/app/components/logo";
 
 export function Welcome() {
     return (
-        <div className="mx-auto flex flex-col w-full bg-gradient-left dark:bg-gradient-left-dark border-t border-primary/10 dark:border-text-gray-50/10">
+        <div className="mx-auto flex flex-col w-full bg-gradient-left dark:bg-gradient-left-dark border-t border-gray-900/10 dark:border-gray-50/10">
             <div className="flex-col gap-2 flex grow w-full my-32 mx-auto items-center">
                 <div className="mt-20 px-0 mb-6 max-w-4xl text-center text-opacity-80">
                     <Logo className="text-cyan-600 dark:text-cyan-600-dark w-28 mb-8 mt-12 h-auto mx-auto self-start" />

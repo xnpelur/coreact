@@ -34,6 +34,13 @@ const propsWithSpacing = {
     left: ["left"],
 };
 
+const directions = {
+    t: "top",
+    r: "right",
+    b: "bottom",
+    l: "left",
+};
+
 const utilities: Record<string, Record<string, string>> = {
     // Display
     block: { display: "block" },
@@ -202,11 +209,20 @@ function parse(className: string): [string, string][] {
     }
 
     // Border width
-    const borderWidthMatch = className.match(/^border(?:-(\d{1,2}))?$/);
+    const borderWidthMatch = className.match(
+        /^border(?:-(t|r|b|l))?(?:-(\d{1,2}))?$/
+    );
     if (borderWidthMatch) {
-        const [, value] = borderWidthMatch;
+        const [, direction, value] = borderWidthMatch;
         const cssValue = value ? `${value}px` : "1px";
-        return [["border-width", cssValue]];
+        return [
+            [
+                `border-${
+                    directions[direction as keyof typeof directions]
+                }-width`,
+                cssValue,
+            ],
+        ];
     }
 
     // Border radius
