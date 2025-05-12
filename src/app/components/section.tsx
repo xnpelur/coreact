@@ -1,6 +1,6 @@
-import { createElement } from "@runtime/jsx-runtime";
-import { CodeCard } from "./code-card";
-import { CodeResult } from "./code-result";
+import { createElement } from "@/runtime/jsx-runtime";
+import { CodeCard } from "@/app/components/code-card";
+import { CodeResult } from "@/app/components/code-result";
 
 export function Section() {
     return (

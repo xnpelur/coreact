@@ -8,8 +8,7 @@ export default defineConfig({
     },
     resolve: {
         alias: {
-            "@runtime": "/src/runtime",
-            "@app": "/src/app",
+            "@": "/src",
         },
     },
     plugins: [GenerateCSSPlugin()],

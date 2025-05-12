@@ -1,9 +1,9 @@
-import { Footer } from "@app/components/footer";
-import { Hero } from "@app/components/hero";
-import { Navbar } from "@app/components/navbar";
-import { Section } from "@app/components/section";
-import { Welcome } from "@app/components/welcome";
-import { createElement, VirtualNode } from "@runtime/jsx-runtime";
+import { Footer } from "@/app/components/footer";
+import { Hero } from "@/app/components/hero";
+import { Navbar } from "@/app/components/navbar";
+import { Section } from "@/app/components/section";
+import { Welcome } from "@/app/components/welcome";
+import { createElement, VirtualNode } from "@/runtime/jsx-runtime";
 
 export function LandingPage(): VirtualNode {
     return (

@@ -1,5 +1,5 @@
-import { createElement } from "@runtime/jsx-runtime";
-import { Logo } from "./logo";
+import { createElement } from "@/runtime/jsx-runtime";
+import { Logo } from "@/app/components/logo";
 
 export function Navbar() {
     return (

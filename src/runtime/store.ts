@@ -1,4 +1,8 @@
-import { getCurrentComponentInfo, rerender, ComponentInfo } from "./dom";
+import {
+    getCurrentComponentInfo,
+    rerender,
+    ComponentInfo,
+} from "@/runtime/dom";
 
 type Store<T> = {
     state: T;

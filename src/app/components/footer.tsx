@@ -1,4 +1,4 @@
-import { createElement } from "@runtime/jsx-runtime";
+import { createElement } from "@/runtime/jsx-runtime";
 
 export function Footer() {
     return (

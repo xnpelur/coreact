@@ -1,4 +1,4 @@
-import { isElement, isText, Props, VirtualNode } from "./jsx-runtime";
+import { isElement, isText, Props, VirtualNode } from "@/runtime/jsx-runtime";
 
 /**
  * Reconciles an old virtual node with a new one, updating the DOM efficiently.

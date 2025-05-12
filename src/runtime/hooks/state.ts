@@ -1,4 +1,4 @@
-import { getCurrentComponentInfo, rerender } from "./dom";
+import { getCurrentComponentInfo, rerender } from "@/runtime/dom";
 
 // Store states as a map of component keys to arrays of state values
 const stateMap = new Map<string, any[]>();

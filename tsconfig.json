@@ -25,8 +25,7 @@
         /* Paths */
         "baseUrl": ".",
         "paths": {
-            "@app/*": ["src/app/*"],
-            "@runtime/*": ["src/runtime/*"]
+            "@/*": ["src/*"]
         }
     },
     "include": ["src"]

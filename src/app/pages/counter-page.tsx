@@ -1,7 +1,7 @@
-import { useCounterStore } from "@app/stores/counter-store";
-import { createElement, VirtualNode } from "@runtime/jsx-runtime";
-import { Link } from "@runtime/router";
-import { useState } from "@runtime/state";
+import { useCounterStore } from "@/app/stores/counter-store";
+import { createElement, VirtualNode } from "@/runtime/jsx-runtime";
+import { Link } from "@/runtime/router";
+import { useState } from "@/runtime/hooks/state";
 
 function Counter({ n }: { n: number }): VirtualNode {
     const [count, setCount] = useState(0);

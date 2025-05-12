@@ -1,5 +1,5 @@
-import { createElement, VirtualNode } from "@runtime/jsx-runtime";
-import { Link, useParams } from "@runtime/router";
+import { createElement, VirtualNode } from "@/runtime/jsx-runtime";
+import { Link, useParams } from "@/runtime/router";
 
 export function UserProfilePage(): VirtualNode {
     const params = useParams();

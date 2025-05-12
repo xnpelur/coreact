@@ -1,5 +1,5 @@
-import { createElement, VirtualNode } from "@runtime/jsx-runtime";
-import { Link } from "@runtime/router";
+import { createElement, VirtualNode } from "@/runtime/jsx-runtime";
+import { Link } from "@/runtime/router";
 
 export function HomePage(): VirtualNode {
     return (

@@ -1,8 +1,14 @@
-import { clearEffects } from "./effect";
-import { Fragment, isElement, isText, Props, VirtualNode } from "./jsx-runtime";
-import { reconcile } from "./reconciliation";
-import { resetHookIndices } from "./state";
-import { cleanupComponent } from "./store";
+import {
+    Fragment,
+    isElement,
+    isText,
+    Props,
+    VirtualNode,
+} from "@/runtime/jsx-runtime";
+import { reconcile } from "@/runtime/reconciliation";
+import { resetHookIndices } from "@/runtime/hooks/state";
+import { clearEffects } from "@/runtime/hooks/effect";
+import { cleanupComponent } from "@/runtime/store";
 
 type DOMNode = HTMLElement | Text;
 

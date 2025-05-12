@@ -1,7 +1,7 @@
-import { useEffect } from "@runtime/effect";
-import { createElement, VirtualNode } from "@runtime/jsx-runtime";
-import { Link } from "@runtime/router";
-import { useState } from "@runtime/state";
+import { useEffect } from "@/runtime/hooks/effect";
+import { createElement, VirtualNode } from "@/runtime/jsx-runtime";
+import { Link } from "@/runtime/router";
+import { useState } from "@/runtime/hooks/state";
 
 export function ControlledInputPage(): VirtualNode {
     const [value, setValue] = useState("");

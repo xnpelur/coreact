@@ -3,11 +3,11 @@
  */
 
 import { describe, it, expect, beforeEach, afterEach, vi } from "vitest";
-import { createElement, Fragment } from "@runtime/jsx-runtime";
-import { mount, unmount } from "@runtime/dom";
-import { clearState, useState } from "@runtime/state";
-import { createStore } from "@runtime/store";
-import { useEffect } from "@runtime/effect";
+import { createElement, Fragment } from "@/runtime/jsx-runtime";
+import { mount, unmount } from "@/runtime/dom";
+import { clearState, useState } from "@/runtime/hooks/state";
+import { useEffect } from "@/runtime/hooks/effect";
+import { createStore } from "@/runtime/store";
 
 describe("Runtime", () => {
     let container: HTMLElement;

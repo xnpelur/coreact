@@ -1,4 +1,4 @@
-import { getCurrentComponentInfo } from "./dom";
+import { getCurrentComponentInfo } from "@/runtime/dom";
 
 const effectMap = new Map<
     string,

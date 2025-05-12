@@ -1,6 +1,6 @@
-import { createElement, isElement, VirtualNode } from "./jsx-runtime";
-import { unmount } from "./dom";
-import { clearStoreSubscribers } from "./store";
+import { createElement, isElement, VirtualNode } from "@/runtime/jsx-runtime";
+import { unmount } from "@/runtime/dom";
+import { clearStoreSubscribers } from "@/runtime/store";
 
 type RouteConfig = {
     path: string;
