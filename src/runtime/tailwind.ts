@@ -92,6 +92,12 @@ const utilities: Record<string, Record<string, string>> = {
     "overflow-y-auto": { "overflow-y": "auto" },
     "overflow-y-scroll": { "overflow-y": "scroll" },
     "overflow-visible": { overflow: "visible" },
+
+    // Cursor
+    "cursor-pointer": { cursor: "pointer" },
+    "cursor-default": { cursor: "default" },
+    "cursor-move": { cursor: "move" },
+    "cursor-grab": { cursor: "grab" },
 };
 
 function parse(className: string): [string, string][] {
