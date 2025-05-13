@@ -1,29 +1,35 @@
+import { Footer } from "@/app/components/footer";
+import { Hero } from "@/app/components/hero";
+import { Navbar } from "@/app/components/navbar";
+import { Section } from "@/app/components/section";
+import { Welcome } from "@/app/components/welcome";
 import { createElement, VirtualNode } from "@/runtime/jsx-runtime";
-import { Link } from "@/runtime/router";
+import { StateCode } from "../components/examples/state-code";
+import { StateResult } from "../components/examples/state-result";
+import { EffectCode } from "../components/examples/effect-code";
+import { EffectResult } from "../components/examples/effect-result";
 
 export function HomePage(): VirtualNode {
     return (
-        <div>
-            <h1 className="text-4xl m-4 text-cyan-600">Home Page</h1>
-            <p>Welcome to our application!</p>
-            <nav>
-                <ul>
-                    <li>
-                        <Link to="/controlled-input">
-                            Go to Controlled Input
-                        </Link>
-                    </li>
-                    <li>
-                        <Link to="/counter">Go to Counter</Link>
-                    </li>
-                    <li>
-                        <Link to="/user/123">User Profile</Link>
-                    </li>
-                    <li>
-                        <Link to="/landing">Landing</Link>
-                    </li>
-                </ul>
-            </nav>
+        <div className="font-text font-medium antialiased text-lg bg-white dark:bg-gray-900 text-gray-700 dark:text-gray-100 leading-base">
+            <Navbar />
+            <main className="min-w-0 isolate">
+                <article className="font-normal break-words text-gray-950 dark:text-gray-50">
+                    <div className="pl-0">
+                        <Hero />
+                        <Section
+                            CodeCardComponent={StateCode}
+                            CodeResultComponent={StateResult}
+                        />
+                        <Section
+                            CodeCardComponent={EffectCode}
+                            CodeResultComponent={EffectResult}
+                        />
+                        <Welcome />
+                    </div>
+                </article>
+                <Footer />
+            </main>
         </div>
     );
 }
