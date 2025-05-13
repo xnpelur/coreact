@@ -105,6 +105,11 @@ const utilities: Record<string, Record<string, string>> = {
     "cursor-default": { cursor: "default" },
     "cursor-move": { cursor: "move" },
     "cursor-grab": { cursor: "grab" },
+
+    // Font
+    "font-sans": { "font-family": "var(--font-sans)" },
+    "font-serif": { "font-family": "var(--font-serif)" },
+    "font-mono": { "font-family": "var(--font-mono)" },
 };
 
 function parse(className: string): [string, string][] {

@@ -1,8 +1,14 @@
-import { createElement } from "@/runtime/jsx-runtime";
+import { createElement, VirtualNode } from "@/runtime/jsx-runtime";
 import { CodeCard } from "@/app/components/code-card";
 import { CodeResult } from "@/app/components/code-result";
 
-export function Section() {
+export function Section({
+    CodeCardComponent,
+    CodeResultComponent,
+}: {
+    CodeCardComponent: () => VirtualNode;
+    CodeResultComponent: () => VirtualNode;
+}) {
     return (
         <div className="mx-auto flex flex-col w-full bg-gradient-left dark:bg-gradient-left-dark border-t border-gray-900/10 dark:border-gray-50/10">
             <div className="flex-col gap-2 flex grow w-full my-32 mx-auto items-center">
@@ -42,8 +48,8 @@ export function Section() {
                     <div className="pl-10 pr-5 w-full">
                         <div className="my-16 max-w-7xl mx-auto flex flex-col w-full rounded-2xl bg-gray-50 dark:bg-gray-800">
                             <div className="gap-5 rounded-2xl bg-gray-100 dark:bg-gray-700 shadow-inner-border dark:shadow-inner-border-dark flex-row flex grow w-full mx-auto items-center bg-cover bg-right ltr:bg-[length:60%_100%] bg-no-repeat bg-meta-gradient">
-                                <CodeCard />
-                                <CodeResult />
+                                <CodeCard Component={CodeCardComponent} />
+                                <CodeResult Component={CodeResultComponent} />
                             </div>
                         </div>
                     </div>

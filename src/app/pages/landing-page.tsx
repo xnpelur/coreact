@@ -4,6 +4,10 @@ import { Navbar } from "@/app/components/navbar";
 import { Section } from "@/app/components/section";
 import { Welcome } from "@/app/components/welcome";
 import { createElement, VirtualNode } from "@/runtime/jsx-runtime";
+import { StateCode } from "../components/examples/state-code";
+import { StateResult } from "../components/examples/state-result";
+import { EffectCode } from "../components/examples/effect-code";
+import { EffectResult } from "../components/examples/effect-result";
 
 export function LandingPage(): VirtualNode {
     return (
@@ -13,7 +17,14 @@ export function LandingPage(): VirtualNode {
                 <article className="font-normal break-words text-gray-950 dark:text-gray-50">
                     <div className="pl-0">
                         <Hero />
-                        <Section />
+                        <Section
+                            CodeCardComponent={StateCode}
+                            CodeResultComponent={StateResult}
+                        />
+                        <Section
+                            CodeCardComponent={EffectCode}
+                            CodeResultComponent={EffectResult}
+                        />
                         <Welcome />
                     </div>
                 </article>
