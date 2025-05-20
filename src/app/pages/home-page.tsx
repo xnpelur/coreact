@@ -18,10 +18,12 @@ export function HomePage(): VirtualNode {
                     <div className="pl-0">
                         <Hero />
                         <Section
+                            codeTitle="State"
                             CodeCardComponent={StateCode}
                             CodeResultComponent={StateResult}
                         />
                         <Section
+                            codeTitle="Effect"
                             CodeCardComponent={EffectCode}
                             CodeResultComponent={EffectResult}
                         />
