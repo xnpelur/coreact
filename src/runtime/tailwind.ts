@@ -113,9 +113,13 @@ const utilities: Record<string, Record<string, string>> = {
 };
 
 function parse(className: string): [string, string][] {
+    if (className in utilities) {
+        return Object.entries(utilities[className]);
+    }
+
     // Handle spacing classes
     const spacingMatch = className.match(
-        /^(-?)(m|mx|my|mt|mr|mb|ml|p|px|py|pt|pr|pb|pl|gap|w|h|leading|top|right|bottom|left)-(\d{1,2}|full|auto)$/
+        /^(-?)(m|mx|my|mt|mr|mb|ml|p|px|py|pt|pr|pb|pl|gap|w|h|leading|top|right|bottom|left)-(\d{1,2}|full|auto|screen)$/
     );
     if (spacingMatch) {
         const [, minus, prefix, value] = spacingMatch;
@@ -125,6 +129,8 @@ function parse(className: string): [string, string][] {
                 cssValue = "100%";
             } else if (value === "auto") {
                 cssValue = "auto";
+            } else if (value === "screen") {
+                cssValue = prefix === "w" ? "100vw" : "100vh";
             } else {
                 cssValue = `calc(var(--spacing) *${
                     parseInt(value) * (minus ? -1 : 1)
@@ -134,34 +140,6 @@ function parse(className: string): [string, string][] {
             const result = [];
             for (const prop of propsWithSpacing[
                 prefix as keyof typeof propsWithSpacing
-            ]) {
-                result.push([prop, cssValue] as [string, string]);
-            }
-            return result;
-        }
-    }
-
-    // Handle color classes
-    const colorMatch = className.match(
-        /^([a-z]+)-([a-z]+)(?:-(\d{2,3}))?(?:\/(\d{1,3}))?$/
-    );
-    if (colorMatch) {
-        const [, prefix, color, shade, opacity] = colorMatch;
-        if (
-            prefix in propsWithColor &&
-            color !== "opacity" &&
-            (shade || color === "white" || color === "black")
-        ) {
-            const colorValue = `var(--color-${color}${
-                shade ? `-${shade}` : ""
-            })`;
-            const cssValue = opacity
-                ? `color-mix(in srgb, ${colorValue} ${opacity}%, transparent)`
-                : colorValue;
-
-            const result = [];
-            for (const prop of propsWithColor[
-                prefix as keyof typeof propsWithColor
             ]) {
                 result.push([prop, cssValue] as [string, string]);
             }
@@ -281,8 +259,28 @@ function parse(className: string): [string, string][] {
         return [["z-index", value]];
     }
 
-    if (className in utilities) {
-        return Object.entries(utilities[className]);
+    // Handle color classes
+    const colorMatch = className.match(
+        /^([a-z]+)-([a-z]+)(?:-(\d{2,3}))?(?:\/(\d{1,3}))?$/
+    );
+    if (colorMatch) {
+        const [, prefix, color, shade, opacity] = colorMatch;
+        if (prefix in propsWithColor) {
+            const colorValue = `var(--color-${color}${
+                shade ? `-${shade}` : ""
+            })`;
+            const cssValue = opacity
+                ? `color-mix(in srgb, ${colorValue} ${opacity}%, transparent)`
+                : colorValue;
+
+            const result = [];
+            for (const prop of propsWithColor[
+                prefix as keyof typeof propsWithColor
+            ]) {
+                result.push([prop, cssValue] as [string, string]);
+            }
+            return result;
+        }
     }
 
     return [];

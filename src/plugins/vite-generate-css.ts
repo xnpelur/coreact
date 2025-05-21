@@ -111,7 +111,14 @@ function getCSS(
     variants: string[],
     properties: [string, string][]
 ) {
-    const escapedClassName = className.replace(/[:/]/g, "\\$&");
+    // Escape special characters (:, /)
+    let escapedClassName = className.replace(/[:/]/g, "\\$&");
+    // If class name starts with a number, escape it with a backslash and space
+    if (/^\d/.test(escapedClassName)) {
+        escapedClassName = `\\3${escapedClassName.charAt(
+            0
+        )} ${escapedClassName.slice(1)}`;
+    }
     const lines = properties.map(([key, value]) => `${key}: ${value};`);
 
     // Variant types
