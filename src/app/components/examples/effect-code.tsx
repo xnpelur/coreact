@@ -179,9 +179,7 @@ export function EffectCode() {
                 {"        "}
                 <span className="text-gray-700 dark:text-gray-200">&lt;</span>
                 <span className="text-green-700 dark:text-green-400">span</span>
-                <span className="text-gray-700 dark:text-gray-200">
-                    &gt;
-                </span>{" "}
+                <span className="text-gray-700 dark:text-gray-200">&gt;</span>
                 <span className="text-gray-700 dark:text-gray-200">&#123;</span>
                 <span className="text-blue-600">hours</span>
                 <span className="text-gray-700 dark:text-gray-200">&#125;</span>
@@ -205,9 +203,7 @@ export function EffectCode() {
                 {"        "}
                 <span className="text-gray-700 dark:text-gray-200">&lt;</span>
                 <span className="text-green-700 dark:text-green-400">span</span>
-                <span className="text-gray-700 dark:text-gray-200">
-                    &gt;
-                </span>{" "}
+                <span className="text-gray-700 dark:text-gray-200">&gt;</span>
                 <span className="text-gray-700 dark:text-gray-200">&#123;</span>
                 <span className="text-blue-600">minutes</span>
                 <span className="text-gray-700 dark:text-gray-200">&#125;</span>

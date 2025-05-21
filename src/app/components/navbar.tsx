@@ -26,7 +26,7 @@ export function Navbar() {
                         <div className="flex flex-column justify-center items-center">
                             <a
                                 className="flex py-2 flex-column justify-center items-center text-gray-400 dark:text-gray-30 hover:text-cyan-600 hover:dark:text-blue-400 hover:underline text-sm ms-1 cursor-pointer"
-                                href="#"
+                                href="https://github.com/xnpelur/coreact"
                             >
                                 v1.0
                             </a>
@@ -37,7 +37,7 @@ export function Navbar() {
                             <div className="flex flex-1">
                                 <a
                                     className="scale-95 transition-transform w-full text-center outline-cyan-600 py-1.5 px-4 rounded-full capitalize whitespace-nowrap hover:bg-darkgray/5 hover:dark:bg-gray-50/5"
-                                    href="#"
+                                    href="/learn"
                                 >
                                     Learn
                                 </a>
@@ -45,23 +45,7 @@ export function Navbar() {
                             <div className="flex flex-1">
                                 <a
                                     className="scale-95 transition-transform w-full text-center outline-cyan-600 py-1.5 px-4 rounded-full capitalize whitespace-nowrap hover:bg-darkgray/5 hover:dark:bg-gray-50/5"
-                                    href="#"
-                                >
-                                    Reference
-                                </a>
-                            </div>
-                            <div className="flex flex-1">
-                                <a
-                                    className="scale-95 transition-transform w-full text-center outline-cyan-600 py-1.5 px-4 rounded-full capitalize whitespace-nowrap hover:bg-darkgray/5 hover:dark:bg-gray-50/5"
-                                    href="#"
-                                >
-                                    Community
-                                </a>
-                            </div>
-                            <div className="flex flex-1">
-                                <a
-                                    className="scale-95 transition-transform w-full text-center outline-cyan-600 py-1.5 px-4 rounded-full capitalize whitespace-nowrap hover:bg-darkgray/5 hover:dark:bg-gray-50/5"
-                                    href="#"
+                                    href="/blog"
                                 >
                                     Blog
                                 </a>
@@ -71,30 +55,11 @@ export function Navbar() {
                             <ToggleModeButton />
                             <div className="flex">
                                 <a
-                                    className="scale-95 transition-transform flex w-12 h-12 rounded-full items-center justify-center hover:bg-darkgray/5 hover:dark:bg-gray-50/5 outline-cyan-600"
-                                    aria-label="Translations"
-                                    href="#"
-                                >
-                                    <svg
-                                        xmlns="http://www.w3.org/2000/svg"
-                                        width="24"
-                                        height="24"
-                                        viewBox="0 0 24 24"
-                                    >
-                                        <path
-                                            fill="currentColor"
-                                            d=" M12.87 15.07l-2.54-2.51.03-.03c1.74-1.94 2.98-4.17 3.71-6.53H17V4h-7V2H8v2H1v1.99h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 3.11.76-2.04zM18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2l-4.5-12zm-2.62 7l1.62-4.33L19.12 17h-3.24z "
-                                        ></path>
-                                    </svg>
-                                </a>
-                            </div>
-                            <div className="flex">
-                                <a
                                     className="flex items-center justify-center w-12 h-12 transition-transform rounded-full scale-95 hover:bg-darkgray/5 hover:dark:bg-gray-50/5 outline-cyan-600"
                                     target="_blank"
                                     rel="noreferrer noopener"
                                     aria-label="Open on GitHub"
-                                    href="#"
+                                    href="https://github.com/xnpelur/coreact"
                                 >
                                     <svg
                                         xmlns="http://www.w3.org/2000/svg"
