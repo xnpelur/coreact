@@ -2,7 +2,9 @@ import { createElement } from "@/runtime/jsx-runtime";
 
 export function ToggleModeButton() {
     function handleClick() {
-        document.documentElement.classList.toggle("dark");
+        const isDarkMode = localStorage.getItem("dark-mode") === "true";
+        localStorage.setItem("dark-mode", String(!isDarkMode));
+        document.documentElement.classList.toggle("dark", !isDarkMode);
     }
 
     return (
