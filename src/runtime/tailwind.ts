@@ -32,6 +32,8 @@ const propsWithSpacing = {
     right: ["right"],
     bottom: ["bottom"],
     left: ["left"],
+    "min-h": ["min-height"],
+    "min-w": ["min-width"],
 };
 
 const directions = {
@@ -119,7 +121,7 @@ function parse(className: string): [string, string][] {
 
     // Handle spacing classes
     const spacingMatch = className.match(
-        /^(-?)(m|mx|my|mt|mr|mb|ml|p|px|py|pt|pr|pb|pl|gap|w|h|leading|top|right|bottom|left)-(\d{1,2}|full|auto|screen)$/
+        /^(-?)(m|mx|my|mt|mr|mb|ml|p|px|py|pt|pr|pb|pl|gap|w|h|leading|top|right|bottom|left|min-h|min-w)-(\d{1,2}|full|auto|screen)$/
     );
     if (spacingMatch) {
         const [, minus, prefix, value] = spacingMatch;

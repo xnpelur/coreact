@@ -4,7 +4,7 @@ import { Footer } from "../components/footer";
 
 export function BlogPage(): VirtualNode {
     return (
-        <div class="h-screen flex flex-col font-medium text-lg bg-white dark:bg-darkgray text-gray-700 dark:text-gray-100 leading-base">
+        <div class="min-h-screen flex flex-col font-medium text-lg bg-white dark:bg-darkgray text-gray-700 dark:text-gray-100 leading-base">
             <Navbar />
             <article class="text-primary dark:text-primary-dark flex-1 mt-12">
                 <div class="ps-0">
@@ -37,11 +37,14 @@ export function BlogPage(): VirtualNode {
                                     </span>
                                 </div>
                             </div>
-                            <h1 class="text-4xl font-bold mb-8">Coreact Blog</h1>
+                            <h1 class="text-4xl font-bold mb-8">
+                                Coreact Blog
+                            </h1>
                             <p class="text-xl text-gray-600 dark:text-gray-300 mb-12">
-                                The latest news and updates from the Coreact team.
+                                The latest news and updates from the Coreact
+                                team.
                             </p>
-                            
+
                             <div class="space-y-16">
                                 {/* Blog Post 1 */}
                                 <article class="border-b border-gray-200 dark:border-gray-700 pb-12">
@@ -49,12 +52,19 @@ export function BlogPage(): VirtualNode {
                                         May 15, 2025
                                     </time>
                                     <h2 class="text-2xl font-bold mb-3">
-                                        <a href="/blog/introducing-coreact" class="hover:text-cyan-500 hover:underline">
-                                            Introducing Coreact: A New Way to Build Web Apps
+                                        <a
+                                            href="/blog/introducing-coreact"
+                                            class="hover:text-cyan-500 hover:underline"
+                                        >
+                                            Introducing Coreact: A New Way to
+                                            Build Web Apps
                                         </a>
                                     </h2>
                                     <p class="text-gray-600 dark:text-gray-300 mb-4">
-                                        We are excited to announce the release of Coreact, a modern framework for building web applications with a focus on performance and developer experience.
+                                        We are excited to announce the release
+                                        of Coreact, a modern framework for
+                                        building web applications with a focus
+                                        on performance and developer experience.
                                     </p>
                                     <div class="flex flex-wrap gap-2 mt-4">
                                         <span class="px-3 py-1 text-sm rounded-full bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300">
@@ -72,12 +82,19 @@ export function BlogPage(): VirtualNode {
                                         April 28, 2025
                                     </time>
                                     <h2 class="text-2xl font-bold mb-3">
-                                        <a href="/blog/state-management" class="hover:text-cyan-500 hover:underline">
-                                            State Management in Coreact: A Comprehensive Guide
+                                        <a
+                                            href="/blog/state-management"
+                                            class="hover:text-cyan-500 hover:underline"
+                                        >
+                                            State Management in Coreact: A
+                                            Comprehensive Guide
                                         </a>
                                     </h2>
                                     <p class="text-gray-600 dark:text-gray-300 mb-4">
-                                        Learn how to effectively manage state in your Coreact applications with our comprehensive guide to state management patterns and best practices.
+                                        Learn how to effectively manage state in
+                                        your Coreact applications with our
+                                        comprehensive guide to state management
+                                        patterns and best practices.
                                     </p>
                                     <div class="flex flex-wrap gap-2 mt-4">
                                         <span class="px-3 py-1 text-sm rounded-full bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300">
@@ -95,12 +112,18 @@ export function BlogPage(): VirtualNode {
                                         April 10, 2025
                                     </time>
                                     <h2 class="text-2xl font-bold mb-3">
-                                        <a href="/blog/performance-optimization" class="hover:text-cyan-500 hover:underline">
-                                            Optimizing Performance in Coreact Applications
+                                        <a
+                                            href="/blog/performance-optimization"
+                                            class="hover:text-cyan-500 hover:underline"
+                                        >
+                                            Optimizing Performance in Coreact
+                                            Applications
                                         </a>
                                     </h2>
                                     <p class="text-gray-600 dark:text-gray-300 mb-4">
-                                        Discover techniques and best practices for optimizing the performance of your Coreact applications.
+                                        Discover techniques and best practices
+                                        for optimizing the performance of your
+                                        Coreact applications.
                                     </p>
                                     <div class="flex flex-wrap gap-2 mt-4">
                                         <span class="px-3 py-1 text-sm rounded-full bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300">

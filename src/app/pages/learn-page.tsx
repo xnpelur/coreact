@@ -4,7 +4,7 @@ import { Footer } from "../components/footer";
 
 export function LearnPage(): VirtualNode {
     return (
-        <div class="h-screen flex flex-col font-medium text-lg bg-white dark:bg-darkgray text-gray-700 dark:text-gray-100 leading-base">
+        <div class="min-h-screen flex flex-col font-medium text-lg bg-white dark:bg-darkgray text-gray-700 dark:text-gray-100 leading-base">
             <Navbar />
             <div class="flex flex-1">
                 <main class="flex-1">
