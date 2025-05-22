@@ -112,6 +112,13 @@ const utilities: Record<string, Record<string, string>> = {
     "font-sans": { "font-family": "var(--font-sans)" },
     "font-serif": { "font-family": "var(--font-serif)" },
     "font-mono": { "font-family": "var(--font-mono)" },
+
+    // Lists
+    "list-disc": { "list-style-type": "disc" },
+    "list-decimal": { "list-style-type": "decimal" },
+    "list-none": { "list-style-type": "none" },
+    "list-inside": { "list-style-position": "inside" },
+    "list-outside": { "list-style-position": "outside" },
 };
 
 function parse(className: string): [string, string][] {
