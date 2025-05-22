@@ -51,7 +51,7 @@ export function Navbar() {
                                 </a>
                             </div>
                         </div>
-                        <div className="flex items-center space-x-0">
+                        <div className="flex items-center">
                             <ToggleModeButton />
                             <div className="flex">
                                 <a
