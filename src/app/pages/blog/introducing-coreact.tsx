@@ -13,12 +13,12 @@ export function IntroducingCoreactPost(): VirtualNode {
                             <div class="flex flex-wrap">
                                 <div class="flex mb-3 mt-0.5 items-center">
                                     <a
-                                        class="text-cyan-500 dark:text-cyan-400 text-sm tracking-wide font-bold uppercase me-1 hover:underline"
+                                        class="text-cyan-500 dark:text-cyan-400 text-sm tracking-wide font-bold uppercase mr-1 hover:underline"
                                         href="/"
                                     >
                                         Home
                                     </a>
-                                    <span class="inline-block me-1 text-cyan-500 dark:text-cyan-400 text-lg rtl:rotate-180">
+                                    <span class="inline-block mr-1 text-cyan-500 dark:text-cyan-400 text-lg rtl:rotate-180">
                                         <svg
                                             width="20"
                                             height="20"
@@ -33,12 +33,12 @@ export function IntroducingCoreactPost(): VirtualNode {
                                         </svg>
                                     </span>
                                     <a
-                                        class="text-cyan-500 dark:text-cyan-400 text-sm tracking-wide font-bold uppercase me-1 hover:underline"
+                                        class="text-cyan-500 dark:text-cyan-400 text-sm tracking-wide font-bold uppercase mr-1 hover:underline"
                                         href="/blog"
                                     >
                                         Blog
                                     </a>
-                                    <span class="inline-block me-1 text-cyan-500 dark:text-cyan-400 text-lg rtl:rotate-180">
+                                    <span class="inline-block mr-1 text-cyan-500 dark:text-cyan-400 text-lg rtl:rotate-180">
                                         <svg
                                             width="20"
                                             height="20"
@@ -77,9 +77,11 @@ export function IntroducingCoreactPost(): VirtualNode {
                                 </div>
                             </header>
 
-                            <div class="prose dark:prose-invert max-w-none">
-                                <h2>Welcome to Coreact</h2>
-                                <p>
+                            <section class="mb-16">
+                                <h2 class="mb-4 text-2xl font-bold">
+                                    Welcome to Coreact
+                                </h2>
+                                <p class="mb-8">
                                     We're thrilled to introduce Coreact, a new
                                     framework designed to make web development
                                     more intuitive and efficient. Coreact
@@ -87,13 +89,17 @@ export function IntroducingCoreactPost(): VirtualNode {
                                     frameworks with a focus on performance and
                                     developer experience.
                                 </p>
+                            </section>
 
-                                <h2>Why Coreact?</h2>
-                                <p>
+                            <section class="mb-16">
+                                <h2 class="mb-4 text-2xl font-bold">
+                                    Why Coreact?
+                                </h2>
+                                <p class="mb-8">
                                     We built Coreact with several key principles
                                     in mind:
                                 </p>
-                                <ul>
+                                <ul class="list-disc list-inside mb-8">
                                     <li>
                                         <strong>Performance:</strong> Built with
                                         performance in mind from the ground up
@@ -112,9 +118,13 @@ export function IntroducingCoreactPost(): VirtualNode {
                                         web standards and best practices
                                     </li>
                                 </ul>
+                            </section>
 
-                                <h2>Getting Started</h2>
-                                <p>
+                            <section class="mb-16">
+                                <h2 class="mb-4 text-2xl font-bold">
+                                    Getting Started
+                                </h2>
+                                <p class="mb-8">
                                     To get started with Coreact, check out our
                                     documentation. We can't wait to see what
                                     you'll build!
@@ -122,26 +132,31 @@ export function IntroducingCoreactPost(): VirtualNode {
                                 <div class="bg-gray-100 dark:bg-gray-800 p-4 rounded-lg my-6">
                                     <pre class="m-0">
                                         <code>
-                                            npx create-coreact-app my-app
+                                            git clone
+                                            https://github.com/xnpelur/coreact.git
                                         </code>
                                     </pre>
                                 </div>
+                            </section>
 
-                                <h2>What's Next?</h2>
-                                <p>
+                            <section class="mb-16">
+                                <h2 class="mb-4 text-2xl font-bold">
+                                    What's Next?
+                                </h2>
+                                <p class="mb-8">
                                     We have an exciting roadmap ahead, with
                                     plans for server-side rendering, static site
                                     generation, and more. Stay tuned for
                                     updates!
                                 </p>
-                            </div>
+                            </section>
 
                             <div class="mt-16 pt-8 border-t border-gray-200 dark:border-gray-700">
                                 <a
                                     href="/blog"
                                     class="inline-flex items-center text-cyan-500 hover:underline"
                                 >
-                                    <span class="inline-block me-1 rtl:rotate-180">
+                                    <span class="inline-block mr-1 rtl:rotate-180">
                                         <svg
                                             width="20"
                                             height="20"
