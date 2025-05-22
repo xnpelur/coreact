@@ -20,27 +20,27 @@ export function LearnPage(): VirtualNode {
                                 will introduce you to the core concepts of
                                 Coreact that you'll use daily.
                             </p>
-                            <ul class="list-disc list-inside space-y-1">
+                            <ul class="list-disc list-inside">
                                 <li>
                                     <a href="#components">
                                         Creating and nesting components
                                     </a>
                                 </li>
-                                <li>
+                                <li class="mt-1">
                                     <a href="#jsx">Adding markup and styles</a>
                                 </li>
-                                <li>
+                                <li class="mt-1">
                                     <a href="#data-display">Displaying data</a>
                                 </li>
-                                <li>
+                                <li class="mt-1">
                                     <a href="#conditional-rendering">
                                         Rendering conditions
                                     </a>
                                 </li>
-                                <li>
+                                <li class="mt-1">
                                     <a href="#events">Responding to events</a>
                                 </li>
-                                <li>
+                                <li class="mt-1">
                                     <a href="#lifting-state">
                                         Sharing data between components
                                     </a>

@@ -45,8 +45,7 @@ export function BlogPage(): VirtualNode {
                                 team.
                             </p>
 
-                            <div class="space-y-16">
-                                {/* Blog Post 1 */}
+                            <div>
                                 <article class="border-b border-gray-200 dark:border-gray-700 pb-12">
                                     <time class="block text-sm text-gray-500 dark:text-gray-400 mb-2">
                                         May 15, 2025
@@ -76,8 +75,7 @@ export function BlogPage(): VirtualNode {
                                     </div>
                                 </article>
 
-                                {/* Blog Post 2 */}
-                                <article class="border-b border-gray-200 dark:border-gray-700 pb-12">
+                                <article class="border-b border-gray-200 dark:border-gray-700 pb-12 mt-16">
                                     <time class="block text-sm text-gray-500 dark:text-gray-400 mb-2">
                                         April 28, 2025
                                     </time>
@@ -106,8 +104,7 @@ export function BlogPage(): VirtualNode {
                                     </div>
                                 </article>
 
-                                {/* Blog Post 3 */}
-                                <article class="pb-12">
+                                <article class="pb-12 mt-16">
                                     <time class="block text-sm text-gray-500 dark:text-gray-400 mb-2">
                                         April 10, 2025
                                     </time>
