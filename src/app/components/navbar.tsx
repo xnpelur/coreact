@@ -4,58 +4,56 @@ import { ToggleModeButton } from "./toggle-mode-button";
 
 export function Navbar() {
     return (
-        <div className="z-40 sticky top-0">
-            <nav className="duration-300 backdrop-filter backdrop-blur-lg backdrop-saturate-200 transition-shadow items-center w-full flex justify-between bg-white dark:bg-darkgray pr-5 pl-4 z-40">
-                <div className="flex items-center justify-between w-full h-16 gap-3">
-                    <div className="flex flex-row flex-1 items-centers">
-                        <span data-state="closed" className="flex items-center">
-                            <div className="flex items-center">
-                                <div className="uwu-hidden">
+        <div class="z-40 sticky top-0">
+            <nav class="duration-300 backdrop-filter backdrop-blur-lg backdrop-saturate-200 transition-shadow items-center w-full flex justify-between bg-white dark:bg-darkgray pr-5 pl-4 z-40">
+                <div class="flex items-center justify-between w-full h-16 gap-3">
+                    <div class="flex flex-row flex-1 items-centers">
+                        <span data-state="closed" class="flex items-center">
+                            <div class="flex items-center">
+                                <div>
                                     <a
-                                        className="scale-95 overflow-hidden transition-transform relative items-center text-gray-950 dark:text-gray-50 p-1 whitespace-nowrap outline-cyan-600 rounded-xl inline-flex text-lg font-normal gap-2"
+                                        class="scale-95 overflow-hidden transition-transform relative items-center text-gray-950 dark:text-gray-50 p-1 whitespace-nowrap outline-cyan-600 rounded-xl inline-flex text-lg font-normal gap-2"
                                         href="/"
                                     >
                                         <Logo className="text-sm me-0 w-10 h-10 text-cyan-600 dark:text-cyan-600-dark flex origin-center transition-all ease-in-out" />
-                                        <span className="not-sr-only">
-                                            Coreact
-                                        </span>
+                                        <span class="not-sr-only">Coreact</span>
                                     </a>
                                 </div>
                             </div>
                         </span>
-                        <div className="flex flex-column justify-center items-center">
+                        <div class="flex flex-column justify-center items-center">
                             <a
-                                className="flex py-2 flex-column justify-center items-center text-gray-400 dark:text-gray-30 hover:text-cyan-600 hover:dark:text-blue-400 hover:underline text-sm ms-1 cursor-pointer"
+                                class="flex py-2 flex-column justify-center items-center text-gray-400 dark:text-gray-30 hover:text-cyan-600 hover:dark:text-blue-400 hover:underline text-sm ms-1 cursor-pointer"
                                 href="https://github.com/xnpelur/coreact"
                             >
                                 v1.0
                             </a>
                         </div>
                     </div>
-                    <div className="text-base items-center gap-1.5 flex flex-1 flex-row justify-end">
-                        <div className="mx-2.5 gap-1.5 flex">
-                            <div className="flex flex-1">
+                    <div class="text-base items-center gap-1.5 flex flex-1 flex-row justify-end">
+                        <div class="mx-2.5 gap-1.5 flex">
+                            <div class="flex flex-1">
                                 <a
-                                    className="scale-95 transition-transform w-full text-center outline-cyan-600 py-1.5 px-4 rounded-full capitalize whitespace-nowrap hover:bg-darkgray/5 hover:dark:bg-gray-50/5"
+                                    class="scale-95 transition-transform w-full text-center outline-cyan-600 py-1.5 px-4 rounded-full capitalize whitespace-nowrap hover:bg-darkgray/5 hover:dark:bg-gray-50/5"
                                     href="/learn"
                                 >
                                     Learn
                                 </a>
                             </div>
-                            <div className="flex flex-1">
+                            <div class="flex flex-1">
                                 <a
-                                    className="scale-95 transition-transform w-full text-center outline-cyan-600 py-1.5 px-4 rounded-full capitalize whitespace-nowrap hover:bg-darkgray/5 hover:dark:bg-gray-50/5"
+                                    class="scale-95 transition-transform w-full text-center outline-cyan-600 py-1.5 px-4 rounded-full capitalize whitespace-nowrap hover:bg-darkgray/5 hover:dark:bg-gray-50/5"
                                     href="/blog"
                                 >
                                     Blog
                                 </a>
                             </div>
                         </div>
-                        <div className="flex items-center">
+                        <div class="flex items-center">
                             <ToggleModeButton />
-                            <div className="flex">
+                            <div class="flex">
                                 <a
-                                    className="flex items-center justify-center w-12 h-12 transition-transform rounded-full scale-95 hover:bg-darkgray/5 hover:dark:bg-gray-50/5 outline-cyan-600"
+                                    class="flex items-center justify-center w-12 h-12 transition-transform rounded-full scale-95 hover:bg-darkgray/5 hover:dark:bg-gray-50/5 outline-cyan-600"
                                     target="_blank"
                                     rel="noreferrer noopener"
                                     aria-label="Open on GitHub"

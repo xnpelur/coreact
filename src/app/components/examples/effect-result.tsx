@@ -28,15 +28,15 @@ export function EffectResult() {
     });
 
     return (
-        <div className="flex flex-col items-center justify-center">
-            <div className="text-6xl font-mono font-bold tracking-wider text-gray-900">
+        <div class="flex flex-col items-center justify-center">
+            <div class="text-6xl font-mono font-bold tracking-wider text-gray-900">
                 <span> {hours}</span>
-                <span className="text-gray-500 animate-pulse">:</span>
+                <span class="text-gray-500 animate-pulse">:</span>
                 <span>{minutes}</span>
-                <span className="text-gray-500 animate-pulse">:</span>
-                <span className="text-gray-800">{seconds}</span>
+                <span class="text-gray-500 animate-pulse">:</span>
+                <span class="text-gray-800">{seconds}</span>
             </div>
-            <div className="mt-4 text-sm font-medium text-gray-500 uppercase tracking-widest">
+            <div class="mt-4 text-sm font-medium text-gray-500 uppercase tracking-widest">
                 {date}
             </div>
         </div>

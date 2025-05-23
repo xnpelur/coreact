@@ -2,23 +2,23 @@ import { createElement } from "@/runtime/jsx-runtime";
 
 export function Footer() {
     return (
-        <div className="self-stretch w-full bg-white dark:bg-darkgray mt-[-1px]">
-            <div className="px-5 py-4">
-                <footer className="text-gray-700 dark:text-gray-100">
-                    <div className="flex flex-col items-center justify-center gap-2">
-                        <div className="flex flex-col items-center justify-center gap-2">
-                            <p className="text-sm text-gray-700 dark:text-gray-100">
+        <div class="self-stretch w-full bg-white dark:bg-darkgray mt-[-1px]">
+            <div class="px-5 py-4">
+                <footer class="text-gray-700 dark:text-gray-100">
+                    <div class="flex flex-col items-center justify-center gap-2">
+                        <div class="flex flex-col items-center justify-center gap-2">
+                            <p class="text-sm text-gray-700 dark:text-gray-100">
                                 Made with{" "}
                                 <a
                                     href="https://github.com/xnpelur/coreact"
-                                    className="font-bold"
+                                    class="font-bold"
                                 >
                                     Coreact
                                 </a>
                                 ️ by{" "}
                                 <a
                                     href="https://github.com/xnpelur"
-                                    className="font-bold"
+                                    class="font-bold"
                                 >
                                     xnpelur
                                 </a>

@@ -9,11 +9,11 @@ export function ToggleModeButton() {
 
     return (
         <div>
-            <div className="flex dark:hidden">
+            <div class="flex dark:hidden">
                 <button
                     type="button"
                     aria-label="Use Dark Mode"
-                    className="flex items-center justify-center w-12 h-12 transition-transform rounded-full scale-95 cursor-pointer hover:bg-darkgray/5 hover:dark:bg-gray-50/5 outline-cyan-600"
+                    class="flex items-center justify-center w-12 h-12 transition-transform rounded-full scale-95 cursor-pointer hover:bg-darkgray/5 hover:dark:bg-gray-50/5 outline-cyan-600"
                     onClick={handleClick}
                 >
                     <svg
@@ -40,11 +40,11 @@ export function ToggleModeButton() {
                     </svg>
                 </button>
             </div>
-            <div className="hidden dark:flex">
+            <div class="hidden dark:flex">
                 <button
                     type="button"
                     aria-label="Use Light Mode"
-                    className="flex items-center justify-center w-12 h-12 transition-transform rounded-full scale-95 cursor-pointer hover:bg-darkgray/5 hover:dark:bg-gray-50/5 outline-cyan-600"
+                    class="flex items-center justify-center w-12 h-12 transition-transform rounded-full scale-95 cursor-pointer hover:bg-darkgray/5 hover:dark:bg-gray-50/5 outline-cyan-600"
                     onClick={handleClick}
                 >
                     <svg

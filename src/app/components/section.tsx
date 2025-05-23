@@ -11,33 +11,33 @@ export function Section({
     CodeResultComponent: () => VirtualNode;
 }) {
     return (
-        <div className="mx-auto flex flex-col w-full bg-gradient-left dark:bg-gradient-left-dark border-t border-gray-900/10 dark:border-gray-50/10">
-            <div className="flex-col gap-2 flex grow w-full my-32 mx-auto items-center">
-                <div className="px-0 max-w-4xl text-center text-white flex flex-col items-center justify-center">
-                    <h2 className="leading-xl font-display text-gray-950 dark:text-gray-50 font-semibold text-6xl -mt-4 mb-7 w-full max-w-xl">
+        <div class="mx-auto flex flex-col w-full bg-gradient-left dark:bg-gradient-left-dark border-t border-gray-900/10 dark:border-gray-50/10">
+            <div class="flex-col gap-2 flex grow w-full my-32 mx-auto items-center">
+                <div class="px-0 max-w-4xl text-center text-white flex flex-col items-center justify-center">
+                    <h2 class="leading-xl font-display text-gray-950 dark:text-gray-50 font-semibold text-6xl -mt-4 mb-7 w-full max-w-xl">
                         Create user interfaces from components
                     </h2>
-                    <p className="max-w-3xl mx-auto text-xl text-gray-700 dark:text-gray-100 leading-normal">
+                    <p class="max-w-3xl mx-auto text-xl text-gray-700 dark:text-gray-100 leading-normal">
                         Coreact lets you build user interfaces out of individual
                         pieces called components. Create your own Coreact
                         components like{" "}
                         <code
                             dir="ltr"
-                            className="font-mono inline rounded-lg bg-gray-15/40 dark:bg-gray-700 py-0.5 px-1 text-left"
+                            class="font-mono inline rounded-lg bg-gray-15/40 dark:bg-gray-700 py-0.5 px-1 text-left"
                         >
                             Thumbnail
                         </code>
                         ,{" "}
                         <code
                             dir="ltr"
-                            className="font-mono inline rounded-lg bg-gray-15/40 dark:bg-gray-700 py-0.5 px-1 text-left"
+                            class="font-mono inline rounded-lg bg-gray-15/40 dark:bg-gray-700 py-0.5 px-1 text-left"
                         >
                             LikeButton
                         </code>
                         , and{" "}
                         <code
                             dir="ltr"
-                            className="font-mono inline rounded-lg bg-gray-15/40 dark:bg-gray-700 py-0.5 px-1 text-left"
+                            class="font-mono inline rounded-lg bg-gray-15/40 dark:bg-gray-700 py-0.5 px-1 text-left"
                         >
                             Video
                         </code>
@@ -45,9 +45,9 @@ export function Section({
                         apps.
                     </p>
                 </div>
-                <div className="max-w-7xl mx-auto flex flex-col w-full">
-                    <div className="pl-10 pr-5 w-full">
-                        <div className="my-16 max-w-7xl mx-auto flex flex-col w-full rounded-2xl bg-gray-50 dark:bg-gray-800">
+                <div class="max-w-7xl mx-auto flex flex-col w-full">
+                    <div class="pl-10 pr-5 w-full">
+                        <div class="my-16 max-w-7xl mx-auto flex flex-col w-full rounded-2xl bg-gray-50 dark:bg-gray-800">
                             <CodeDemo
                                 codeTitle={codeTitle}
                                 CodeCardComponent={CodeCardComponent}
@@ -56,8 +56,8 @@ export function Section({
                         </div>
                     </div>
                 </div>
-                <div className="px-0 max-w-4xl text-center text-white flex flex-col items-center justify-center">
-                    <p className="max-w-3xl mx-auto text-xl text-gray-700 dark:text-gray-100 leading-normal">
+                <div class="px-0 max-w-4xl text-center text-white flex flex-col items-center justify-center">
+                    <p class="max-w-3xl mx-auto text-xl text-gray-700 dark:text-gray-100 leading-normal">
                         Whether you work on your own or with thousands of other
                         developers, using Coreact feels the same. It is designed
                         to let you seamlessly combine components written by

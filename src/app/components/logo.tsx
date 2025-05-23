@@ -8,7 +8,7 @@ export function Logo({ className }: { className?: string }) {
             viewBox="-10.5 -10.5 21 21"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
-            className={className}
+            class={className}
         >
             <circle cx="0" cy="0" r="2" fill="currentColor"></circle>
             <g stroke="currentColor" stroke-width="1" fill="none">
