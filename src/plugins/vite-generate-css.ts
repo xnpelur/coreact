@@ -94,12 +94,23 @@ async function extractClasses() {
     const classNames = new Set<string>();
 
     const classRegex = /class(?:Name)?=["'`]([^"'`]+)["'`]/g;
+    const classExprRegex = /class(?:Name)?=\{([\s\S]*?)\}/g;
+    const stringLiteralRegex = /["'`]([^"'`]+)["'`]/g;
 
     for (const file of files) {
         const content = fs.readFileSync(file, "utf-8");
         let match;
+        // Extract from class="..." and className="..."
         while ((match = classRegex.exec(content))) {
             match[1].split(/\s+/).forEach((cls) => classNames.add(cls));
+        }
+        // Extract from class={...} and className={...}
+        while ((match = classExprRegex.exec(content))) {
+            let expr = match[1];
+            let strMatch;
+            while ((strMatch = stringLiteralRegex.exec(expr))) {
+                strMatch[1].split(/\s+/).forEach((cls) => classNames.add(cls));
+            }
         }
     }
 

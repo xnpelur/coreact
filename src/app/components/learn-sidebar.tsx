@@ -1,62 +1,89 @@
 import { createElement, VirtualNode } from "@/runtime/jsx-runtime";
+import { Link } from "@/runtime/router";
 
-interface LearnSidebarProps {
+export function LearnSidebar({
+    currentPage = "",
+}: {
     currentPage?: string;
-}
-
-export function LearnSidebar({ currentPage = '' }: LearnSidebarProps): VirtualNode {
-    const isActive = (page: string) => 
-        currentPage === page ? 'text-cyan-500 dark:text-cyan-400 font-bold' : 'text-gray-600 dark:text-gray-300 hover:text-cyan-500 dark:hover:text-cyan-400';
-
+}): VirtualNode {
     return (
-        <div class="w-64 flex-shrink-0 pr-8 text-sm">
-            <nav class="sticky top-20">
-                <ul class="space-y-2">
-                    <li>
-                        <a 
-                            href="/learn" 
-                            class={`block py-1.5 ${isActive('overview')}`}
-                        >
-                            Overview
-                        </a>
-                    </li>
-                    <li class="mt-4 mb-2 text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider">
-                        Core Concepts
-                    </li>
-                    <li>
-                        <a 
-                            href="/learn/rendering" 
-                            class={`block py-1.5 ${isActive('rendering')}`}
-                        >
-                            Rendering
-                        </a>
-                    </li>
-                    <li>
-                        <a 
-                            href="/learn/styling" 
-                            class={`block py-1.5 ${isActive('styling')}`}
-                        >
-                            Styling
-                        </a>
-                    </li>
-                    <li>
-                        <a 
-                            href="/learn/state-management" 
-                            class={`block py-1.5 ${isActive('state-management')}`}
-                        >
-                            State Management
-                        </a>
-                    </li>
-                    <li>
-                        <a 
-                            href="/learn/routing" 
-                            class={`block py-1.5 ${isActive('routing')}`}
-                        >
-                            Routing
-                        </a>
-                    </li>
-                </ul>
-            </nav>
+        <div class="max-w-80 flex-1 z-10 hidden xl:block">
+            <div class="sticky top-20">
+                <aside class="lg:grow flex-col w-full pb-8 lg:pb-0 lg:max-w-custom-xs z-10 hidden lg:block">
+                    <nav class="w-full lg:h-auto grow pr-0 lg:pr-5 lg:pb-16 md:pt-4">
+                        <ul>
+                            <li>
+                                <Link
+                                    class={
+                                        "p-2 w-full rounded-r-2xl flex items-center justify-between pl-5 font-bold text-base" +
+                                        (currentPage === "overview"
+                                            ? " text-cyan-500 dark:text-cyan-400 bg-cyan-500/10"
+                                            : " text-gray-950 dark:text-gray-50 hover:bg-gray-100 dark:hover:bg-gray-80")
+                                    }
+                                    to="/learn"
+                                >
+                                    Overview
+                                </Link>
+                            </li>
+                            <h3 class="mb-1 mt-4 text-xs ml-5 text-gray-500 dark:text-gray-300">
+                                CORE MODULES
+                            </h3>
+                            <li>
+                                <Link
+                                    class={
+                                        "p-2 w-full rounded-r-2xl flex items-center justify-between pl-5 font-bold text-base" +
+                                        (currentPage === "rendering"
+                                            ? " text-cyan-500 dark:text-cyan-400 bg-cyan-500/10"
+                                            : " text-gray-950 dark:text-gray-50 hover:bg-gray-100 dark:hover:bg-gray-80")
+                                    }
+                                    to="/learn/rendering"
+                                >
+                                    Rendering
+                                </Link>
+                            </li>
+                            <li>
+                                <Link
+                                    class={
+                                        "p-2 w-full rounded-r-2xl flex items-center justify-between pl-5 font-bold text-base" +
+                                        (currentPage === "styling"
+                                            ? " text-cyan-500 dark:text-cyan-400 bg-cyan-500/10"
+                                            : " text-gray-950 dark:text-gray-50 hover:bg-gray-100 dark:hover:bg-gray-80")
+                                    }
+                                    to="/learn/styling"
+                                >
+                                    Styling
+                                </Link>
+                            </li>
+                            <li>
+                                <Link
+                                    class={
+                                        "p-2 w-full rounded-r-2xl flex items-center justify-between pl-5 font-bold text-base" +
+                                        (currentPage === "state-management"
+                                            ? " text-cyan-500 dark:text-cyan-400 bg-cyan-500/10"
+                                            : " text-gray-950 dark:text-gray-50 hover:bg-gray-100 dark:hover:bg-gray-80")
+                                    }
+                                    to="/learn/state-management"
+                                >
+                                    State Management
+                                </Link>
+                            </li>
+                            <li>
+                                <Link
+                                    class={
+                                        "p-2 w-full rounded-r-2xl flex items-center justify-between pl-5 font-bold text-base" +
+                                        (currentPage === "routing"
+                                            ? " text-cyan-500 dark:text-cyan-400 bg-cyan-500/10"
+                                            : " text-gray-950 dark:text-gray-50 hover:bg-gray-100 dark:hover:bg-gray-80")
+                                    }
+                                    to="/learn/routing"
+                                >
+                                    Routing
+                                </Link>
+                            </li>
+                        </ul>
+                    </nav>
+                </aside>
+            </div>
         </div>
     );
 }

@@ -188,7 +188,7 @@ function parse(className: string): [string, string][] {
 
     // Max width
     const maxWidthMatch = className.match(
-        /^max-w-(3xs|2xs|xs|sm|md|lg|xl|2xl|3xl|4xl|5xl|6xl|7xl|screen|full)$/
+        /^max-w-(\d{1,2}|3xs|2xs|xs|sm|md|lg|xl|2xl|3xl|4xl|5xl|6xl|7xl|screen|full)$/
     );
     if (maxWidthMatch) {
         const [, size] = maxWidthMatch;
@@ -196,6 +196,8 @@ function parse(className: string): [string, string][] {
             return [["max-width", "100vw"]];
         } else if (size === "full") {
             return [["max-width", "100%"]];
+        } else if (!isNaN(Number(size))) {
+            return [["max-width", `calc(var(--spacing) * ${parseInt(size)})`]];
         }
         return [["max-width", `var(--container-${size})`]];
     }
@@ -207,14 +209,16 @@ function parse(className: string): [string, string][] {
     if (borderWidthMatch) {
         const [, direction, value] = borderWidthMatch;
         const cssValue = value ? `${value}px` : "1px";
-        return [
-            [
-                `border-${
-                    directions[direction as keyof typeof directions]
-                }-width`,
-                cssValue,
-            ],
-        ];
+        return direction
+            ? [
+                  [
+                      `border-${
+                          directions[direction as keyof typeof directions]
+                      }-width`,
+                      cssValue,
+                  ],
+              ]
+            : [["border-width", cssValue]];
     }
 
     // Border radius
