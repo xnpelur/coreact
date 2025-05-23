@@ -7,6 +7,10 @@ import { BlogPage } from "@/app/pages/blog-page";
 import { IntroducingCoreactPost } from "@/app/pages/blog/introducing-coreact";
 import { CoreactStateManagementPost } from "@/app/pages/blog/coreact-state-management";
 import { CoreactPerformanceOptimizationPost } from "@/app/pages/blog/coreact-performance-optimization";
+import { LearnRenderingPage } from "@/app/pages/learn/learn-rendering";
+import { LearnStylingPage } from "@/app/pages/learn/learn-styling";
+import { LearnStateManagementPage } from "@/app/pages/learn/learn-state-management";
+import { LearnRoutingPage } from "@/app/pages/learn/learn-routing";
 import "@/app/styles.css";
 
 createRouter({
@@ -26,6 +30,13 @@ createRouter({
             path: "/blog/performance-optimization",
             component: CoreactPerformanceOptimizationPost,
         },
+        { path: "/learn/rendering", component: LearnRenderingPage },
+        { path: "/learn/styling", component: LearnStylingPage },
+        {
+            path: "/learn/state-management",
+            component: LearnStateManagementPage,
+        },
+        { path: "/learn/routing", component: LearnRoutingPage },
     ],
     notFound: NotFoundPage,
 });
