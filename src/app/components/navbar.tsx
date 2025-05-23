@@ -34,15 +34,15 @@ export function Navbar() {
                         <div class="mx-2.5 gap-1.5 flex">
                             <div class="flex flex-1">
                                 <a
-                                    class="scale-95 transition-transform w-full text-center outline-cyan-600 py-1.5 px-4 rounded-full capitalize whitespace-nowrap hover:bg-darkgray/5 hover:dark:bg-gray-50/5"
-                                    href="/learn"
+                                    class="scale-95 transition-transform w-full text-center outline-cyan-600 py-2 px-4 rounded-full capitalize whitespace-nowrap hover:bg-darkgray/5 hover:dark:bg-gray-50/5"
+                                    href="/docs"
                                 >
-                                    Learn
+                                    Docs
                                 </a>
                             </div>
                             <div class="flex flex-1">
                                 <a
-                                    class="scale-95 transition-transform w-full text-center outline-cyan-600 py-1.5 px-4 rounded-full capitalize whitespace-nowrap hover:bg-darkgray/5 hover:dark:bg-gray-50/5"
+                                    class="scale-95 transition-transform w-full text-center outline-cyan-600 py-2 px-4 rounded-full capitalize whitespace-nowrap hover:bg-darkgray/5 hover:dark:bg-gray-50/5"
                                     href="/blog"
                                 >
                                     Blog

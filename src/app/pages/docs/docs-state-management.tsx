@@ -1,14 +1,14 @@
 import { createElement, VirtualNode } from "@/runtime/jsx-runtime";
 import { Navbar } from "@/app/components/navbar";
 import { Footer } from "@/app/components/footer";
-import { LearnSidebar } from "@/app/components/learn-sidebar";
+import { DocsSidebar } from "@/app/components/docs-sidebar";
 
-export function LearnStateManagementPage(): VirtualNode {
+export function DocsStateManagementPage(): VirtualNode {
     return (
         <div class="min-h-screen flex flex-col font-medium text-lg bg-white dark:bg-darkgray text-gray-700 dark:text-gray-100 leading-base">
             <Navbar />
             <div class="flex flex-1 pt-4">
-                <LearnSidebar currentPage="state-management" />
+                <DocsSidebar currentPage="state-management" />
                 <main class="flex-2 max-w-4xl px-8 pt-2 mx-auto">
                     <h1 class="text-4xl font-bold mb-8">
                         State Management in Coreact
@@ -72,7 +72,7 @@ function Counter() {
 
                     <div class="mt-12 pt-8 border-t border-gray-200 dark:border-gray-700">
                         <a
-                            href="/learn/routing"
+                            href="/docs/routing"
                             class="inline-flex items-center text-cyan-500 hover:underline"
                         >
                             Next: Routing

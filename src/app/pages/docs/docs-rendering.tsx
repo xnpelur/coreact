@@ -1,67 +1,76 @@
 import { createElement, VirtualNode } from "@/runtime/jsx-runtime";
 import { Navbar } from "@/app/components/navbar";
 import { Footer } from "@/app/components/footer";
-import { LearnSidebar } from "@/app/components/learn-sidebar";
+import { DocsSidebar } from "@/app/components/docs-sidebar";
 
-export function LearnStylingPage(): VirtualNode {
+export function DocsRenderingPage(): VirtualNode {
     return (
         <div class="min-h-screen flex flex-col font-medium text-lg bg-white dark:bg-darkgray text-gray-700 dark:text-gray-100 leading-base">
             <Navbar />
-            <div class="flex flex-1 pt-4">
-                <LearnSidebar currentPage="styling" />
+            <div class="flex flex-1 pt-4 justify-between">
+                <DocsSidebar currentPage="rendering" />
                 <main class="flex-2 max-w-4xl px-8 pt-2 mx-auto">
-                    <h1 class="text-4xl font-bold mb-8">Styling in Coreact</h1>
+                    <h1 class="text-4xl font-bold mb-8">
+                        Rendering in Coreact
+                    </h1>
 
                     <section class="mb-8">
-                        <h2 class="text-2xl font-bold mb-4">CSS Classes</h2>
+                        <h2 class="text-2xl font-bold mb-4">
+                            Introduction to Components
+                        </h2>
                         <p class="mb-4">
-                            You can use the <code>class</code> prop to apply CSS
-                            classes to your elements. Coreact supports both
-                            regular CSS and CSS-in-JS solutions.
+                            In Coreact, components are the building blocks of
+                            your UI. They are reusable, self-contained pieces of
+                            code that return what should appear on the screen.
+                        </p>
+                    </section>
+
+                    <section class="mb-8">
+                        <h2 class="text-2xl font-bold mb-4">
+                            Creating Components
+                        </h2>
+                        <p class="mb-4">
+                            To create a component, define a function that
+                            returns JSX. Component names must start with a
+                            capital letter.
                         </p>
                         <pre class="bg-gray-100 dark:bg-gray-800 p-4 rounded-lg overflow-x-auto text-sm mb-4">
                             <code>
-                                {`function Button() {
-    return <button class="px-4 py-2 bg-blue-500 text-white rounded">Click me</button>;
+                                {`function Welcome() {
+    return <h1>Hello, World!</h1>;
 }`}
                             </code>
                         </pre>
                     </section>
 
                     <section class="mb-8">
-                        <h2 class="text-2xl font-bold mb-4">Inline Styles</h2>
+                        <h2 class="text-2xl font-bold mb-4">
+                            Rendering Elements
+                        </h2>
                         <p class="mb-4">
-                            For dynamic styles, you can pass a JavaScript object
-                            to the <code>style</code> prop.
+                            Coreact elements are the smallest building blocks of
+                            Coreact applications. They describe what you want to
+                            see on the screen.
                         </p>
-                        <pre class="bg-gray-100 dark:bg-gray-800 p-4 rounded-lg overflow-x-auto text-sm mb-4">
-                            <code>
-                                {`function ColoredBox() {
-    const style = {
-        backgroundColor: 'blue',
-        padding: '1rem',
-        color: 'white'
-    };
-    return <div style={style}>Hello, styled div!</div>;
-}`}
-                            </code>
-                        </pre>
                     </section>
 
                     <section class="mb-8">
-                        <h2 class="text-2xl font-bold mb-4">CSS Modules</h2>
+                        <h2 class="text-2xl font-bold mb-4">
+                            Conditional Rendering
+                        </h2>
                         <p class="mb-4">
-                            Coreact supports CSS Modules out of the box for
-                            component-scoped styles.
+                            You can use JavaScript operators like if or the
+                            conditional (ternary) operator to create elements
+                            representing the current state.
                         </p>
                     </section>
 
                     <div class="mt-12 pt-8 border-t border-gray-200 dark:border-gray-700">
                         <a
-                            href="/learn/state-management"
+                            href="/docs/styling"
                             class="inline-flex items-center text-cyan-500 hover:underline"
                         >
-                            Next: State Management
+                            Next: Styling
                             <svg
                                 class="w-5 h-5 ml-1"
                                 fill="currentColor"

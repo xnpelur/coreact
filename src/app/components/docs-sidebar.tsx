@@ -1,7 +1,7 @@
 import { createElement, VirtualNode } from "@/runtime/jsx-runtime";
 import { Link } from "@/runtime/router";
 
-export function LearnSidebar({
+export function DocsSidebar({
     currentPage = "",
 }: {
     currentPage?: string;
@@ -20,7 +20,7 @@ export function LearnSidebar({
                                             ? " text-cyan-500 dark:text-cyan-400 bg-cyan-500/10"
                                             : " text-gray-950 dark:text-gray-50 hover:bg-gray-100 dark:hover:bg-gray-80")
                                     }
-                                    to="/learn"
+                                    to="/docs"
                                 >
                                     Overview
                                 </Link>
@@ -36,7 +36,7 @@ export function LearnSidebar({
                                             ? " text-cyan-500 dark:text-cyan-400 bg-cyan-500/10"
                                             : " text-gray-950 dark:text-gray-50 hover:bg-gray-100 dark:hover:bg-gray-80")
                                     }
-                                    to="/learn/rendering"
+                                    to="/docs/rendering"
                                 >
                                     Rendering
                                 </Link>
@@ -49,7 +49,7 @@ export function LearnSidebar({
                                             ? " text-cyan-500 dark:text-cyan-400 bg-cyan-500/10"
                                             : " text-gray-950 dark:text-gray-50 hover:bg-gray-100 dark:hover:bg-gray-80")
                                     }
-                                    to="/learn/styling"
+                                    to="/docs/styling"
                                 >
                                     Styling
                                 </Link>
@@ -62,7 +62,7 @@ export function LearnSidebar({
                                             ? " text-cyan-500 dark:text-cyan-400 bg-cyan-500/10"
                                             : " text-gray-950 dark:text-gray-50 hover:bg-gray-100 dark:hover:bg-gray-80")
                                     }
-                                    to="/learn/state-management"
+                                    to="/docs/state-management"
                                 >
                                     State Management
                                 </Link>
@@ -75,7 +75,7 @@ export function LearnSidebar({
                                             ? " text-cyan-500 dark:text-cyan-400 bg-cyan-500/10"
                                             : " text-gray-950 dark:text-gray-50 hover:bg-gray-100 dark:hover:bg-gray-80")
                                     }
-                                    to="/learn/routing"
+                                    to="/docs/routing"
                                 >
                                     Routing
                                 </Link>

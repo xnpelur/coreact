@@ -1,14 +1,14 @@
 import { createElement, VirtualNode } from "@/runtime/jsx-runtime";
 import { Navbar } from "@/app/components/navbar";
 import { Footer } from "@/app/components/footer";
-import { LearnSidebar } from "@/app/components/learn-sidebar";
+import { DocsSidebar } from "@/app/components/docs-sidebar";
 
-export function LearnPage(): VirtualNode {
+export function DocsPage(): VirtualNode {
     return (
         <div class="min-h-screen flex flex-col font-medium text-lg bg-white dark:bg-darkgray text-gray-700 dark:text-gray-100 leading-base">
             <Navbar />
             <div class="flex flex-1 pt-4 justify-between">
-                <LearnSidebar currentPage="overview" />
+                <DocsSidebar currentPage="overview" />
                 <main class="flex-2 max-w-4xl px-8 pt-2 mx-auto">
                     <h1 class="text-4xl font-bold mb-8">Learn Coreact</h1>
                     <p class="text-xl mb-8 text-gray-600 dark:text-gray-300">
@@ -30,7 +30,7 @@ export function LearnPage(): VirtualNode {
                             <h2 class="text-2xl font-bold mb-4">Quick Links</h2>
                             <div class="grid md:grid-cols-2 gap-4">
                                 <a
-                                    href="/learn/rendering"
+                                    href="/docs/rendering"
                                     class="p-4 border rounded-lg hover:border-cyan-500 transition-colors"
                                 >
                                     <h3 class="font-bold text-lg mb-2">
@@ -42,7 +42,7 @@ export function LearnPage(): VirtualNode {
                                     </p>
                                 </a>
                                 <a
-                                    href="/learn/styling"
+                                    href="/docs/styling"
                                     class="p-4 border rounded-lg hover:border-cyan-500 transition-colors"
                                 >
                                     <h3 class="font-bold text-lg mb-2">
@@ -54,7 +54,7 @@ export function LearnPage(): VirtualNode {
                                     </p>
                                 </a>
                                 <a
-                                    href="/learn/state-management"
+                                    href="/docs/state-management"
                                     class="p-4 border rounded-lg hover:border-cyan-500 transition-colors"
                                 >
                                     <h3 class="font-bold text-lg mb-2">
@@ -66,7 +66,7 @@ export function LearnPage(): VirtualNode {
                                     </p>
                                 </a>
                                 <a
-                                    href="/learn/routing"
+                                    href="/docs/routing"
                                     class="p-4 border rounded-lg hover:border-cyan-500 transition-colors"
                                 >
                                     <h3 class="font-bold text-lg mb-2">
