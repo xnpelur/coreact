@@ -1,6 +1,5 @@
 import { createElement, VirtualNode } from "@/runtime/jsx-runtime";
-import { CodeCard } from "@/app/components/code-card";
-import { CodeResult } from "@/app/components/code-result";
+import { CodeDemo } from "@/app/components/demo/code-demo";
 
 export function Section({
     codeTitle,
@@ -49,13 +48,11 @@ export function Section({
                 <div className="max-w-7xl mx-auto flex flex-col w-full">
                     <div className="pl-10 pr-5 w-full">
                         <div className="my-16 max-w-7xl mx-auto flex flex-col w-full rounded-2xl bg-gray-50 dark:bg-gray-800">
-                            <div className="gap-5 rounded-2xl bg-gray-100 dark:bg-gray-700 shadow-inner-border dark:shadow-inner-border-dark flex-row flex grow w-full mx-auto items-center bg-cover bg-right ltr:bg-[length:60%_100%] bg-no-repeat bg-meta-gradient">
-                                <CodeCard
-                                    title={codeTitle}
-                                    Component={CodeCardComponent}
-                                />
-                                <CodeResult Component={CodeResultComponent} />
-                            </div>
+                            <CodeDemo
+                                codeTitle={codeTitle}
+                                CodeCardComponent={CodeCardComponent}
+                                CodeResultComponent={CodeResultComponent}
+                            />
                         </div>
                     </div>
                 </div>
