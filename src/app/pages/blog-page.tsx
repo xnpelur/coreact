@@ -41,13 +41,73 @@ export function BlogPage(): VirtualNode {
                             <h1 class="text-4xl font-bold mb-8">
                                 Coreact Blog
                             </h1>
-                            <p class="text-xl text-gray-600 dark:text-gray-300 mb-12">
+                            <p class="text-xl text-gray-600 dark:text-gray-300 mb-16">
                                 The latest news and updates from the Coreact
                                 team.
                             </p>
 
-                            <div>
-                                <article class="border-b border-gray-200 dark:border-gray-700 pb-12">
+                            <div class="pb-8">
+                                <article>
+                                    <time class="block text-sm text-gray-500 dark:text-gray-400 mb-2">
+                                        May 24, 2025
+                                    </time>
+                                    <h2 class="text-2xl font-bold mb-3">
+                                        <Link
+                                            href="/blog/performance-optimization"
+                                            class="hover:text-cyan-500 hover:underline"
+                                        >
+                                            Optimizing Performance in Coreact
+                                            Applications
+                                        </Link>
+                                    </h2>
+                                    <p class="text-gray-600 dark:text-gray-300 mb-4">
+                                        Discover techniques and best practices
+                                        for optimizing the performance of your
+                                        Coreact applications.
+                                    </p>
+                                    <div class="flex flex-wrap gap-2 mt-4">
+                                        <span class="px-3 py-1 text-sm rounded-full bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300">
+                                            performance
+                                        </span>
+                                        <span class="px-3 py-1 text-sm rounded-full bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300">
+                                            optimization
+                                        </span>
+                                    </div>
+                                </article>
+
+                                <div class="border-b border-gray-200 dark:border-gray-700 my-8"></div>
+
+                                <article>
+                                    <time class="block text-sm text-gray-500 dark:text-gray-400 mb-2">
+                                        May 17, 2025
+                                    </time>
+                                    <h2 class="text-2xl font-bold mb-3">
+                                        <Link
+                                            href="/blog/why-i-built-this-framework"
+                                            class="hover:text-cyan-500 hover:underline"
+                                        >
+                                            Why I Built This Framework: A Deep
+                                            Dive into Coreact's Design
+                                        </Link>
+                                    </h2>
+                                    <p class="text-gray-600 dark:text-gray-300 mb-4">
+                                        In this post, I share the motivation
+                                        behind creating Coreact and the design
+                                        principles that guided its development.
+                                    </p>
+                                    <div class="flex flex-wrap gap-2 mt-4">
+                                        <span class="px-3 py-1 text-sm rounded-full bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300">
+                                            motivation
+                                        </span>
+                                        <span class="px-3 py-1 text-sm rounded-full bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300">
+                                            design
+                                        </span>
+                                    </div>
+                                </article>
+
+                                <div class="border-b border-gray-200 dark:border-gray-700 my-8"></div>
+
+                                <article>
                                     <time class="block text-sm text-gray-500 dark:text-gray-400 mb-2">
                                         May 15, 2025
                                     </time>
@@ -72,63 +132,6 @@ export function BlogPage(): VirtualNode {
                                         </span>
                                         <span class="px-3 py-1 text-sm rounded-full bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300">
                                             release
-                                        </span>
-                                    </div>
-                                </article>
-
-                                <article class="border-b border-gray-200 dark:border-gray-700 pb-12 mt-16">
-                                    <time class="block text-sm text-gray-500 dark:text-gray-400 mb-2">
-                                        April 28, 2025
-                                    </time>
-                                    <h2 class="text-2xl font-bold mb-3">
-                                        <Link
-                                            href="/blog/state-management"
-                                            class="hover:text-cyan-500 hover:underline"
-                                        >
-                                            State Management in Coreact: A
-                                            Comprehensive Guide
-                                        </Link>
-                                    </h2>
-                                    <p class="text-gray-600 dark:text-gray-300 mb-4">
-                                        Learn how to effectively manage state in
-                                        your Coreact applications with our
-                                        comprehensive guide to state management
-                                        patterns and best practices.
-                                    </p>
-                                    <div class="flex flex-wrap gap-2 mt-4">
-                                        <span class="px-3 py-1 text-sm rounded-full bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300">
-                                            tutorial
-                                        </span>
-                                        <span class="px-3 py-1 text-sm rounded-full bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300">
-                                            state management
-                                        </span>
-                                    </div>
-                                </article>
-
-                                <article class="pb-12 mt-16">
-                                    <time class="block text-sm text-gray-500 dark:text-gray-400 mb-2">
-                                        April 10, 2025
-                                    </time>
-                                    <h2 class="text-2xl font-bold mb-3">
-                                        <Link
-                                            href="/blog/performance-optimization"
-                                            class="hover:text-cyan-500 hover:underline"
-                                        >
-                                            Optimizing Performance in Coreact
-                                            Applications
-                                        </Link>
-                                    </h2>
-                                    <p class="text-gray-600 dark:text-gray-300 mb-4">
-                                        Discover techniques and best practices
-                                        for optimizing the performance of your
-                                        Coreact applications.
-                                    </p>
-                                    <div class="flex flex-wrap gap-2 mt-4">
-                                        <span class="px-3 py-1 text-sm rounded-full bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300">
-                                            performance
-                                        </span>
-                                        <span class="px-3 py-1 text-sm rounded-full bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300">
-                                            optimization
                                         </span>
                                     </div>
                                 </article>

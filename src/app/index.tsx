@@ -5,7 +5,7 @@ import { NotFoundPage } from "@/app/pages/not-found-page";
 import { DocsPage } from "@/app/pages/docs-page";
 import { BlogPage } from "@/app/pages/blog-page";
 import { IntroducingCoreactPost } from "@/app/pages/blog/introducing-coreact";
-import { CoreactStateManagementPost } from "@/app/pages/blog/coreact-state-management";
+import { WhyIBuiltThisFrameworkPost } from "@/app/pages/blog/why-i-built-this-framework";
 import { CoreactPerformanceOptimizationPost } from "@/app/pages/blog/coreact-performance-optimization";
 import { DocsRenderingPage } from "@/app/pages/docs/docs-rendering";
 import { DocsStylingPage } from "@/app/pages/docs/docs-styling";
@@ -23,8 +23,8 @@ createRouter({
             component: IntroducingCoreactPost,
         },
         {
-            path: "/blog/state-management",
-            component: CoreactStateManagementPost,
+            path: "/blog/why-i-built-this-framework",
+            component: WhyIBuiltThisFrameworkPost,
         },
         {
             path: "/blog/performance-optimization",
