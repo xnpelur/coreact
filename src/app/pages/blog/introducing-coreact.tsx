@@ -4,7 +4,7 @@ import { Footer } from "../../components/footer";
 
 export function IntroducingCoreactPost(): VirtualNode {
     return (
-        <div class="min-h-screen flex flex-col font-medium text-lg bg-white dark:bg-darkgray text-gray-700 dark:text-gray-100 leading-base">
+        <div class="min-h-screen flex flex-col text-lg bg-white dark:bg-darkgray text-gray-700 dark:text-gray-100 leading-base">
             <Navbar />
             <article class="text-primary dark:text-primary-dark flex-1 mt-12">
                 <div class="ps-0">

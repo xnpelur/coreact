@@ -5,9 +5,9 @@ import { ToggleModeButton } from "./toggle-mode-button";
 export function Navbar() {
     return (
         <div class="z-40 sticky top-0">
-            <nav class="duration-300 backdrop-filter backdrop-blur-lg backdrop-saturate-200 transition-shadow items-center w-full flex justify-between bg-white dark:bg-darkgray pr-5 pl-4 z-40">
+            <nav class="font-medium duration-300 backdrop-filter backdrop-blur-lg backdrop-saturate-200 transition-shadow items-center w-full flex justify-between bg-white dark:bg-darkgray pr-5 pl-4 z-40">
                 <div class="flex items-center justify-between w-full h-16 gap-3">
-                    <div class="flex flex-row flex-1 items-centers">
+                    <div class="flex flex-row flex-1 items-center">
                         <span data-state="closed" class="flex items-center">
                             <div class="flex items-center">
                                 <div>

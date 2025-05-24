@@ -15,7 +15,7 @@ export function DocsSidebar({
                             <li>
                                 <Link
                                     class={
-                                        "p-2 w-full rounded-r-2xl flex items-center justify-between pl-5 font-bold text-base" +
+                                        "p-2 w-full rounded-r-2xl flex items-center justify-between pl-5 font-medium text-base" +
                                         (currentPage === "overview"
                                             ? " text-cyan-500 dark:text-cyan-400 bg-cyan-500/10"
                                             : " text-gray-950 dark:text-gray-50 hover:bg-gray-100 dark:hover:bg-gray-80")
@@ -31,7 +31,7 @@ export function DocsSidebar({
                             <li>
                                 <Link
                                     class={
-                                        "p-2 w-full rounded-r-2xl flex items-center justify-between pl-5 font-bold text-base" +
+                                        "p-2 w-full rounded-r-2xl flex items-center justify-between pl-5 font-medium text-base" +
                                         (currentPage === "rendering"
                                             ? " text-cyan-500 dark:text-cyan-400 bg-cyan-500/10"
                                             : " text-gray-950 dark:text-gray-50 hover:bg-gray-100 dark:hover:bg-gray-80")
@@ -44,7 +44,7 @@ export function DocsSidebar({
                             <li>
                                 <Link
                                     class={
-                                        "p-2 w-full rounded-r-2xl flex items-center justify-between pl-5 font-bold text-base" +
+                                        "p-2 w-full rounded-r-2xl flex items-center justify-between pl-5 font-medium text-base" +
                                         (currentPage === "styling"
                                             ? " text-cyan-500 dark:text-cyan-400 bg-cyan-500/10"
                                             : " text-gray-950 dark:text-gray-50 hover:bg-gray-100 dark:hover:bg-gray-80")
@@ -57,7 +57,7 @@ export function DocsSidebar({
                             <li>
                                 <Link
                                     class={
-                                        "p-2 w-full rounded-r-2xl flex items-center justify-between pl-5 font-bold text-base" +
+                                        "p-2 w-full rounded-r-2xl flex items-center justify-between pl-5 font-medium text-base" +
                                         (currentPage === "state-management"
                                             ? " text-cyan-500 dark:text-cyan-400 bg-cyan-500/10"
                                             : " text-gray-950 dark:text-gray-50 hover:bg-gray-100 dark:hover:bg-gray-80")
@@ -70,7 +70,7 @@ export function DocsSidebar({
                             <li>
                                 <Link
                                     class={
-                                        "p-2 w-full rounded-r-2xl flex items-center justify-between pl-5 font-bold text-base" +
+                                        "p-2 w-full rounded-r-2xl flex items-center justify-between pl-5 font-medium text-base" +
                                         (currentPage === "routing"
                                             ? " text-cyan-500 dark:text-cyan-400 bg-cyan-500/10"
                                             : " text-gray-950 dark:text-gray-50 hover:bg-gray-100 dark:hover:bg-gray-80")

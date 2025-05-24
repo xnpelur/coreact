@@ -11,7 +11,7 @@ import { EffectResult } from "../components/examples/effect-result";
 
 export function HomePage(): VirtualNode {
     return (
-        <div class="font-text font-medium antialiased text-lg bg-white dark:bg-darkgray text-gray-700 dark:text-gray-100 leading-base">
+        <div class="font-text antialiased text-lg bg-white dark:bg-darkgray text-gray-700 dark:text-gray-100 leading-base">
             <Navbar />
             <main class="min-w-0 isolate">
                 <article class="font-normal break-words text-gray-950 dark:text-gray-50">
