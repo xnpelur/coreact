@@ -54,6 +54,11 @@ export function createRouter(options: {
         matchRoute(window.location.pathname);
     });
 
+    window.addEventListener("route-changed", () => {
+        const event = new CustomEvent("router-update");
+        window.dispatchEvent(event);
+    });
+
     isRouterInitialized = true;
 }
 
@@ -123,7 +128,7 @@ export function Link({
     to: string;
     children?: any;
     [key: string]: any;
-}) {
+}): VirtualNode {
     const handleClick = (e: MouseEvent) => {
         e.preventDefault();
         navigate(to);
@@ -142,7 +147,7 @@ export function Link({
  *
  * @returns {Object} The current route's parameters
  */
-export function useParams() {
+export function useParams(): object {
     return routerState.currentRoute?.params || {};
 }
 
@@ -154,12 +159,7 @@ let lastVNode: VirtualNode | null = null;
  *
  * @returns {VirtualNode} The rendered component
  */
-export function Router() {
-    window.addEventListener("route-changed", () => {
-        const event = new CustomEvent("router-update");
-        window.dispatchEvent(event);
-    });
-
+export function Router(): VirtualNode {
     let vnode: VirtualNode;
     if (routerState.currentRoute) {
         vnode = createElement(
