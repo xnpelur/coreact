@@ -20,7 +20,7 @@ export function DocsSidebar({
                                             ? " text-cyan-500 dark:text-cyan-400 bg-cyan-500/10"
                                             : " text-gray-950 dark:text-gray-50 hover:bg-gray-100 dark:hover:bg-gray-80")
                                     }
-                                    to="/docs"
+                                    href="/docs"
                                 >
                                     Overview
                                 </Link>
@@ -36,7 +36,7 @@ export function DocsSidebar({
                                             ? " text-cyan-500 dark:text-cyan-400 bg-cyan-500/10"
                                             : " text-gray-950 dark:text-gray-50 hover:bg-gray-100 dark:hover:bg-gray-80")
                                     }
-                                    to="/docs/rendering"
+                                    href="/docs/rendering"
                                 >
                                     Rendering
                                 </Link>
@@ -49,7 +49,7 @@ export function DocsSidebar({
                                             ? " text-cyan-500 dark:text-cyan-400 bg-cyan-500/10"
                                             : " text-gray-950 dark:text-gray-50 hover:bg-gray-100 dark:hover:bg-gray-80")
                                     }
-                                    to="/docs/styling"
+                                    href="/docs/styling"
                                 >
                                     Styling
                                 </Link>
@@ -62,7 +62,7 @@ export function DocsSidebar({
                                             ? " text-cyan-500 dark:text-cyan-400 bg-cyan-500/10"
                                             : " text-gray-950 dark:text-gray-50 hover:bg-gray-100 dark:hover:bg-gray-80")
                                     }
-                                    to="/docs/state-management"
+                                    href="/docs/state-management"
                                 >
                                     State Management
                                 </Link>
@@ -75,7 +75,7 @@ export function DocsSidebar({
                                             ? " text-cyan-500 dark:text-cyan-400 bg-cyan-500/10"
                                             : " text-gray-950 dark:text-gray-50 hover:bg-gray-100 dark:hover:bg-gray-80")
                                     }
-                                    to="/docs/routing"
+                                    href="/docs/routing"
                                 >
                                     Routing
                                 </Link>

@@ -62,8 +62,11 @@ export function unmount(
     keepEffects: boolean = false,
     parentPath: number[] = []
 ) {
+    if (!isElement(vnode)) {
+        return;
+    }
+
     if (
-        isElement(vnode) &&
         typeof vnode.tag === "function" &&
         vnode.componentInstance?.node?.element
     ) {
@@ -92,15 +95,16 @@ export function unmount(
         }
     }
 
-    if (isElement(vnode) && vnode.element) {
+    if (vnode.element) {
         vnode.element.remove();
     }
 
-    if (isElement(vnode)) {
+    if (vnode.componentInstance) {
+        unmount(vnode.componentInstance.node, keepEffects, parentPath);
+    } else {
         vnode.children.forEach((child, childIndex) =>
             unmount(child, keepEffects, parentPath.concat(childIndex))
         );
-        unmount(vnode.componentInstance?.node, keepEffects, parentPath);
     }
 }
 

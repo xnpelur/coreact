@@ -1,5 +1,6 @@
 import { createElement } from "@/runtime/jsx-runtime";
 import { Logo } from "@/app/components/logo";
+import { Link } from "@/runtime/router";
 
 export function Welcome() {
     return (
@@ -11,14 +12,12 @@ export function Welcome() {
                         Welcome to the
                         <br class="inline" /> Coreact community
                     </h2>
-                    <a
+                    <Link
                         class="scale-[.98] transition-transform inline-flex font-bold items-center outline-none focus:outline-none focus-visible:outline focus-visible:outline-cyan-600 focus:outline-offset-2 focus-visible:dark:focus:outline-blue-400 leading-snug bg-cyan-600 text-white dark:bg-cyan-600-dark dark:text-gray-700 text-lg py-3 rounded-full px-6"
-                        aria-label="Take the Tutorial"
-                        target="_self"
                         href="/docs"
                     >
                         Get Started
-                    </a>
+                    </Link>
                 </div>
             </div>
         </div>

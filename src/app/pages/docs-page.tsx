@@ -5,6 +5,7 @@ import { DocsSidebar } from "@/app/components/docs-sidebar";
 import { Heading } from "@/app/components/text/heading";
 import { Paragraph } from "@/app/components/text/paragraph";
 import { Code } from "@/app/components/text/code";
+import { Link } from "@/runtime/router";
 
 export function DocsPage(): VirtualNode {
     return (
@@ -86,39 +87,39 @@ npm run dev"
                         <Paragraph text="Explore the core modules of the framework:" />
                         <ul class="list-disc pl-6 mb-4">
                             <li class="mb-2">
-                                <a
+                                <Link
                                     href="/docs/rendering"
                                     class="text-cyan-600 hover:underline"
                                 >
                                     <strong>Rendering</strong>
-                                </a>{" "}
+                                </Link>{" "}
                                 — Build components and interact with JSX.
                             </li>
                             <li class="mb-2">
-                                <a
+                                <Link
                                     href="/docs/styling"
                                     class="text-cyan-600 hover:underline"
                                 >
                                     <strong>Styling</strong>
-                                </a>{" "}
+                                </Link>{" "}
                                 — Use utility-first classes like Tailwind.
                             </li>
                             <li class="mb-2">
-                                <a
+                                <Link
                                     href="/docs/state-management"
                                     class="text-cyan-600 hover:underline"
                                 >
                                     <strong>State Management</strong>
-                                </a>{" "}
+                                </Link>{" "}
                                 — Share reactive state across your app.
                             </li>
                             <li>
-                                <a
+                                <Link
                                     href="/docs/routing"
                                     class="text-cyan-600 hover:underline"
                                 >
                                     <strong>Routing</strong>
-                                </a>{" "}
+                                </Link>{" "}
                                 — Enable dynamic, client-side navigation.
                             </li>
                         </ul>

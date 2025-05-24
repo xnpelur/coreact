@@ -1,6 +1,7 @@
 import { createElement, VirtualNode } from "@/runtime/jsx-runtime";
 import { Navbar } from "../../components/navbar";
 import { Footer } from "../../components/footer";
+import { Link } from "@/runtime/router";
 
 export function CoreactStateManagementPost(): VirtualNode {
     return (
@@ -12,12 +13,12 @@ export function CoreactStateManagementPost(): VirtualNode {
                         <div class="max-w-4xl ms-0 2xl:mx-auto">
                             <div class="flex flex-wrap">
                                 <div class="flex mb-3 mt-0.5 items-center">
-                                    <a
+                                    <Link
                                         class="text-cyan-500 dark:text-cyan-400 text-sm tracking-wide font-bold uppercase mr-1 hover:underline"
                                         href="/"
                                     >
                                         Home
-                                    </a>
+                                    </Link>
                                     <span class="inline-block mr-1 text-cyan-500 dark:text-cyan-400 text-lg rtl:rotate-180">
                                         <svg
                                             width="20"
@@ -32,12 +33,12 @@ export function CoreactStateManagementPost(): VirtualNode {
                                             ></path>
                                         </svg>
                                     </span>
-                                    <a
+                                    <Link
                                         class="text-cyan-500 dark:text-cyan-400 text-sm tracking-wide font-bold uppercase mr-1 hover:underline"
                                         href="/blog"
                                     >
                                         Blog
-                                    </a>
+                                    </Link>
                                     <span class="inline-block mr-1 text-cyan-500 dark:text-cyan-400 text-lg rtl:rotate-180">
                                         <svg
                                             width="20"
@@ -270,7 +271,7 @@ function UserProfile() {
                             </section>
 
                             <div class="mt-16 pt-8 border-t border-gray-200 dark:border-gray-700">
-                                <a
+                                <Link
                                     href="/blog"
                                     class="inline-flex items-center text-cyan-500 hover:underline"
                                 >
@@ -290,7 +291,7 @@ function UserProfile() {
                                         </svg>
                                     </span>
                                     Back to Blog
-                                </a>
+                                </Link>
                             </div>
                         </div>
                     </div>

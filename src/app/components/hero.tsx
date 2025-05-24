@@ -1,5 +1,6 @@
 import { createElement } from "@/runtime/jsx-runtime";
 import { Logo } from "@/app/components/logo";
+import { Link } from "@/runtime/router";
 
 export function Hero() {
     return (
@@ -12,21 +13,18 @@ export function Hero() {
                 The framework for web user interfaces
             </p>
             <div class="mt-5 self-center flex gap-2 w-auto flex-row">
-                <a
+                <Link
                     class="w-auto justify-center scale-[.98] transition-transform inline-flex font-bold items-center outline-none focus:outline-none focus-visible:outline focus-visible:outline-cyan-600 focus:outline-offset-2 focus-visible:dark:focus:outline-blue-400 leading-snug bg-cyan-600 text-white dark:bg-cyan-600-dark dark:text-gray-700 text-lg py-3 rounded-full px-6"
-                    target="_self"
                     href="/docs"
                 >
                     Learn Coreact
-                </a>
-                <a
+                </Link>
+                <Link
                     class="w-auto justify-center scale-[.98] transition-transform inline-flex font-bold items-center outline-none focus:outline-none focus-visible:outline focus-visible:outline-cyan-600 focus:outline-offset-2 focus-visible:dark:focus:outline-blue-400 leading-snug text-gray-950 dark:text-gray-50 shadow-secondary-button-stroke hover:bg-gray-400/10  hover:dark:bg-gray-60/5 dark:bg-gray-60/10 text-lg py-3 rounded-full px-6"
-                    aria-label="API Reference"
-                    target="_self"
                     href="/blog"
                 >
                     Read Blog
-                </a>
+                </Link>
             </div>
         </div>
     );

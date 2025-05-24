@@ -1,9 +1,10 @@
 import { createElement } from "@/runtime/jsx-runtime";
+import { Link } from "@/runtime/router";
 
 export function NextLink({ href, text }: { href: string; text: string }) {
     return (
         <div class="mt-12 pt-8 border-t border-gray-200 dark:border-gray-700">
-            <a
+            <Link
                 href={href}
                 class="inline-flex items-center text-cyan-500 hover:underline"
             >
@@ -20,7 +21,7 @@ export function NextLink({ href, text }: { href: string; text: string }) {
                         clip-rule="evenodd"
                     ></path>
                 </svg>
-            </a>
+            </Link>
         </div>
     );
 }

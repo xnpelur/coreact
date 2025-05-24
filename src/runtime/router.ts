@@ -121,22 +121,22 @@ export function navigate(path: string) {
  * @returns {VirtualNode} The created link component
  */
 export function Link({
-    to,
+    href,
     children,
     ...props
 }: {
-    to: string;
+    href: string;
     children?: any;
     [key: string]: any;
 }): VirtualNode {
     const handleClick = (e: MouseEvent) => {
         e.preventDefault();
-        navigate(to);
+        navigate(href);
     };
 
     return createElement(
         "a",
-        { href: to, onClick: handleClick, ...props },
+        { href, onClick: handleClick, ...props },
         ...children
     );
 }
