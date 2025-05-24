@@ -16,12 +16,36 @@ export function DocsStateManagementPage(): VirtualNode {
                 <main class="flex-2 max-w-4xl px-8 pt-2 mx-auto">
                     <Heading level={1} text="State Management" />
                     <section class="mb-8">
-                        <Paragraph text="Managing local component state with `useState` works well for isolated logic. However, as your app grows, sharing state between components becomes critical. That’s where the global state management module comes in." />
+                        <Paragraph text="While useState is great for managing local, per-component data, real-world applications often need global state—data that needs to be accessed and updated across multiple, possibly unrelated components." />
+                    </section>
+                    <section class="mb-8">
+                        <Heading level={2} text="Why Global State?" />
+                        <Paragraph text="Consider the following scenarios:" />
+                        <ul class="list-disc list-inside mb-4">
+                            <li class="mb-2">
+                                Opening a sidebar from a button in the header
+                                and closing it from within the sidebar itself.
+                            </li>
+                            <li class="mb-2">
+                                Managing user authentication state across
+                                multiple components.
+                            </li>
+                            <li>
+                                Maintaining shopping cart contents while
+                                navigating between pages.
+                            </li>
+                        </ul>
+                        <Paragraph text="Managing this with prop drilling or lifting state becomes complex and error-prone. This is where the framework’s store-based state management comes in." />
+                    </section>
+                    <section class="mb-8">
                         <Heading level={2} text="Creating a Store" />
+                        <Paragraph text="You can define a reactive global state with `createStore`:" />
                         <Code
-                            text={`export const useTheme = createStore("light");
-
-const ThemeToggle = () => {
+                            text={`export const useTheme = createStore("light");`}
+                        />
+                        <Paragraph text="Then use it inside any component:" />
+                        <Code
+                            text={`const ThemeToggle = () => {
   const [theme, setTheme] = useTheme();
 
   return (
@@ -33,22 +57,27 @@ const ThemeToggle = () => {
   );
 };`}
                         />
-                        <Heading level={2} text="Why Global State?" />
-                        <Paragraph
-                            text="Global state is ideal for data that needs to be
-                            accessed and updated across multiple parts of the
-                            app: user auth, cart contents, theme mode, sidebar
-                            toggles, etc."
-                        />
-                        <Paragraph
-                            text="Example use case: opening a sidebar from a button in
-                            the header and closing it from within the sidebar
-                            itself. Doing this with <code>useState</code> would
-                            require lifting state up and passing it down
-                            multiple levels. With <code>createStore</code>, it
-                            takes one line to subscribe anywhere in the app."
-                        />
+                        <Paragraph text="The store acts like a shared useState. Any component that calls the store hook automatically re-renders when the value changes." />
                     </section>
+
+                    <section class="mb-8">
+                        <Heading level={2} text="Best Practices" />
+                        <ul class="list-disc list-inside mb-4">
+                            <li class="mb-2">
+                                Use global state for application-wide data, not
+                                per-component UI.
+                            </li>
+                            <li class="mb-2">
+                                Keep stores small and focused. A useUser() store
+                                for auth, useCart() for ecommerce, etc.
+                            </li>
+                            <li>
+                                Wrap store logic in custom hooks if you need
+                                derived state, memoization, or actions.
+                            </li>
+                        </ul>
+                    </section>
+
                     <NextLink href="/docs/routing" text="Next: Routing" />
                 </main>
                 <div class="flex-1 hidden 2xl:block max-w-80"></div>

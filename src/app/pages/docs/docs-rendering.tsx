@@ -17,22 +17,34 @@ export function DocsRenderingPage(): VirtualNode {
                     <Heading level={1} text="Rendering" />
                     <section class="mb-8">
                         <Paragraph text="The rendering module is the heart of the framework. It allows you to write components in a declarative style using JSX, making your UI logic expressive and intuitive." />
-                        <Heading level={2} text="Installation" />
-                        <Paragraph text="A component is a JavaScript (or TypeScript) function that returns JSX. It's a reusable building block that defines how your interface should look and" />
+                    </section>
+
+                    <section class="mb-8">
+                        <Heading level={2} text="Defining Components" />
+                        <Paragraph text="A component is a JavaScript (or TypeScript) function that returns JSX. It's a reusable building block that defines how your interface should look and behave" />
                         <Code
                             text={`const Button = () => {
   return <button class="bg-blue-500 text-white px-4 py-2 rounded">Click me</button>;
 }`}
                         />
-                        <Paragraph text="You can reuse components and compose them to build complex interfaces. There is no special class or API required—just plain functions and JSX." />
+                        <Paragraph text="There is no class-based syntax or complex lifecycle model. Just write functions that describe UI elements." />
+                        <Paragraph text="Components can be nested, passed props, or conditionally rendered. If you've used React, you'll feel right at home." />
+                    </section>
+
+                    <section class="mb-8">
                         <Heading level={2} text="Conditional Rendering" />
+                        <Paragraph text="Conditional rendering is useful for toggling UI content based on application logic, user actions, or state changes." />
                         <Code
                             text={`const Welcome = ({ loggedIn }) => {
   return <div>{loggedIn ? "Welcome back!" : "Please sign in."}</div>;
 };`}
                         />
-                        <Paragraph text="This keeps your templates clean and concise, without requiring special syntax." />
+                        <Paragraph text="This lets you show or hide sections of your app without managing display styles manually. It's especially useful for authentication flows, loading indicators, and UI personalization." />
+                    </section>
+
+                    <section class="mb-8">
                         <Heading level={2} text="useState Hook" />
+                        <Paragraph text="The `useState` hook is the simplest way to add interactivity to your components. It returns a state value and a setter to update it." />
                         <Code
                             text={`const Counter = () => {
   const [count, setCount] = useState(0);
@@ -44,8 +56,12 @@ export function DocsRenderingPage(): VirtualNode {
   );
 };`}
                         />
-                        <Paragraph text="This simple pattern is the foundation for interactive UI elements. You can create as many state variables as needed inside a component." />
+                        <Paragraph text="Each time you call setCount, the component re-renders with the new value. This makes useState ideal for tracking local UI values like form inputs, toggle switches, or counters." />
+                    </section>
+
+                    <section class="mb-8">
                         <Heading level={2} text="useEffect Hook" />
+                        <Paragraph text="The useEffect hook lets you perform side effects after a component renders. This includes tasks like fetching data, logging to the console, or interacting with the browser DOM" />
                         <Code
                             text={`const Logger = () => {
   const [value, setValue] = useState("");
@@ -57,7 +73,7 @@ export function DocsRenderingPage(): VirtualNode {
   return <input value={value} onInput={e => setValue(e.target.value)} />;
 };`}
                         />
-                        <Paragraph text="The second argument to useEffect is a dependency array. The effect runs every time the dependencies change. In this case, the message will be logged every time value is updated." />
+                        <Paragraph text="The hook runs after every render where dependencies (in this case value) change. Effects are isolated from rendering, so you can cleanly manage asynchronous behavior without blocking the UI." />
                     </section>
                     <NextLink href="/docs/styling" text="Next: Styling" />
                 </main>
