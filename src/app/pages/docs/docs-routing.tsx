@@ -10,86 +10,55 @@ export function DocsRoutingPage(): VirtualNode {
             <div class="flex flex-1 pt-4">
                 <DocsSidebar currentPage="routing" />
                 <main class="flex-2 max-w-4xl px-8 pt-2 mx-auto">
-                    <h1 class="text-4xl font-bold mb-8">Routing in Coreact</h1>
-
+                    <h1 class="text-4xl font-bold mb-8">Routing</h1>
                     <section class="mb-8">
-                        <h2 class="text-2xl font-bold mb-4">
-                            Introduction to Routing
+                        <p class="mb-4">
+                            The routing module lets you build single-page
+                            applications (SPAs) with seamless navigation and
+                            clean URLs.
+                        </p>
+                        <h2 class="text-xl font-semibold mb-2">
+                            How Routing Works
                         </h2>
                         <p class="mb-4">
-                            Routing allows you to navigate between different
-                            components in your application, keeping the UI in
-                            sync with the URL.
+                            Routing is handled on the client side using the
+                            History API. It watches the current URL and renders
+                            the corresponding component from your route table.
                         </p>
-                    </section>
-
-                    <section class="mb-8">
-                        <h2 class="text-2xl font-bold mb-4">Basic Routing</h2>
-                        <p class="mb-4">
-                            Coreact provides a simple way to handle routing
-                            using the <code>Router</code> and <code>Route</code>{" "}
-                            components.
-                        </p>
-                        <pre class="bg-gray-100 dark:bg-gray-800 p-4 rounded-lg overflow-x-auto text-sm mb-4">
-                            <code>
-                                {`import { Router, Route } from 'coreact';
-import Home from './pages/home';
-import About from './pages/about';
-
-function App() {
-    return (
-        <Router>
-            <Route path="/" component={Home} />
-            <Route path="/about" component={About} />
-        </Router>
-    );
-}`}
-                            </code>
-                        </pre>
-                    </section>
-
-                    <section class="mb-8">
-                        <h2 class="text-2xl font-bold mb-4">Navigation</h2>
-                        <p class="mb-4">
-                            Use the <code>Link</code> component to navigate
-                            between routes without a full page reload.
-                        </p>
-                        <pre class="bg-gray-100 dark:bg-gray-800 p-4 rounded-lg overflow-x-auto text-sm mb-4">
-                            <code>
-                                {`import { Link } from 'coreact';
-
-function Nav() {
-    return (
-        <nav>
-            <Link href="/">Home</Link>
-            <Link href="/about">About</Link>
-        </nav>
-    );
-}`}
-                            </code>
-                        </pre>
-                    </section>
-
-                    <section class="mb-8">
-                        <h2 class="text-2xl font-bold mb-4">
-                            Route Parameters
+                        <h2 class="text-xl font-semibold mb-2">
+                            API Reference
                         </h2>
-                        <p class="mb-4">
-                            You can define dynamic segments in your routes using
-                            the <code>:</code> syntax.
-                        </p>
-                        <pre class="bg-gray-100 dark:bg-gray-800 p-4 rounded-lg overflow-x-auto text-sm mb-4">
-                            <code>
-                                {`// In your router
-<Route path="/users/:id" component={UserDetail} />
+                        <pre class="bg-gray-100 dark:bg-gray-800 p-4 rounded-lg overflow-x-auto text-base mb-4">
+                            <code>{`const routes = {
+  "/": Home,
+  "/about": About,
+  "/users/:id": UserProfile,
+};
 
-// Access the parameter in your component
-function UserDetail({ params }) {
-    const userId = params.id;
-    // ...
-}`}
-                            </code>
+const CurrentPage = createRouter(routes);`}</code>
                         </pre>
+                        <p class="mb-4">
+                            Use <code>CurrentPage</code> as a component inside
+                            your main layout to display the active view.
+                        </p>
+                        <pre class="bg-gray-100 dark:bg-gray-800 p-4 rounded-lg overflow-x-auto text-base mb-4">
+                            <code>{`<button onClick={() => navigate("/about")}>Go to About</button>`}</code>
+                        </pre>
+                        <p class="mb-4">
+                            This updates the URL and rerenders without reloading
+                            the page.
+                        </p>
+                        <h2 class="text-xl font-semibold mb-2">useParams()</h2>
+                        <pre class="bg-gray-100 dark:bg-gray-800 p-4 rounded-lg overflow-x-auto text-base mb-4">
+                            <code>{`const UserProfile = () => {
+  const { id } = useParams();
+  return <div>User ID: {id}</div>;
+};`}</code>
+                        </pre>
+                        <p>
+                            Perfect for pages like <code>/users/:id</code>,{" "}
+                            <code>/posts/:slug</code>, and more.
+                        </p>
                     </section>
 
                     <div class="mt-12 pt-8 border-t border-gray-200 dark:border-gray-700">

@@ -10,49 +10,40 @@ export function DocsStylingPage(): VirtualNode {
             <div class="flex flex-1 pt-4">
                 <DocsSidebar currentPage="styling" />
                 <main class="flex-2 max-w-4xl px-8 pt-2 mx-auto">
-                    <h1 class="text-4xl font-bold mb-8">Styling in Coreact</h1>
-
+                    <h1 class="text-4xl font-bold mb-8">Styling</h1>
                     <section class="mb-8">
-                        <h2 class="text-2xl font-bold mb-4">CSS Classes</h2>
                         <p class="mb-4">
-                            You can use the <code>class</code> prop to apply CSS
-                            classes to your elements. Coreact supports both
-                            regular CSS and CSS-in-JS solutions.
+                            The styling module provides a utility-first approach
+                            to styling components, inspired by Tailwind CSS. You
+                            define styles directly in the class attribute of
+                            your JSX elements using descriptive utility classes.
                         </p>
-                        <pre class="bg-gray-100 dark:bg-gray-800 p-4 rounded-lg overflow-x-auto text-sm mb-4">
-                            <code>
-                                {`function Button() {
-    return <button class="px-4 py-2 bg-blue-500 text-white rounded">Click me</button>;
-}`}
-                            </code>
+                        <h2 class="text-xl font-semibold mb-2">Basic Usage</h2>
+                        <pre class="bg-gray-100 dark:bg-gray-800 p-4 rounded-lg overflow-x-auto text-base mb-4">
+                            <code>{`<div class="text-xl font-bold text-center text-blue-600">
+  Hello, styled world!
+</div>`}</code>
                         </pre>
-                    </section>
-
-                    <section class="mb-8">
-                        <h2 class="text-2xl font-bold mb-4">Inline Styles</h2>
-                        <p class="mb-4">
-                            For dynamic styles, you can pass a JavaScript object
-                            to the <code>style</code> prop.
-                        </p>
-                        <pre class="bg-gray-100 dark:bg-gray-800 p-4 rounded-lg overflow-x-auto text-sm mb-4">
-                            <code>
-                                {`function ColoredBox() {
-    const style = {
-        backgroundColor: 'blue',
-        padding: '1rem',
-        color: 'white'
-    };
-    return <div style={style}>Hello, styled div!</div>;
-}`}
-                            </code>
+                        <h2 class="text-xl font-semibold mb-2">
+                            Utility Class Examples
+                        </h2>
+                        <pre class="bg-gray-100 dark:bg-gray-800 p-4 rounded-lg overflow-x-auto text-base mb-4">
+                            <code>{`<button class="bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded">
+  Submit
+</button>`}</code>
                         </pre>
-                    </section>
-
-                    <section class="mb-8">
-                        <h2 class="text-2xl font-bold mb-4">CSS Modules</h2>
-                        <p class="mb-4">
-                            Coreact supports CSS Modules out of the box for
-                            component-scoped styles.
+                        <h2 class="text-xl font-semibold mb-2">
+                            Responsive Design
+                        </h2>
+                        <pre class="bg-gray-100 dark:bg-gray-800 p-4 rounded-lg overflow-x-auto text-base mb-4">
+                            <code>{`<div class="flex flex-col md:flex-row gap-4">
+  <div class="flex-1 bg-gray-100 p-4">Sidebar</div>
+  <div class="flex-3 bg-white p-4">Content</div>
+</div>`}</code>
+                        </pre>
+                        <p>
+                            On small screens, the elements stack vertically. On
+                            medium screens and up, they lay out side by side.
                         </p>
                     </section>
 

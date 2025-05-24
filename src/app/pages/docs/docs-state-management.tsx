@@ -10,63 +10,45 @@ export function DocsStateManagementPage(): VirtualNode {
             <div class="flex flex-1 pt-4">
                 <DocsSidebar currentPage="state-management" />
                 <main class="flex-2 max-w-4xl px-8 pt-2 mx-auto">
-                    <h1 class="text-4xl font-bold mb-8">
-                        State Management in Coreact
-                    </h1>
-
+                    <h1 class="text-4xl font-bold mb-8">State Management</h1>
                     <section class="mb-8">
-                        <h2 class="text-2xl font-bold mb-4">
-                            Introduction to State
-                        </h2>
                         <p class="mb-4">
-                            State allows components to manage and track changes
-                            to data over time. In Coreact, you can manage state
-                            using hooks or context.
+                            Managing local component state with{" "}
+                            <code>useState</code> works well for isolated logic.
+                            However, as your app grows, sharing state between
+                            components becomes critical. That’s where the global
+                            state management module comes in.
                         </p>
-                    </section>
-
-                    <section class="mb-8">
-                        <h2 class="text-2xl font-bold mb-4">
-                            Using State Hooks
+                        <h2 class="text-xl font-semibold mb-2">
+                            Creating a Store
                         </h2>
-                        <p class="mb-4">
-                            The <code>useState</code> hook lets you add state to
-                            function components.
-                        </p>
-                        <pre class="bg-gray-100 dark:bg-gray-800 p-4 rounded-lg overflow-x-auto text-sm mb-4">
-                            <code>
-                                {`import { useState } from 'coreact';
+                        <pre class="bg-gray-100 dark:bg-gray-800 p-4 rounded-lg overflow-x-auto text-base mb-4">
+                            <code>{`export const useTheme = createStore("light");
 
-function Counter() {
-    const [count, setCount] = useState(0);
-    
-    return (
-        <div>
-            <p>Count: {count}</p>
-            <button onClick={() => setCount(count + 1)}>Increment</button>
-        </div>
-    );
-}`}
-                            </code>
+const ThemeToggle = () => {
+  const [theme, setTheme] = useTheme();
+
+  return (
+    <button onClick={() => setTheme(theme === "light" ? "dark" : "light")}>Theme: {theme}</button>
+  );
+};`}</code>
                         </pre>
-                    </section>
-
-                    <section class="mb-8">
-                        <h2 class="text-2xl font-bold mb-4">Context API</h2>
-                        <p class="mb-4">
-                            For global state that needs to be accessed by many
-                            components, you can use the Context API.
-                        </p>
-                    </section>
-
-                    <section class="mb-8">
-                        <h2 class="text-2xl font-bold mb-4">
-                            External State Management
+                        <h2 class="text-xl font-semibold mb-2">
+                            Why Global State?
                         </h2>
                         <p class="mb-4">
-                            For complex applications, you might want to use
-                            external state management solutions like Redux or
-                            Zustand.
+                            Global state is ideal for data that needs to be
+                            accessed and updated across multiple parts of the
+                            app: user auth, cart contents, theme mode, sidebar
+                            toggles, etc.
+                        </p>
+                        <p class="mb-4">
+                            Example use case: opening a sidebar from a button in
+                            the header and closing it from within the sidebar
+                            itself. Doing this with <code>useState</code> would
+                            require lifting state up and passing it down
+                            multiple levels. With <code>createStore</code>, it
+                            takes one line to subscribe anywhere in the app.
                         </p>
                     </section>
 

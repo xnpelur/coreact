@@ -10,76 +10,120 @@ export function DocsPage(): VirtualNode {
             <div class="flex flex-1 pt-4 justify-between">
                 <DocsSidebar currentPage="overview" />
                 <main class="flex-2 max-w-4xl px-8 pt-2 mx-auto">
-                    <h1 class="text-4xl font-bold mb-8">Learn Coreact</h1>
-                    <p class="text-xl mb-8 text-gray-600 dark:text-gray-300">
-                        Learn how to build modern web applications with Coreact.
-                    </p>
+                    <h1 class="text-4xl font-bold mb-8">Getting Started</h1>
+                    <section class="mb-8">
+                        <p class="mb-4">
+                            Welcome to the official documentation of our
+                            lightweight frontend framework. This guide is your
+                            entry point to building modern web applications with
+                            a clear separation of logic and layout,
+                            component-based rendering, and built-in support for
+                            styling, routing, and state management.
+                        </p>
+                        <p class="mb-4">
+                            Whether you're building a single-page app (SPA), a
+                            dashboard, or a static marketing site, this
+                            framework provides you with the essential tools
+                            without the bloat.
+                        </p>
+                    </section>
 
-                    <div class="space-y-8">
-                        <section>
-                            <h2 class="text-2xl font-bold mb-4">
-                                Getting Started
-                            </h2>
-                            <p class="mb-4">
-                                Welcome to the Coreact documentation! This guide
-                                will help you get started with the framework.
-                            </p>
-                        </section>
+                    <section class="mb-12">
+                        <h2 class="text-2xl font-bold mb-4">Installation</h2>
+                        <p class="mb-4">
+                            To begin using the framework, clone the repository
+                            and install dependencies using the following
+                            commands:
+                        </p>
+                        <pre class="bg-gray-100 dark:bg-gray-800 p-4 rounded-lg overflow-x-auto text-base mb-4">
+                            <code>{`git clone <your-repo-link>
+cd <your-project-directory>
+npm install
+npm run dev`}</code>
+                        </pre>
+                        <p>
+                            This will start the development server and
+                            automatically reload the browser when you make
+                            changes. The framework is powered by modern tooling
+                            (Vite, TypeScript), enabling blazing-fast builds and
+                            efficient development cycles.
+                        </p>
+                    </section>
 
-                        <section>
-                            <h2 class="text-2xl font-bold mb-4">Quick Links</h2>
-                            <div class="grid md:grid-cols-2 gap-4">
+                    <section class="mb-12">
+                        <h2 class="text-2xl font-bold mb-4">
+                            Project Structure
+                        </h2>
+                        <p class="mb-4">
+                            User-defined application code lives in the{" "}
+                            <code class="bg-gray-200 px-1 rounded">
+                                /src/app
+                            </code>{" "}
+                            directory. All other folders house internal runtime
+                            logic or auto-generated code and should not be
+                            modified manually.
+                        </p>
+                        <pre class="bg-gray-100 dark:bg-gray-800 p-4 rounded-lg overflow-x-auto text-base mb-4">
+                            <code>{`/src
+  ├── app         ← Your components, pages, and styles
+  ├── runtime     ← Internal framework logic
+  ├── styles      ← Base styles and theme variables
+  ├── plugins     ← Vite plugin for style scanning
+  ├── generated   ← Compiled utility-first CSS
+  └── main.ts     ← Mounts your main App component`}</code>
+                        </pre>
+                        <p>
+                            This clear separation allows you to upgrade
+                            framework internals independently of your own
+                            project logic and maintain a clean development
+                            environment.
+                        </p>
+                    </section>
+
+                    <section class="mb-12">
+                        <h2 class="text-2xl font-bold mb-4">What's Next?</h2>
+                        <p class="mb-4">
+                            Explore the core modules of the framework:
+                        </p>
+                        <ul class="list-disc pl-6 mb-4">
+                            <li class="mb-2">
                                 <a
                                     href="/docs/rendering"
-                                    class="p-4 border rounded-lg hover:border-cyan-500 transition-colors"
+                                    class="text-cyan-600 hover:underline"
                                 >
-                                    <h3 class="font-bold text-lg mb-2">
-                                        Rendering
-                                    </h3>
-                                    <p class="text-gray-600 dark:text-gray-300">
-                                        Learn how to render UI with Coreact
-                                        components.
-                                    </p>
-                                </a>
+                                    <strong>Rendering</strong>
+                                </a>{" "}
+                                — Build components and interact with JSX.
+                            </li>
+                            <li class="mb-2">
                                 <a
                                     href="/docs/styling"
-                                    class="p-4 border rounded-lg hover:border-cyan-500 transition-colors"
+                                    class="text-cyan-600 hover:underline"
                                 >
-                                    <h3 class="font-bold text-lg mb-2">
-                                        Styling
-                                    </h3>
-                                    <p class="text-gray-600 dark:text-gray-300">
-                                        Style your components with various
-                                        approaches.
-                                    </p>
-                                </a>
+                                    <strong>Styling</strong>
+                                </a>{" "}
+                                — Use utility-first classes like Tailwind.
+                            </li>
+                            <li class="mb-2">
                                 <a
                                     href="/docs/state-management"
-                                    class="p-4 border rounded-lg hover:border-cyan-500 transition-colors"
+                                    class="text-cyan-600 hover:underline"
                                 >
-                                    <h3 class="font-bold text-lg mb-2">
-                                        State Management
-                                    </h3>
-                                    <p class="text-gray-600 dark:text-gray-300">
-                                        Manage your application state
-                                        effectively.
-                                    </p>
-                                </a>
+                                    <strong>State Management</strong>
+                                </a>{" "}
+                                — Share reactive state across your app.
+                            </li>
+                            <li>
                                 <a
                                     href="/docs/routing"
-                                    class="p-4 border rounded-lg hover:border-cyan-500 transition-colors"
+                                    class="text-cyan-600 hover:underline"
                                 >
-                                    <h3 class="font-bold text-lg mb-2">
-                                        Routing
-                                    </h3>
-                                    <p class="text-gray-600 dark:text-gray-300">
-                                        Handle navigation in your Coreact
-                                        application.
-                                    </p>
-                                </a>
-                            </div>
-                        </section>
-                    </div>
+                                    <strong>Routing</strong>
+                                </a>{" "}
+                                — Enable dynamic, client-side navigation.
+                            </li>
+                        </ul>
+                    </section>
                 </main>
                 <div class="flex-1 hidden 2xl:block max-w-80"></div>
             </div>

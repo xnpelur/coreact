@@ -10,58 +10,81 @@ export function DocsRenderingPage(): VirtualNode {
             <div class="flex flex-1 pt-4 justify-between">
                 <DocsSidebar currentPage="rendering" />
                 <main class="flex-2 max-w-4xl px-8 pt-2 mx-auto">
-                    <h1 class="text-4xl font-bold mb-8">
-                        Rendering in Coreact
-                    </h1>
-
+                    <h1 class="text-4xl font-bold mb-8">Rendering</h1>
                     <section class="mb-8">
-                        <h2 class="text-2xl font-bold mb-4">
-                            Introduction to Components
-                        </h2>
                         <p class="mb-4">
-                            In Coreact, components are the building blocks of
-                            your UI. They are reusable, self-contained pieces of
-                            code that return what should appear on the screen.
+                            The rendering module is the heart of the framework.
+                            It allows you to write components in a declarative
+                            style using JSX, making your UI logic expressive and
+                            intuitive.
                         </p>
-                    </section>
-
-                    <section class="mb-8">
-                        <h2 class="text-2xl font-bold mb-4">
-                            Creating Components
-                        </h2>
+                        <h2 class="text-2xl font-bold mb-4">Installation</h2>
                         <p class="mb-4">
-                            To create a component, define a function that
-                            returns JSX. Component names must start with a
-                            capital letter.
+                            A component is a JavaScript (or TypeScript) function
+                            that returns JSX. It's a reusable building block
+                            that defines how your interface should look and
+                            behave.
                         </p>
-                        <pre class="bg-gray-100 dark:bg-gray-800 p-4 rounded-lg overflow-x-auto text-sm mb-4">
-                            <code>
-                                {`function Welcome() {
-    return <h1>Hello, World!</h1>;
-}`}
-                            </code>
+                        <pre class="bg-gray-100 dark:bg-gray-800 p-4 rounded-lg overflow-x-auto text-base mb-4">
+                            <code>{`const Button = () => {
+  return <button class="bg-blue-500 text-white px-4 py-2 rounded">Click me</button>;
+};`}</code>
                         </pre>
-                    </section>
-
-                    <section class="mb-8">
-                        <h2 class="text-2xl font-bold mb-4">
-                            Rendering Elements
-                        </h2>
                         <p class="mb-4">
-                            Coreact elements are the smallest building blocks of
-                            Coreact applications. They describe what you want to
-                            see on the screen.
+                            You can reuse components and compose them to build
+                            complex interfaces. There is no special class or API
+                            required—just plain functions and JSX.
                         </p>
-                    </section>
-
-                    <section class="mb-8">
-                        <h2 class="text-2xl font-bold mb-4">
+                        <h2 class="text-xl font-semibold mb-2">
                             Conditional Rendering
                         </h2>
+                        <pre class="bg-gray-100 dark:bg-gray-800 p-4 rounded-lg overflow-x-auto text-base mb-4">
+                            <code>{`const Welcome = ({ loggedIn }) => {
+  return <div>{loggedIn ? "Welcome back!" : "Please sign in."}</div>;
+};`}</code>
+                        </pre>
                         <p class="mb-4">
-                            You can use JavaScript operators like if or the
-                            conditional (ternary) operator to create elements
-                            representing the current state.
+                            This keeps your templates clean and concise, without
+                            requiring special syntax.
+                        </p>
+                        <h2 class="text-xl font-semibold mb-2">
+                            useState Hook
+                        </h2>
+                        <pre class="bg-gray-100 dark:bg-gray-800 p-4 rounded-lg overflow-x-auto text-base mb-4">
+                            <code>{`const Counter = () => {
+  const [count, setCount] = useState(0);
+  return (
+    <div class="text-center">
+      <p class="mb-2">Count: {count}</p>
+      <button class="btn" onClick={() => setCount(count + 1)}>Increment</button>
+    </div>
+  );
+};`}</code>
+                        </pre>
+                        <p class="mb-4">
+                            This simple pattern is the foundation for
+                            interactive UI elements. You can create as many
+                            state variables as needed inside a component.
+                        </p>
+                        <h2 class="text-xl font-semibold mb-2">
+                            useEffect Hook
+                        </h2>
+                        <pre class="bg-gray-100 dark:bg-gray-800 p-4 rounded-lg overflow-x-auto text-base mb-4">
+                            <code>{`const Logger = () => {
+  const [value, setValue] = useState("");
+
+  useEffect(() => {
+    console.log("Input changed:", value);
+  }, [value]);
+
+  return <input value={value} onInput={e => setValue(e.target.value)} />;
+};`}</code>
+                        </pre>
+                        <p>
+                            The second argument to useEffect is a dependency
+                            array. The effect runs every time the dependencies
+                            change. In this case, the message will be logged
+                            every time value is updated.
                         </p>
                     </section>
 
