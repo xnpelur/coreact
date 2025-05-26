@@ -1,11 +1,13 @@
 import { createElement, VirtualNode } from "@/runtime/jsx-runtime";
 import { Link } from "@/runtime/router";
+import { useTranslation } from "@/runtime/hooks/translation";
 
 export function DocsSidebar({
     currentPage = "",
 }: {
     currentPage?: string;
 }): VirtualNode {
+    const { t } = useTranslation();
     return (
         <div class="max-w-80 flex-1 z-10 hidden xl:block">
             <div class="sticky top-20">
@@ -22,11 +24,19 @@ export function DocsSidebar({
                                     }
                                     href="/docs"
                                 >
-                                    Overview
+                                    {
+                                        t(
+                                            "docsSidebar.link.overview"
+                                        ) /* Overview */
+                                    }
                                 </Link>
                             </li>
                             <h3 class="mb-1 mt-4 text-xs ml-5 text-gray-500 dark:text-gray-300">
-                                CORE MODULES
+                                {
+                                    t(
+                                        "docsSidebar.header.coreModules"
+                                    ) /* CORE MODULES */
+                                }
                             </h3>
                             <li>
                                 <Link
@@ -38,7 +48,11 @@ export function DocsSidebar({
                                     }
                                     href="/docs/rendering"
                                 >
-                                    Rendering
+                                    {
+                                        t(
+                                            "docsSidebar.link.rendering"
+                                        ) /* Rendering */
+                                    }
                                 </Link>
                             </li>
                             <li>
@@ -51,7 +65,11 @@ export function DocsSidebar({
                                     }
                                     href="/docs/styling"
                                 >
-                                    Styling
+                                    {
+                                        t(
+                                            "docsSidebar.link.styling"
+                                        ) /* Styling */
+                                    }
                                 </Link>
                             </li>
                             <li>
@@ -64,7 +82,11 @@ export function DocsSidebar({
                                     }
                                     href="/docs/state-management"
                                 >
-                                    State Management
+                                    {
+                                        t(
+                                            "docsSidebar.link.stateManagement"
+                                        ) /* State Management */
+                                    }
                                 </Link>
                             </li>
                             <li>
@@ -77,7 +99,11 @@ export function DocsSidebar({
                                     }
                                     href="/docs/routing"
                                 >
-                                    Routing
+                                    {
+                                        t(
+                                            "docsSidebar.link.routing"
+                                        ) /* Routing */
+                                    }
                                 </Link>
                             </li>
                         </ul>

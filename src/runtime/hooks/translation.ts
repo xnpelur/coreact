@@ -2,7 +2,7 @@ import { currentComponentId, rerender } from "@/runtime/dom";
 
 const translations: Record<string, Record<string, string>> = {};
 
-let currentLang = "en";
+let currentLang = "ru";
 const listeners = new Set<string>();
 
 export function useTranslation() {

@@ -2,8 +2,10 @@ import { createElement, VirtualNode } from "@/runtime/jsx-runtime";
 import { Navbar } from "../components/navbar";
 import { Footer } from "../components/footer";
 import { Link } from "@/runtime/router";
+import { useTranslation } from "@/runtime/hooks/translation";
 
 export function NotFoundPage(): VirtualNode {
+    const { t } = useTranslation();
     return (
         <div class="min-h-screen flex flex-col text-lg bg-white dark:bg-darkgray text-gray-700 dark:text-gray-100 leading-base">
             <Navbar />
@@ -18,7 +20,11 @@ export function NotFoundPage(): VirtualNode {
                                             class="text-cyan-500 dark:text-cyan-400 text-sm tracking-wide font-bold uppercase me-1 hover:underline"
                                             href="/"
                                         >
-                                            Home
+                                            {
+                                                t(
+                                                    "notFoundPage.link.home"
+                                                ) /* Home */
+                                            }
                                         </Link>
                                         <span class="inline-block me-1 text-cyan-500 dark:text-cyan-400 text-lg rtl:rotate-180">
                                             <svg
@@ -37,7 +43,11 @@ export function NotFoundPage(): VirtualNode {
                                     </div>
                                 </div>
                                 <h1 class="mdx-heading mt-0 text-primary dark:text-primary-dark -mx-.5 break-words text-5xl font-display font-bold leading-tight">
-                                    Not Found
+                                    {
+                                        t(
+                                            "notFoundPage.heading.notFound"
+                                        ) /* Not Found */
+                                    }
                                 </h1>
                             </div>
                         </div>
@@ -47,7 +57,11 @@ export function NotFoundPage(): VirtualNode {
                             <div class="max-w-4xl ms-0 2xl:mx-auto">
                                 <div class="font-display text-xl text-primary dark:text-primary-dark leading-relaxed">
                                     <p class="whitespace-pre-wrap my-4">
-                                        This page doesn’t exist.
+                                        {
+                                            t(
+                                                "notFoundPage.text.thisPage"
+                                            ) /* This page doesn’t exist. */
+                                        }
                                     </p>
                                 </div>
                             </div>

@@ -3,8 +3,10 @@ import { Navbar } from "../components/navbar";
 import { Footer } from "../components/footer";
 import { Link } from "@/runtime/router";
 import { BlogBreadcrumb } from "../components/blog-breadcrumb";
+import { useTranslation } from "@/runtime/hooks/translation";
 
 export function BlogPage(): VirtualNode {
+    const { t } = useTranslation();
     return (
         <div class="min-h-screen flex flex-col text-lg bg-white dark:bg-darkgray text-gray-700 dark:text-gray-100 leading-base">
             <Navbar />
@@ -13,12 +15,11 @@ export function BlogPage(): VirtualNode {
                     <div class="px-5 sm:px-12 pt-3.5">
                         <div class="max-w-4xl ms-0 2xl:mx-auto">
                             <BlogBreadcrumb />
-                            <h1 class="text-4xl font-bold mb-8">
-                                Coreact Blog
+                            <h1 class="text-4xl font-bold mb-4">
+                                {t("blogPage.heading.title")}
                             </h1>
                             <p class="text-xl text-gray-600 dark:text-gray-300 mb-16">
-                                The latest news and updates from the Coreact
-                                team.
+                                {t("blogPage.paragraph.intro")}
                             </p>
 
                             <div class="pb-8">
@@ -31,21 +32,26 @@ export function BlogPage(): VirtualNode {
                                             href="/blog/performance-optimization"
                                             class="hover:text-cyan-500 hover:underline"
                                         >
-                                            Optimizing Performance in Coreact
-                                            Applications
+                                            {t(
+                                                "blogPage.article.performance.title"
+                                            )}
                                         </Link>
                                     </h2>
                                     <p class="text-gray-600 dark:text-gray-300 mb-4">
-                                        Discover techniques and best practices
-                                        for optimizing the performance of your
-                                        Coreact applications.
+                                        {t(
+                                            "blogPage.article.performance.summary"
+                                        )}
                                     </p>
                                     <div class="flex flex-wrap gap-2 mt-4">
                                         <span class="px-3 py-1 text-sm rounded-full bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300">
-                                            performance
+                                            {t(
+                                                "blogPage.article.performance.tag1"
+                                            )}
                                         </span>
                                         <span class="px-3 py-1 text-sm rounded-full bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300">
-                                            optimization
+                                            {t(
+                                                "blogPage.article.performance.tag2"
+                                            )}
                                         </span>
                                     </div>
                                 </article>
@@ -61,21 +67,24 @@ export function BlogPage(): VirtualNode {
                                             href="/blog/why-i-built-this-framework"
                                             class="hover:text-cyan-500 hover:underline"
                                         >
-                                            Why I Built This Framework: A Deep
-                                            Dive into Coreact's Design
+                                            {t(
+                                                "blogPage.article.whyBuilt.title"
+                                            )}
                                         </Link>
                                     </h2>
                                     <p class="text-gray-600 dark:text-gray-300 mb-4">
-                                        In this post, I share the motivation
-                                        behind creating Coreact and the design
-                                        principles that guided its development.
+                                        {t("blogPage.article.whyBuilt.summary")}
                                     </p>
                                     <div class="flex flex-wrap gap-2 mt-4">
                                         <span class="px-3 py-1 text-sm rounded-full bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300">
-                                            motivation
+                                            {t(
+                                                "blogPage.article.whyBuilt.tag1"
+                                            )}
                                         </span>
                                         <span class="px-3 py-1 text-sm rounded-full bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300">
-                                            design
+                                            {t(
+                                                "blogPage.article.whyBuilt.tag2"
+                                            )}
                                         </span>
                                     </div>
                                 </article>
@@ -91,22 +100,26 @@ export function BlogPage(): VirtualNode {
                                             href="/blog/introducing-coreact"
                                             class="hover:text-cyan-500 hover:underline"
                                         >
-                                            Introducing Coreact: A New Way to
-                                            Build Web Apps
+                                            {t(
+                                                "blogPage.article.introducing.title"
+                                            )}
                                         </Link>
                                     </h2>
                                     <p class="text-gray-600 dark:text-gray-300 mb-4">
-                                        We are excited to announce the release
-                                        of Coreact, a modern framework for
-                                        building web applications with a focus
-                                        on performance and developer experience.
+                                        {t(
+                                            "blogPage.article.introducing.summary"
+                                        )}
                                     </p>
                                     <div class="flex flex-wrap gap-2 mt-4">
                                         <span class="px-3 py-1 text-sm rounded-full bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300">
-                                            announcement
+                                            {t(
+                                                "blogPage.article.introducing.tag1"
+                                            )}
                                         </span>
                                         <span class="px-3 py-1 text-sm rounded-full bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300">
-                                            release
+                                            {t(
+                                                "blogPage.article.introducing.tag2"
+                                            )}
                                         </span>
                                     </div>
                                 </article>

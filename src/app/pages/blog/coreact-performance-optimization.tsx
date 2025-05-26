@@ -6,8 +6,10 @@ import { BlogBreadcrumb } from "@/app/components/blog-breadcrumb";
 import { Heading } from "@/app/components/text/heading";
 import { Paragraph } from "@/app/components/text/paragraph";
 import { Code } from "@/app/components/text/code";
+import { useTranslation } from "@/runtime/hooks/translation";
 
 export function CoreactPerformanceOptimizationPost(): VirtualNode {
+    const { t } = useTranslation();
     return (
         <div class="min-h-screen flex flex-col text-lg bg-white dark:bg-darkgray text-gray-700 dark:text-gray-100 leading-base">
             <Navbar />
@@ -15,22 +17,22 @@ export function CoreactPerformanceOptimizationPost(): VirtualNode {
                 <div class="ps-0">
                     <div class="px-5 sm:px-12 pt-3.5">
                         <div class="max-w-4xl ms-0 2xl:mx-auto">
-                            <BlogBreadcrumb article="Optimizing Performance in Coreact" />
+                            <BlogBreadcrumb article={t("coreactPerfOpt.articleTitle")} />
 
                             <header class="mb-12">
                                 <Heading
                                     level={1}
-                                    text="Optimizing Performance in Coreact: Built for Speed"
+                                    text={t("coreactPerfOpt.heading.title")}
                                 />
                                 <div class="flex items-center text-sm text-gray-500 dark:text-gray-400">
                                     <time>May 22, 2025</time>
                                     <span class="mx-2">•</span>
                                     <div class="flex flex-wrap gap-2">
                                         <span class="px-3 py-1 rounded-full bg-gray-100 dark:bg-gray-800 text-xs">
-                                            performance
+                                            {t("coreactPerfOpt.badge.performance")}
                                         </span>
                                         <span class="px-3 py-1 rounded-full bg-gray-100 dark:bg-gray-800 text-xs">
-                                            framework
+                                            {t("coreactPerfOpt.badge.framework")}
                                         </span>
                                     </div>
                                 </div>
@@ -39,81 +41,79 @@ export function CoreactPerformanceOptimizationPost(): VirtualNode {
                             <section class="mb-8">
                                 <Heading
                                     level={2}
-                                    text="Coreact's Performance Philosophy"
+                                    text={t("coreactPerfOpt.heading.philosophy")}
                                 />
-                                <Paragraph text="At the heart of Coreact is a commitment to performance. Unlike other frameworks that add optimization as an afterthought, Coreact was designed from the ground up with speed and efficiency in mind. Here's how it was achieved:" />
+                                <Paragraph text={t("coreactPerfOpt.paragraph.intro")}/>
 
                                 <h3 class="text-xl font-semibold mt-8 mb-4">
-                                    1. Lightweight Virtual DOM
+                                    {t("coreactPerfOpt.h3.virtualDom")}
                                 </h3>
-                                <Paragraph text="Coreact's Virtual DOM implementation is incredibly lightweight, focusing on minimal overhead and maximum efficiency. Our reconciliation algorithm is optimized for common update patterns, reducing unnecessary DOM operations." />
+                                <Paragraph text={t("coreactPerfOpt.paragraph.virtualDom")}/>
 
                                 <h3 class="text-xl font-semibold mt-8 mb-4">
-                                    2. Efficient State Management
+                                    {t("coreactPerfOpt.h3.stateManagement")}
                                 </h3>
-                                <Paragraph text="The useState hook in Coreact is designed to minimize re-renders. State updates are batched and optimized to prevent unnecessary component updates." />
+                                <Paragraph text={t("coreactPerfOpt.paragraph.stateManagement")}/>
 
                                 <Code
                                     text={`// Coreact's efficient component update pattern\nfunction Counter() {\n    const [count, setCount] = useState(0);\n    \n    // Only triggers re-render when count actually changes\n    const increment = () => setCount(c => c + 1);\n    \n    return (\n        <div>\n            <p>Count: {count}</p>\n            <button onClick={increment}>Increment</button>\n        </div>\n    );\n}`}
                                 />
 
                                 <h3 class="text-xl font-semibold mt-8 mb-4">
-                                    3. Tree Shaking Support
+                                    {t("coreactPerfOpt.h3.treeShaking")}
                                 </h3>
-                                <Paragraph text="Coreact's modular architecture works seamlessly with modern bundlers to eliminate dead code. This means your production bundle only includes the parts of Coreact that your application actually uses." />
+                                <Paragraph text={t("coreactPerfOpt.paragraph.treeShaking")}/>
 
                                 <h3 class="text-xl font-semibold mt-8 mb-4">
-                                    4. Memory Management
+                                    {t("coreactPerfOpt.h3.memoryManagement")}
                                 </h3>
-                                <Paragraph text="Coreact includes a smart memory management system that helps prevent memory leaks. Event listeners and subscriptions are automatically cleaned up when components unmount." />
+                                <Paragraph text={t("coreactPerfOpt.paragraph.memoryManagement")}/>
 
                                 <h3 class="text-xl font-semibold mt-8 mb-4">
-                                    5. Optimized Event Handling
+                                    {t("coreactPerfOpt.h3.eventHandling")}
                                 </h3>
-                                <Paragraph text="Event delegation is used under the hood to minimize the number of event listeners, resulting in better memory usage and performance, especially for large lists or interactive elements." />
+                                <Paragraph text={t("coreactPerfOpt.paragraph.eventHandling")}/>
                             </section>
 
                             <section class="mb-8">
                                 <Heading
                                     level={2}
-                                    text="Real-World Performance"
+                                    text={t("coreactPerfOpt.heading.realWorld")}
                                 />
-                                <Paragraph text="In benchmark tests, Coreact consistently outperforms larger frameworks in key metrics:" />
+                                <Paragraph text={t("coreactPerfOpt.paragraph.realWorld")}/>
                                 <ul class="list-disc list-inside mb-8">
-                                    <li>Smaller bundle size</li>
-                                    <li class="mt-2">
-                                        Faster initial render times
-                                    </li>
-                                    <li class="mt-2">Lower memory footprint</li>
-                                    <li class="mt-2">More efficient updates</li>
+                                    <li>{t("coreactPerfOpt.list.smallerBundle")}</li>
+                                    <li class="mt-2">{t("coreactPerfOpt.list.fasterRender")}</li>
+                                    <li class="mt-2">{t("coreactPerfOpt.list.lowerMemory")}</li>
+                                    <li class="mt-2">{t("coreactPerfOpt.list.efficientUpdates")}</li>
                                 </ul>
                             </section>
 
                             <section class="mb-8">
                                 <Heading
                                     level={2}
-                                    text="Best Practices for Maximum Performance"
+                                    text={t("coreactPerfOpt.heading.bestPractices")}
                                 />
                                 <div>
                                     <div>
                                         <h3 class="text-xl font-semibold mb-2">
-                                            1. Minimize Re-renders
+                                            {t("coreactPerfOpt.h3.minimizeRerenders")}
                                         </h3>
-                                        <Paragraph text="Structure your components and state to avoid unnecessary re-renders. Lift state up only when needed and use local state for isolated updates." />
+                                        <Paragraph text={t("coreactPerfOpt.paragraph.minimizeRerenders")}/>
                                     </div>
 
                                     <div class="mt-6">
                                         <h3 class="text-xl font-semibold mb-2">
-                                            2. Optimize Component Structure
+                                            {t("coreactPerfOpt.h3.optimizeStructure")}
                                         </h3>
-                                        <Paragraph text="Keep components small and focused. This allows Coreact's reconciliation algorithm to work more efficiently." />
+                                        <Paragraph text={t("coreactPerfOpt.paragraph.optimizeStructure")}/>
                                     </div>
 
                                     <div class="mt-6">
                                         <h3 class="text-xl font-semibold mb-2">
-                                            3. Lazy Loading
+                                            {t("coreactPerfOpt.h3.lazyLoading")}
                                         </h3>
-                                        <Paragraph text="Use dynamic imports to split your code and load components only when they're needed." />
+                                        <Paragraph text={t("coreactPerfOpt.paragraph.lazyLoading")}/>
                                     </div>
                                 </div>
                             </section>
@@ -138,7 +138,7 @@ export function CoreactPerformanceOptimizationPost(): VirtualNode {
                                             ></path>
                                         </svg>
                                     </span>
-                                    Back to Blog
+                                    {t("coreactPerfOpt.link.backToBlog")}
                                 </Link>
                             </div>
                         </div>

@@ -6,44 +6,37 @@ import { NextLink } from "@/app/components/text/next-link";
 import { Heading } from "@/app/components/text/heading";
 import { Paragraph } from "@/app/components/text/paragraph";
 import { Code } from "@/app/components/text/code";
+import { useTranslation } from "@/runtime/hooks/translation";
 
 export function DocsStateManagementPage(): VirtualNode {
+    const { t } = useTranslation();
     return (
         <div class="min-h-screen flex flex-col text-lg bg-white dark:bg-darkgray text-gray-700 dark:text-gray-100 leading-base">
             <Navbar />
             <div class="flex flex-1 pt-4">
                 <DocsSidebar currentPage="state-management" />
                 <main class="flex-2 max-w-4xl px-8 pt-2 mx-auto">
-                    <Heading level={1} text="State Management" />
+                    <Heading level={1} text={t("docsState.heading.title")} />
                     <section class="mb-8">
-                        <Paragraph text="While useState is great for managing local, per-component data, real-world applications often need global state—data that needs to be accessed and updated across multiple, possibly unrelated components." />
+                        <Paragraph text={t("docsState.paragraph.intro")} />
                     </section>
                     <section class="mb-8">
-                        <Heading level={2} text="Why Global State?" />
-                        <Paragraph text="Consider the following scenarios:" />
+                        <Heading level={2} text={t("docsState.heading.whyGlobal")} />
+                        <Paragraph text={t("docsState.paragraph.scenarios")} />
                         <ul class="list-disc list-inside mb-4">
-                            <li class="mb-2">
-                                Opening a sidebar from a button in the header
-                                and closing it from within the sidebar itself.
-                            </li>
-                            <li class="mb-2">
-                                Managing user authentication state across
-                                multiple components.
-                            </li>
-                            <li>
-                                Maintaining shopping cart contents while
-                                navigating between pages.
-                            </li>
+                            <li class="mb-2">{t("docsState.list.sidebar")}</li>
+                            <li class="mb-2">{t("docsState.list.auth")}</li>
+                            <li>{t("docsState.list.cart")}</li>
                         </ul>
-                        <Paragraph text="Managing this with prop drilling or lifting state becomes complex and error-prone. This is where the framework’s store-based state management comes in." />
+                        <Paragraph text={t("docsState.paragraph.storeIntro")} />
                     </section>
                     <section class="mb-8">
-                        <Heading level={2} text="Creating a Store" />
-                        <Paragraph text="You can define a reactive global state with `createStore`:" />
+                        <Heading level={2} text={t("docsState.heading.createStore")} />
+                        <Paragraph text={t("docsState.paragraph.createStore")} />
                         <Code
                             text={`export const useTheme = createStore("light");`}
                         />
-                        <Paragraph text="Then use it inside any component:" />
+                        <Paragraph text={t("docsState.paragraph.useStore")} />
                         <Code
                             text={`const ThemeToggle = () => {
   const [theme, setTheme] = useTheme();
@@ -57,28 +50,19 @@ export function DocsStateManagementPage(): VirtualNode {
   );
 };`}
                         />
-                        <Paragraph text="The store acts like a shared useState. Any component that calls the store hook automatically re-renders when the value changes." />
+                        <Paragraph text={t("docsState.paragraph.storeBehavior")} />
                     </section>
 
                     <section class="mb-8">
-                        <Heading level={2} text="Best Practices" />
+                        <Heading level={2} text={t("docsState.heading.bestPractices")} />
                         <ul class="list-disc list-inside mb-4">
-                            <li class="mb-2">
-                                Use global state for application-wide data, not
-                                per-component UI.
-                            </li>
-                            <li class="mb-2">
-                                Keep stores small and focused. A useUser() store
-                                for auth, useCart() for ecommerce, etc.
-                            </li>
-                            <li>
-                                Wrap store logic in custom hooks if you need
-                                derived state, memoization, or actions.
-                            </li>
+                            <li class="mb-2">{t("docsState.list.globalData")}</li>
+                            <li class="mb-2">{t("docsState.list.focusedStores")}</li>
+                            <li>{t("docsState.list.customHooks")}</li>
                         </ul>
                     </section>
 
-                    <NextLink href="/docs/routing" text="Next: Routing" />
+                    <NextLink href="/docs/routing" text={t("docsState.link.nextRouting")} />
                 </main>
                 <div class="flex-1 hidden 2xl:block max-w-80"></div>
             </div>

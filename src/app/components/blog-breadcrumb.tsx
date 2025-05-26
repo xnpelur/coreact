@@ -1,7 +1,9 @@
 import { createElement, VirtualNode } from "@/runtime/jsx-runtime";
 import { Link } from "@/runtime/router";
+import { useTranslation } from "@/runtime/hooks/translation";
 
 export function BlogBreadcrumb({ article }: { article?: string }): VirtualNode {
+    const { t } = useTranslation();
     return (
         <div class="flex flex-wrap">
             <div class="flex mb-3 mt-0.5 items-center">
@@ -9,7 +11,7 @@ export function BlogBreadcrumb({ article }: { article?: string }): VirtualNode {
                     class="text-cyan-500 dark:text-cyan-400 text-sm tracking-wide font-bold uppercase mr-1 hover:underline"
                     href="/"
                 >
-                    Home
+                    {t("blogBreadcrumb.link.home") /* Home */}
                 </Link>
                 <span class="inline-block mr-1 text-cyan-500 dark:text-cyan-400 text-lg rtl:rotate-180">
                     <svg
@@ -53,7 +55,7 @@ export function BlogBreadcrumb({ article }: { article?: string }): VirtualNode {
                     </div>
                 ) : (
                     <span class="text-cyan-500 dark:text-cyan-400 text-sm tracking-wide font-bold uppercase">
-                        Blog
+                        {t("blogBreadcrumb.link.blog") /* Blog */}
                     </span>
                 )}
             </div>

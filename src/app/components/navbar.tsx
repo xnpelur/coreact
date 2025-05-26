@@ -2,8 +2,10 @@ import { createElement } from "@/runtime/jsx-runtime";
 import { Logo } from "@/app/components/logo";
 import { ToggleModeButton } from "./toggle-mode-button";
 import { Link } from "@/runtime/router";
+import { useTranslation } from "@/runtime/hooks/translation";
 
 export function Navbar() {
+    const { t } = useTranslation();
     return (
         <div class="z-40 sticky top-0">
             <nav class="font-medium duration-300 backdrop-filter backdrop-blur-lg backdrop-saturate-200 transition-shadow items-center w-full flex justify-between bg-white dark:bg-darkgray pr-5 pl-4 z-40">
@@ -18,9 +20,7 @@ export function Navbar() {
                                     >
                                         <div class="overflow-hidden items-center inline-flex text-lg font-normal gap-2">
                                             <Logo className="text-sm me-0 w-10 h-10 text-cyan-600 dark:text-cyan-600-dark flex origin-center transition-all ease-in-out" />
-                                            <span class="not-sr-only">
-                                                Coreact
-                                            </span>
+                                            <span>Coreact</span>
                                         </div>
                                     </Link>
                                 </div>
@@ -42,7 +42,7 @@ export function Navbar() {
                                     class="scale-95 transition-transform w-full text-center outline-cyan-600 py-2 px-4 rounded-full capitalize whitespace-nowrap hover:bg-darkgray/5 hover:dark:bg-gray-50/5"
                                     href="/docs"
                                 >
-                                    Docs
+                                    {t("navbar.link.docs") /* Docs */}
                                 </Link>
                             </div>
                             <div class="flex flex-1">
@@ -50,7 +50,7 @@ export function Navbar() {
                                     class="scale-95 transition-transform w-full text-center outline-cyan-600 py-2 px-4 rounded-full capitalize whitespace-nowrap hover:bg-darkgray/5 hover:dark:bg-gray-50/5"
                                     href="/blog"
                                 >
-                                    Blog
+                                    {t("navbar.link.blog") /* Blog */}
                                 </Link>
                             </div>
                         </div>

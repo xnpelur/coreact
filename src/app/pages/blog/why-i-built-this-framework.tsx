@@ -5,8 +5,10 @@ import { Link } from "@/runtime/router";
 import { Heading } from "@/app/components/text/heading";
 import { Paragraph } from "@/app/components/text/paragraph";
 import { BlogBreadcrumb } from "@/app/components/blog-breadcrumb";
+import { useTranslation } from "@/runtime/hooks/translation";
 
 export function WhyIBuiltThisFrameworkPost(): VirtualNode {
+    const { t } = useTranslation();
     return (
         <div class="min-h-screen flex flex-col text-lg bg-white dark:bg-darkgray text-gray-700 dark:text-gray-100 leading-base">
             <Navbar />
@@ -14,93 +16,87 @@ export function WhyIBuiltThisFrameworkPost(): VirtualNode {
                 <div class="ps-0">
                     <div class="px-5 sm:px-12 pt-3.5">
                         <div class="max-w-4xl ms-0 2xl:mx-auto">
-                            <BlogBreadcrumb article="Why I Built This Framework" />
+                            <BlogBreadcrumb article={t("whyIBuilt.articleTitle")} />
 
                             <header class="mb-12">
                                 <Heading
                                     level={1}
-                                    text="Why I Built This Framework"
+                                    text={t("whyIBuilt.heading.title")}
                                 />
                                 <div class="flex items-center text-sm text-gray-500 dark:text-gray-400">
                                     <time>May 22, 2025</time>
                                     <span class="mx-2">•</span>
                                     <div class="flex flex-wrap gap-2">
                                         <span class="px-3 py-1 rounded-full bg-gray-100 dark:bg-gray-800 text-xs">
-                                            state
+                                            {t("whyIBuilt.badge.state")}
                                         </span>
                                         <span class="px-3 py-1 rounded-full bg-gray-100 dark:bg-gray-800 text-xs">
-                                            framework
+                                            {t("whyIBuilt.badge.framework")}
                                         </span>
                                     </div>
                                 </div>
                             </header>
 
                             <section class="mb-8">
-                                <Paragraph text="When I started building modern web apps, I loved the power of React and the ecosystem around it — but over time, I noticed patterns repeating. Boilerplate piled up. Tooling slowed down. And I found myself reaching for lighter solutions that were just... easier to reason about." />
-                                <Paragraph text="So I asked myself: what if I could distill the frontend development experience down to its essentials?" />
-                                <Paragraph text="That question led to this framework." />
+                                <Paragraph text={t("whyIBuilt.paragraph.intro1")}/>
+                                <Paragraph text={t("whyIBuilt.paragraph.intro2")}/>
+                                <Paragraph text={t("whyIBuilt.paragraph.intro3")}/>
                             </section>
 
                             <section class="mb-8">
-                                <Heading level={2} text="Simplicity First" />
-                                <Paragraph text="I believe most SPAs don’t need 1,000+ dependencies, endless Babel configs, or a mile-long webpack file." />
-                                <Paragraph text="My framework provides:" />
+                                <Heading level={2} text={t("whyIBuilt.heading.simplicity")}/>
+                                <Paragraph text={t("whyIBuilt.paragraph.simplicity1")}/>
+                                <Paragraph text={t("whyIBuilt.paragraph.simplicity2")}/>
                                 <ul class="list-disc list-inside mb-4">
                                     <li className="mb-2">
-                                        Components via plain functions and JSX
+                                        {t("whyIBuilt.list.components")}
                                     </li>
                                     <li className="mb-2">
-                                        First-class styling with Tailwind-style
-                                        utility classes
+                                        {t("whyIBuilt.list.styling")}
                                     </li>
                                     <li className="mb-2">
-                                        Built-in global state management
+                                        {t("whyIBuilt.list.state")}
                                     </li>
                                     <li>
-                                        Lightweight router powered by the
-                                        History API
+                                        {t("whyIBuilt.list.router")}
                                     </li>
                                 </ul>
-                                <Paragraph text="All with near-zero configuration and a simple file structure." />
+                                <Paragraph text={t("whyIBuilt.paragraph.simplicity3")}/>
                             </section>
 
                             <section class="mb-8">
                                 <Heading
                                     level={2}
-                                    text="Built on Familiar Tools"
+                                    text={t("whyIBuilt.heading.familiarTools")}
                                 />
-                                <Paragraph text="I didn’t reinvent the wheel. I leaned into tools developers already love:" />
+                                <Paragraph text={t("whyIBuilt.paragraph.familiarTools1")}/>
                                 <ul class="list-disc list-inside mb-4">
                                     <li className="mb-2">
-                                        Vite for instant feedback and fast
-                                        builds
+                                        {t("whyIBuilt.list.vite")}
                                     </li>
                                     <li className="mb-2">
-                                        TypeScript for safety without compromise
+                                        {t("whyIBuilt.list.ts")}
                                     </li>
-                                    <li>JSX for expressive, declarative UI</li>
+                                    <li>{t("whyIBuilt.list.jsx")}</li>
                                 </ul>
-                                <Paragraph text="You get a familiar developer experience without the overhead." />
+                                <Paragraph text={t("whyIBuilt.paragraph.familiarTools2")}/>
                             </section>
 
                             <section class="mb-8">
-                                <Heading level={2} text="Who’s It For?" />
-                                <Paragraph text="This framework is perfect if you want to:" />
+                                <Heading level={2} text={t("whyIBuilt.heading.whosItFor")}/>
+                                <Paragraph text={t("whyIBuilt.paragraph.whosItFor1")}/>
                                 <ul class="list-disc list-inside mb-4">
                                     <li className="mb-2">
-                                        Learn frontend fundamentals without
-                                        framework complexity
+                                        {t("whyIBuilt.list.learnFrontend")}
                                     </li>
                                     <li className="mb-2">
-                                        Build internal tools, dashboards, or
-                                        lightweight SPAs
+                                        {t("whyIBuilt.list.internalTools")}
                                     </li>
                                     <li>
-                                        Create something fast, with full control
-                                        and zero fluff
+                                        {t("whyIBuilt.list.fullControl")}
                                     </li>
                                 </ul>
-                                <Paragraph text="I hope you enjoy using it as much as I’ve enjoyed building it." />
+                                <Paragraph text={t("whyIBuilt.paragraph.whosItFor2")}/>
                             </section>
 
                             <div class="mt-16 pt-8 border-t border-gray-200 dark:border-gray-700">
@@ -123,7 +119,7 @@ export function WhyIBuiltThisFrameworkPost(): VirtualNode {
                                             ></path>
                                         </svg>
                                     </span>
-                                    Back to Blog
+                                    {t("whyIBuilt.link.backToBlog")}
                                 </Link>
                             </div>
                         </div>
