@@ -1,4 +1,7 @@
 {
+    "changeLanguageButton.language.en": "English",
+    "changeLanguageButton.language.ru": "Russian",
+
     "navbar.link.docs": "Docs",
     "navbar.link.blog": "Blog",
 

@@ -17,7 +17,9 @@ export function IntroducingCoreactPost(): VirtualNode {
                 <div class="ps-0">
                     <div class="px-5 sm:px-12 pt-3.5">
                         <div class="max-w-4xl ms-0 2xl:mx-auto">
-                            <BlogBreadcrumb article={t("introducingCoreact.articleTitle")} />
+                            <BlogBreadcrumb
+                                article={t("introducingCoreact.articleTitle")}
+                            />
 
                             <header class="mb-12">
                                 <Heading
@@ -29,48 +31,114 @@ export function IntroducingCoreactPost(): VirtualNode {
                                     <span class="mx-2">•</span>
                                     <div class="flex flex-wrap gap-2">
                                         <span class="px-3 py-1 rounded-full bg-gray-100 dark:bg-gray-800 text-xs">
-                                            {t("introducingCoreact.badge.announcement")}
+                                            {t(
+                                                "introducingCoreact.badge.announcement"
+                                            )}
                                         </span>
                                         <span class="px-3 py-1 rounded-full bg-gray-100 dark:bg-gray-800 text-xs">
-                                            {t("introducingCoreact.badge.release")}
+                                            {t(
+                                                "introducingCoreact.badge.release"
+                                            )}
                                         </span>
                                     </div>
                                 </div>
                             </header>
 
                             <section class="mb-8">
-                                <Heading level={2} text={t("introducingCoreact.heading.welcome")}/>
-                                <Paragraph text={t("introducingCoreact.paragraph.intro")}/>
+                                <Heading
+                                    level={2}
+                                    text={t(
+                                        "introducingCoreact.heading.welcome"
+                                    )}
+                                />
+                                <Paragraph
+                                    text={t(
+                                        "introducingCoreact.paragraph.intro"
+                                    )}
+                                />
                             </section>
 
                             <section class="mb-8">
-                                <Heading level={2} text={t("introducingCoreact.heading.why")}/>
-                                <Paragraph text={t("introducingCoreact.paragraph.whyIntro")}/>
+                                <Heading
+                                    level={2}
+                                    text={t("introducingCoreact.heading.why")}
+                                />
+                                <Paragraph
+                                    text={t(
+                                        "introducingCoreact.paragraph.whyIntro"
+                                    )}
+                                />
                                 <ul class="list-disc list-inside mb-8">
                                     <li class="mb-2">
-                                        <strong>{t("introducingCoreact.list.performance.title")}</strong> {t("introducingCoreact.list.performance.desc")}
+                                        <strong>
+                                            {t(
+                                                "introducingCoreact.list.performance.title"
+                                            )}
+                                        </strong>{" "}
+                                        {t(
+                                            "introducingCoreact.list.performance.desc"
+                                        )}
                                     </li>
                                     <li class="mb-2">
-                                        <strong>{t("introducingCoreact.list.simplicity.title")}</strong> {t("introducingCoreact.list.simplicity.desc")}
+                                        <strong>
+                                            {t(
+                                                "introducingCoreact.list.simplicity.title"
+                                            )}
+                                        </strong>{" "}
+                                        {t(
+                                            "introducingCoreact.list.simplicity.desc"
+                                        )}
                                     </li>
                                     <li class="mb-2">
-                                        <strong>{t("introducingCoreact.list.flexibility.title")}</strong> {t("introducingCoreact.list.flexibility.desc")}
+                                        <strong>
+                                            {t(
+                                                "introducingCoreact.list.flexibility.title"
+                                            )}
+                                        </strong>{" "}
+                                        {t(
+                                            "introducingCoreact.list.flexibility.desc"
+                                        )}
                                     </li>
                                     <li>
-                                        <strong>{t("introducingCoreact.list.modern.title")}</strong> {t("introducingCoreact.list.modern.desc")}
+                                        <strong>
+                                            {t(
+                                                "introducingCoreact.list.modern.title"
+                                            )}
+                                        </strong>{" "}
+                                        {t(
+                                            "introducingCoreact.list.modern.desc"
+                                        )}
                                     </li>
                                 </ul>
                             </section>
 
                             <section class="mb-8">
-                                <Heading level={2} text={t("introducingCoreact.heading.gettingStarted")}/>
-                                <Paragraph text={t("introducingCoreact.paragraph.gettingStarted")}/>
+                                <Heading
+                                    level={2}
+                                    text={t(
+                                        "introducingCoreact.heading.gettingStarted"
+                                    )}
+                                />
+                                <Paragraph
+                                    text={t(
+                                        "introducingCoreact.paragraph.gettingStarted"
+                                    )}
+                                />
                                 <Code text="git clone https://github.com/xnpelur/coreact.git" />
                             </section>
 
                             <section class="mb-8">
-                                <Heading level={2} text={t("introducingCoreact.heading.whatsNext")}/>
-                                <Paragraph text={t("introducingCoreact.paragraph.whatsNext")}/>
+                                <Heading
+                                    level={2}
+                                    text={t(
+                                        "introducingCoreact.heading.whatsNext"
+                                    )}
+                                />
+                                <Paragraph
+                                    text={t(
+                                        "introducingCoreact.paragraph.whatsNext"
+                                    )}
+                                />
                             </section>
 
                             <div class="mt-16 pt-8 border-t border-gray-200 dark:border-gray-700">

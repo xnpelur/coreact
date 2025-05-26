@@ -12,12 +12,11 @@ import { DocsStylingPage } from "@/app/pages/docs/docs-styling";
 import { DocsStateManagementPage } from "@/app/pages/docs/docs-state-management";
 import { DocsRoutingPage } from "@/app/pages/docs/docs-routing";
 import "@/app/styles.css";
-import { registerTranslation } from "@/runtime/hooks/translation";
+import { registerTranslations } from "@/runtime/hooks/translation";
 import en from "@/app/translations/en.json";
 import ru from "@/app/translations/ru.json";
 
-registerTranslation("en", en);
-registerTranslation("ru", ru);
+registerTranslations({ en, ru }, "en");
 
 createRouter({
     routes: [

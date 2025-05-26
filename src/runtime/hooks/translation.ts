@@ -1,8 +1,8 @@
 import { currentComponentId, rerender } from "@/runtime/dom";
 
-const translations: Record<string, Record<string, string>> = {};
+let registeredTranslations: Record<string, Record<string, string>> = {};
+let currentLang: string | undefined;
 
-let currentLang = "ru";
 const listeners = new Set<string>();
 
 export function useTranslation() {
@@ -19,20 +19,24 @@ export function useTranslation() {
     };
 }
 
-export function registerTranslation(
-    lang: string,
-    translation: Record<string, string>
+export function registerTranslations(
+    translations: Record<string, Record<string, string>>,
+    defaultLanguage?: string
 ) {
-    translations[lang] = translation;
+    registeredTranslations = translations;
+    currentLang = defaultLanguage ?? Object.keys(registeredTranslations)[0];
 }
 
 function setLanguage(lang: string) {
-    if (currentLang !== lang && translations[lang]) {
+    if (currentLang !== lang && registeredTranslations[lang]) {
         currentLang = lang;
         listeners.forEach((id) => rerender(id));
     }
 }
 
 function t(key: string): string {
-    return translations[currentLang][key] || key;
+    if (!currentLang) {
+        throw new Error("Translations should be registered before using t");
+    }
+    return registeredTranslations[currentLang][key] || key;
 }
