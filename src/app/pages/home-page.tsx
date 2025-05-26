@@ -1,13 +1,13 @@
+import { createElement, VirtualNode } from "@/runtime/jsx-runtime";
 import { Footer } from "@/app/components/footer";
 import { Hero } from "@/app/components/hero";
 import { Navbar } from "@/app/components/navbar";
 import { Section } from "@/app/components/section";
 import { Welcome } from "@/app/components/welcome";
-import { createElement, VirtualNode } from "@/runtime/jsx-runtime";
-import { StateCode } from "../components/examples/state-code";
-import { StateResult } from "../components/examples/state-result";
-import { EffectCode } from "../components/examples/effect-code";
-import { EffectResult } from "../components/examples/effect-result";
+import { StateCode } from "@/app/components/examples/state-code";
+import { StateResult } from "@/app/components/examples/state-result";
+import { EffectCode } from "@/app/components/examples/effect-code";
+import { EffectResult } from "@/app/components/examples/effect-result";
 
 export function HomePage(): VirtualNode {
     return (
