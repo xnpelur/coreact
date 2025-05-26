@@ -3,6 +3,9 @@ import { Navbar } from "../../components/navbar";
 import { Footer } from "../../components/footer";
 import { Link } from "@/runtime/router";
 import { BlogBreadcrumb } from "@/app/components/blog-breadcrumb";
+import { Heading } from "@/app/components/text/heading";
+import { Paragraph } from "@/app/components/text/paragraph";
+import { Code } from "@/app/components/text/code";
 
 export function IntroducingCoreactPost(): VirtualNode {
     return (
@@ -15,10 +18,10 @@ export function IntroducingCoreactPost(): VirtualNode {
                             <BlogBreadcrumb article="Introducing Coreact" />
 
                             <header class="mb-12">
-                                <h1 class="text-4xl font-bold mb-6">
-                                    Introducing Coreact: A New Way to Build Web
-                                    Apps
-                                </h1>
+                                <Heading
+                                    level={1}
+                                    text="Introducing Coreact: A New Way to Build Web Apps"
+                                />
                                 <div class="flex items-center text-sm text-gray-500 dark:text-gray-400">
                                     <time>May 15, 2025</time>
                                     <span class="mx-2">•</span>
@@ -33,38 +36,24 @@ export function IntroducingCoreactPost(): VirtualNode {
                                 </div>
                             </header>
 
-                            <section class="mb-16">
-                                <h2 class="mb-4 text-2xl font-bold">
-                                    Welcome to Coreact
-                                </h2>
-                                <p class="mb-8">
-                                    We're thrilled to introduce Coreact, a new
-                                    framework designed to make web development
-                                    more intuitive and efficient. Coreact
-                                    combines the best parts of modern web
-                                    frameworks with a focus on performance and
-                                    developer experience.
-                                </p>
+                            <section class="mb-8">
+                                <Heading level={2} text="Welcome to Coreact" />
+                                <Paragraph text="I'm thrilled to introduce Coreact, a new framework designed to make web development more intuitive and efficient. Coreact combines the best parts of modern web frameworks with a focus on performance and developer experience." />
                             </section>
 
-                            <section class="mb-16">
-                                <h2 class="mb-4 text-2xl font-bold">
-                                    Why Coreact?
-                                </h2>
-                                <p class="mb-8">
-                                    We built Coreact with several key principles
-                                    in mind:
-                                </p>
+                            <section class="mb-8">
+                                <Heading level={2} text="Why Coreact?" />
+                                <Paragraph text="I built Coreact with several key principles in mind:" />
                                 <ul class="list-disc list-inside mb-8">
-                                    <li>
+                                    <li class="mb-2">
                                         <strong>Performance:</strong> Built with
                                         performance in mind from the ground up
                                     </li>
-                                    <li>
+                                    <li class="mb-2">
                                         <strong>Simplicity:</strong> Intuitive
                                         API that's easy to learn
                                     </li>
-                                    <li>
+                                    <li class="mb-2">
                                         <strong>Flexibility:</strong> Build
                                         anything from simple websites to complex
                                         applications
@@ -76,35 +65,15 @@ export function IntroducingCoreactPost(): VirtualNode {
                                 </ul>
                             </section>
 
-                            <section class="mb-16">
-                                <h2 class="mb-4 text-2xl font-bold">
-                                    Getting Started
-                                </h2>
-                                <p class="mb-8">
-                                    To get started with Coreact, check out our
-                                    documentation. We can't wait to see what
-                                    you'll build!
-                                </p>
-                                <div class="bg-gray-100 dark:bg-gray-800 p-4 rounded-lg my-6">
-                                    <pre class="m-0">
-                                        <code>
-                                            git clone
-                                            https://github.com/xnpelur/coreact.git
-                                        </code>
-                                    </pre>
-                                </div>
+                            <section class="mb-8">
+                                <Heading level={2} text="Getting Started" />
+                                <Paragraph text="To get started with Coreact, check out our documentation. I can't wait to see what you'll build!" />
+                                <Code text="git clone https://github.com/xnpelur/coreact.git" />
                             </section>
 
-                            <section class="mb-16">
-                                <h2 class="mb-4 text-2xl font-bold">
-                                    What's Next?
-                                </h2>
-                                <p class="mb-8">
-                                    We have an exciting roadmap ahead, with
-                                    plans for server-side rendering, static site
-                                    generation, and more. Stay tuned for
-                                    updates!
-                                </p>
+                            <section class="mb-8">
+                                <Heading level={2} text="What's Next?" />
+                                <Paragraph text="I have an exciting roadmap ahead, with plans for server-side rendering, static site generation, and more. Stay tuned for updates!" />
                             </section>
 
                             <div class="mt-16 pt-8 border-t border-gray-200 dark:border-gray-700">

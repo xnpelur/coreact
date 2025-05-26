@@ -3,6 +3,9 @@ import { Navbar } from "../../components/navbar";
 import { Footer } from "../../components/footer";
 import { Link } from "@/runtime/router";
 import { BlogBreadcrumb } from "@/app/components/blog-breadcrumb";
+import { Heading } from "@/app/components/text/heading";
+import { Paragraph } from "@/app/components/text/paragraph";
+import { Code } from "@/app/components/text/code";
 
 export function CoreactPerformanceOptimizationPost(): VirtualNode {
     return (
@@ -15,10 +18,10 @@ export function CoreactPerformanceOptimizationPost(): VirtualNode {
                             <BlogBreadcrumb article="Optimizing Performance in Coreact" />
 
                             <header class="mb-12">
-                                <h1 class="text-4xl font-bold mb-6">
-                                    Optimizing Performance in Coreact: Built for
-                                    Speed
-                                </h1>
+                                <Heading
+                                    level={1}
+                                    text="Optimizing Performance in Coreact: Built for Speed"
+                                />
                                 <div class="flex items-center text-sm text-gray-500 dark:text-gray-400">
                                     <time>May 22, 2025</time>
                                     <span class="mx-2">•</span>
@@ -33,109 +36,49 @@ export function CoreactPerformanceOptimizationPost(): VirtualNode {
                                 </div>
                             </header>
 
-                            <section class="mb-16">
-                                <h2 class="mb-4 text-2xl font-bold">
-                                    Coreact's Performance Philosophy
-                                </h2>
-                                <p class="mb-6">
-                                    At the heart of Coreact is a commitment to
-                                    performance. Unlike other frameworks that
-                                    add optimization as an afterthought, Coreact
-                                    was designed from the ground up with speed
-                                    and efficiency in mind. Here's how we
-                                    achieve this:
-                                </p>
+                            <section class="mb-8">
+                                <Heading
+                                    level={2}
+                                    text="Coreact's Performance Philosophy"
+                                />
+                                <Paragraph text="At the heart of Coreact is a commitment to performance. Unlike other frameworks that add optimization as an afterthought, Coreact was designed from the ground up with speed and efficiency in mind. Here's how it was achieved:" />
 
                                 <h3 class="text-xl font-semibold mt-8 mb-4">
                                     1. Lightweight Virtual DOM
                                 </h3>
-                                <p class="mb-6">
-                                    Coreact's Virtual DOM implementation is
-                                    incredibly lightweight, focusing on minimal
-                                    overhead and maximum efficiency. Our
-                                    reconciliation algorithm is optimized for
-                                    common update patterns, reducing unnecessary
-                                    DOM operations.
-                                </p>
+                                <Paragraph text="Coreact's Virtual DOM implementation is incredibly lightweight, focusing on minimal overhead and maximum efficiency. Our reconciliation algorithm is optimized for common update patterns, reducing unnecessary DOM operations." />
 
                                 <h3 class="text-xl font-semibold mt-8 mb-4">
                                     2. Efficient State Management
                                 </h3>
-                                <p class="mb-6">
-                                    The{" "}
-                                    <code class="bg-gray-100 dark:bg-gray-800 px-1.5 py-0.5 rounded">
-                                        useState
-                                    </code>{" "}
-                                    hook in Coreact is designed to minimize
-                                    re-renders. State updates are batched and
-                                    optimized to prevent unnecessary component
-                                    updates.
-                                </p>
+                                <Paragraph text="The useState hook in Coreact is designed to minimize re-renders. State updates are batched and optimized to prevent unnecessary component updates." />
 
-                                <div class="bg-gray-100 dark:bg-gray-800 p-4 rounded-lg my-6">
-                                    <pre class="m-0">
-                                        <code class="text-sm">
-                                            {`// Coreact's efficient component update pattern
-function Counter() {
-    const [count, setCount] = useState(0);
-    
-    // Only triggers re-render when count actually changes
-    const increment = () => setCount(c => c + 1);
-    
-    return (
-        <div>
-            <p>Count: {count}</p>
-            <button onClick={increment}>Increment</button>
-        </div>
-    );
-}`}
-                                        </code>
-                                    </pre>
-                                </div>
+                                <Code
+                                    text={`// Coreact's efficient component update pattern\nfunction Counter() {\n    const [count, setCount] = useState(0);\n    \n    // Only triggers re-render when count actually changes\n    const increment = () => setCount(c => c + 1);\n    \n    return (\n        <div>\n            <p>Count: {count}</p>\n            <button onClick={increment}>Increment</button>\n        </div>\n    );\n}`}
+                                />
 
                                 <h3 class="text-xl font-semibold mt-8 mb-4">
                                     3. Tree Shaking Support
                                 </h3>
-                                <p class="mb-6">
-                                    Coreact's modular architecture works
-                                    seamlessly with modern bundlers to eliminate
-                                    dead code. This means your production bundle
-                                    only includes the parts of Coreact that your
-                                    application actually uses.
-                                </p>
+                                <Paragraph text="Coreact's modular architecture works seamlessly with modern bundlers to eliminate dead code. This means your production bundle only includes the parts of Coreact that your application actually uses." />
 
                                 <h3 class="text-xl font-semibold mt-8 mb-4">
                                     4. Memory Management
                                 </h3>
-                                <p class="mb-6">
-                                    Coreact includes a smart memory management
-                                    system that helps prevent memory leaks.
-                                    Event listeners and subscriptions are
-                                    automatically cleaned up when components
-                                    unmount.
-                                </p>
+                                <Paragraph text="Coreact includes a smart memory management system that helps prevent memory leaks. Event listeners and subscriptions are automatically cleaned up when components unmount." />
 
                                 <h3 class="text-xl font-semibold mt-8 mb-4">
                                     5. Optimized Event Handling
                                 </h3>
-                                <p class="mb-6">
-                                    Event delegation is used under the hood to
-                                    minimize the number of event listeners,
-                                    resulting in better memory usage and
-                                    performance, especially for large lists or
-                                    interactive elements.
-                                </p>
+                                <Paragraph text="Event delegation is used under the hood to minimize the number of event listeners, resulting in better memory usage and performance, especially for large lists or interactive elements." />
                             </section>
 
-                            <section class="mb-16">
-                                <h2 class="mb-4 text-2xl font-bold">
-                                    Real-World Performance
-                                </h2>
-                                <p class="mb-6">
-                                    In benchmark tests, Coreact consistently
-                                    outperforms larger frameworks in key
-                                    metrics:
-                                </p>
+                            <section class="mb-8">
+                                <Heading
+                                    level={2}
+                                    text="Real-World Performance"
+                                />
+                                <Paragraph text="In benchmark tests, Coreact consistently outperforms larger frameworks in key metrics:" />
                                 <ul class="list-disc list-inside mb-8">
                                     <li>Smaller bundle size</li>
                                     <li class="mt-2">
@@ -146,43 +89,31 @@ function Counter() {
                                 </ul>
                             </section>
 
-                            <section class="mb-16">
-                                <h2 class="mb-4 text-2xl font-bold">
-                                    Best Practices for Maximum Performance
-                                </h2>
+                            <section class="mb-8">
+                                <Heading
+                                    level={2}
+                                    text="Best Practices for Maximum Performance"
+                                />
                                 <div>
                                     <div>
                                         <h3 class="text-xl font-semibold mb-2">
-                                            1. Use Memoization
+                                            1. Minimize Re-renders
                                         </h3>
-                                        <p>
-                                            Take advantage of Coreact's built-in
-                                            memoization for expensive
-                                            calculations to prevent unnecessary
-                                            re-computations.
-                                        </p>
+                                        <Paragraph text="Structure your components and state to avoid unnecessary re-renders. Lift state up only when needed and use local state for isolated updates." />
                                     </div>
 
                                     <div class="mt-6">
                                         <h3 class="text-xl font-semibold mb-2">
                                             2. Optimize Component Structure
                                         </h3>
-                                        <p>
-                                            Keep components small and focused.
-                                            This allows Coreact's reconciliation
-                                            algorithm to work more efficiently.
-                                        </p>
+                                        <Paragraph text="Keep components small and focused. This allows Coreact's reconciliation algorithm to work more efficiently." />
                                     </div>
 
                                     <div class="mt-6">
                                         <h3 class="text-xl font-semibold mb-2">
                                             3. Lazy Loading
                                         </h3>
-                                        <p>
-                                            Use dynamic imports to split your
-                                            code and load components only when
-                                            they're needed.
-                                        </p>
+                                        <Paragraph text="Use dynamic imports to split your code and load components only when they're needed." />
                                     </div>
                                 </div>
                             </section>
