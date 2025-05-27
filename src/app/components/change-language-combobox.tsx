@@ -28,7 +28,6 @@ export function ChangeLanguageCombobox() {
 
     function toggleOpen() {
         setOpen(!open);
-        console.log(open);
     }
 
     return (

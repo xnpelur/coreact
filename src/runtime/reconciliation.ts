@@ -38,41 +38,32 @@ export function reconcile(
     }
 
     // Handle element nodes
-    if (isElement(oldNode) && isElement(newNode) && oldNode.element) {
-        newNode.element = oldNode.element;
+    if (isElement(oldNode) && isElement(newNode)) {
+        if (oldNode.element) {
+            newNode.element = oldNode.element;
 
-        if (
-            typeof oldNode.tag === "string" &&
-            typeof newNode.tag === "string"
-        ) {
-            updateProps(oldNode.element, oldNode.props, newNode.props);
+            if (
+                typeof oldNode.tag === "string" &&
+                typeof newNode.tag === "string"
+            ) {
+                updateProps(oldNode.element, oldNode.props, newNode.props);
 
-            reconcileChildren(
-                oldNode.element,
-                oldNode.children,
-                newNode.children,
-                mount,
-                unmount
-            );
+                reconcileChildren(
+                    oldNode.element,
+                    oldNode.children,
+                    newNode.children,
+                    mount,
+                    unmount
+                );
+            }
         }
 
         if (
             typeof oldNode.tag === "function" &&
             typeof newNode.tag === "function"
         ) {
-            if (
-                oldNode.componentInstance?.node &&
-                newNode.componentInstance?.node
-            ) {
-                reconcile(
-                    oldNode.componentInstance.node,
-                    newNode.componentInstance.node,
-                    parentElement,
-                    index,
-                    mount,
-                    unmount
-                );
-            }
+            unmount(oldNode, true);
+            mount(newNode, parentElement, index);
         }
     }
 }
