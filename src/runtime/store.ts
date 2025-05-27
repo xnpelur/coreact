@@ -1,8 +1,9 @@
-import { currentComponentId, rerender } from "@/runtime/dom";
+import { rerender } from "@/runtime/dom";
+import { context, ContextMap } from "@/runtime/context";
 
 type Store<T> = {
     state: T;
-    subscribers: Map<string, () => void>;
+    subscribers: ContextMap<() => void>;
 };
 
 const storeRegistry: Store<any>[] = [];
@@ -19,31 +20,31 @@ export function createStore<T>(
 ): () => [T, (newState: T) => void] {
     const store: Store<T> = {
         state: initialState,
-        subscribers: new Map(),
+        subscribers: new ContextMap(),
     };
 
     storeRegistry.push(store);
 
     const useStore = (): [T, (newState: T) => void] => {
-        if (!currentComponentId) {
+        if (!context) {
             throw new Error("useStore must be called within a component");
         }
 
         const setState = (newState: T) => {
             store.state = newState;
-            store.subscribers.forEach((subscriber) => subscriber());
+            store.subscribers.values().forEach((subscriber) => subscriber());
         };
 
-        if (store.subscribers.has(currentComponentId)) {
+        if (store.subscribers.has(context)) {
             return [store.state, setState];
         }
 
-        const id = currentComponentId;
+        const currentContext = { ...context };
         const rerenderComponent = () => {
-            rerender(id);
+            rerender(currentContext);
         };
 
-        store.subscribers.set(currentComponentId, rerenderComponent);
+        store.subscribers.set(context, rerenderComponent);
 
         return [store.state, setState];
     };
@@ -54,13 +55,11 @@ export function createStore<T>(
 /**
  * Cleans up a component's subscriptions from all stores.
  * This function is called when a component is unmounted to prevent memory leaks.
- *
- * @param {string} componentId - Information about the component to cleanup
  */
-export function cleanupComponent(componentId: string) {
+export function clearStores() {
     storeRegistry.forEach((store) => {
-        if (store.subscribers.has(componentId)) {
-            store.subscribers.delete(componentId);
+        if (store.subscribers.has(context!)) {
+            store.subscribers.delete(context!);
         }
     });
 }

@@ -1,16 +1,17 @@
-import { currentComponentId, rerender } from "@/runtime/dom";
+import { rerender } from "@/runtime/dom";
+import { context, ContextSet } from "@/runtime/context";
 
 let registeredTranslations: Record<string, Record<string, string>> = {};
 let currentLang: string | undefined;
 
-const listeners = new Set<string>();
+const listeners = new ContextSet();
 
 export function useTranslation() {
-    if (!currentComponentId) {
+    if (!context) {
         throw new Error("useTranslation must be called within a component");
     }
 
-    listeners.add(currentComponentId);
+    listeners.add(context);
 
     return {
         t,

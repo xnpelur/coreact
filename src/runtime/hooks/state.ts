@@ -1,9 +1,10 @@
-import { currentComponentId, rerender } from "@/runtime/dom";
+import { rerender } from "@/runtime/dom";
+import { context, ContextMap } from "@/runtime/context";
 
 // Store states as a map of component keys to arrays of state values
-const stateMap = new Map<string, any[]>();
+const stateMap = new ContextMap<any[]>();
 // Track the current hook index for each component during render
-const hookIndexMap = new Map<string, number>();
+const hookIndexMap = new ContextMap<number>();
 
 /**
  * Creates a state variable that can be used in components.
@@ -14,36 +15,36 @@ const hookIndexMap = new Map<string, number>();
  * @throws {Error} If called outside of a component context
  */
 export function useState<T>(initialValue: T): [T, (value: T) => void] {
-    if (!currentComponentId) {
+    if (!context) {
         throw new Error("useState must be called within a component");
     }
 
     // Initialize hook index for this component if not already set
-    if (!hookIndexMap.has(currentComponentId)) {
-        hookIndexMap.set(currentComponentId, 0);
+    if (!hookIndexMap.has(context)) {
+        hookIndexMap.set(context, 0);
     }
 
     // Get the current hook index and increment it for the next hook
-    const hookIndex = hookIndexMap.get(currentComponentId)!;
-    hookIndexMap.set(currentComponentId, hookIndex + 1);
+    const hookIndex = hookIndexMap.get(context)!;
+    hookIndexMap.set(context, hookIndex + 1);
 
     // Initialize state array for this component if not already set
-    if (!stateMap.has(currentComponentId)) {
-        stateMap.set(currentComponentId, []);
+    if (!stateMap.has(context)) {
+        stateMap.set(context, []);
     }
 
-    const states = stateMap.get(currentComponentId)!;
+    const states = stateMap.get(context)!;
 
     // Initialize this specific state if not already set
     if (states.length <= hookIndex) {
         states[hookIndex] = initialValue;
     }
 
-    const id = currentComponentId;
+    const currentContext = { ...context };
     const setValue = (value: T) => {
-        const states = stateMap.get(id)!;
+        const states = stateMap.get(currentContext)!;
         states[hookIndex] = value;
-        rerender(id);
+        rerender(currentContext);
     };
 
     return [states[hookIndex], setValue];
@@ -68,9 +69,7 @@ export function clearState() {
 /**
  * Resets the hook indices for a component before rendering.
  * This function is called internally to ensure hooks are called in the correct order.
- *
- * @param {string} componentId - The unique key for the component
  */
-export function resetHookIndices(componentId: string) {
-    hookIndexMap.set(componentId, 0);
+export function resetHookIndices() {
+    hookIndexMap.set(context!, 0);
 }
