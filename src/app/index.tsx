@@ -16,7 +16,10 @@ import { registerTranslations } from "@/runtime/hooks/translation";
 import en from "@/app/translations/en.json";
 import ru from "@/app/translations/ru.json";
 
-registerTranslations({ en, ru }, "en");
+const language = localStorage.getItem("language") ?? "en";
+localStorage.setItem("language", language);
+
+registerTranslations({ en, ru }, language);
 
 createRouter({
     routes: [

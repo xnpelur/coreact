@@ -32,6 +32,7 @@ function setLanguage(lang: string) {
     if (currentLang !== lang && registeredTranslations[lang]) {
         currentLang = lang;
         listeners.forEach((id) => rerender(id));
+        localStorage.setItem("language", lang);
     }
 }
 
