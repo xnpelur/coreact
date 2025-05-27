@@ -33,7 +33,7 @@ export function BlogBreadcrumb({ article }: { article?: string }): VirtualNode {
                             class="text-cyan-500 dark:text-cyan-400 text-sm tracking-wide font-bold uppercase mr-1 hover:underline"
                             href="/blog"
                         >
-                            Blog
+                            {t("blogBreadcrumb.link.blog") /* Blog */}
                         </Link>
                         <span class="inline-block mr-1 text-cyan-500 dark:text-cyan-400 text-lg rtl:rotate-180">
                             <svg
