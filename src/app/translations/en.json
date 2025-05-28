@@ -22,9 +22,17 @@
     "blogBreadcrumb.link.home": "Home",
     "blogBreadcrumb.link.blog": "Blog",
 
-    "section.heading.createUI": "Create user interfaces from components",
-    "section.text.coreactLets": "Coreact lets you build user interfaces out of individual pieces called components. Create your own Coreact components like Thumbnail, LikeButton, and Video. Then combine them into entire screens, pages, and apps.",
-    "section.text.whetherYou": "Whether you work on your own or with thousands of other developers, using Coreact feels the same. It is designed to let you seamlessly combine components written by independent people, teams, and organizations.",
+    "section.state.title": "State Management Basics",
+    "section.state.firstDescription": "Learn how to use local component state to build interactive UI elements. This example features a simple toggle switch that updates its display based on internal state.",
+    "section.state.secondDescription": "With Coreact, managing component state is effortless and intuitive. Enjoy a seamless developer experience that lets you focus on building great features, not boilerplate code.",
+
+    "section.effect.title": "Side Effects in Components",
+    "section.effect.firstDescription": "See how to handle side effects in your components using effect hooks. This example implements a live clock that updates every second, demonstrating how to synchronize your UI with external events.",
+    "section.effect.secondDescription": "Experience the power of predictable, declarative side effects—making even complex UI updates feel simple. The Coreact’s hooks system keeps your code clean, maintainable, and easy to reason about.",
+
+    "section.store.title": "Shared State with Stores",
+    "section.store.firstDescription": "Discover how to manage and share state across multiple components using a store. This example features several counters that all update a shared sum, illustrating the power of centralized state management.",
+    "section.store.secondDescription": "Unlock scalable architecture with built-in store support. Effortlessly share and synchronize state across your app, empowering you to build robust, high-performance interfaces with confidence.",
 
     "notFoundPage.link.home": "Home",
     "notFoundPage.heading.notFound": "Not Found",
