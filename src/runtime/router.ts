@@ -169,6 +169,9 @@ export function Router(): VirtualNode {
         vnode = createElement("div", {}, "Page not found");
     }
 
+    // Scroll to top when route changes
+    window.scrollTo(0, 0);
+
     clearStoreSubscribers();
 
     return vnode;
