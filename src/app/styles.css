@@ -83,3 +83,36 @@
 .dark .shadow-secondary-button-stroke {
     box-shadow: inset 0 0 0 1px #404756;
 }
+
+.language-dropdown {
+    position: absolute;
+    top: 3.5rem;
+    left: -2.5rem;
+    z-index: 10;
+    width: 9rem;
+    background-color: white;
+    border: 1px solid #e5e7eb;
+    border-radius: 0.75rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    outline: none;
+    transform-origin: top;
+    transition: opacity 0.1s ease-out, transform 0.1s ease-out;
+    overflow: hidden;
+}
+
+.dark .language-dropdown {
+    background-color: #1f2937;
+    border-color: #374151;
+}
+
+.language-dropdown.closed {
+    opacity: 0;
+    transform: scale(0.95) translateY(-0.5rem);
+    pointer-events: none;
+}
+
+.language-dropdown.open {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+    pointer-events: auto;
+}
