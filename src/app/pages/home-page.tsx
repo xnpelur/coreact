@@ -8,6 +8,8 @@ import { StateCode } from "@/app/components/examples/state-code";
 import { StateResult } from "@/app/components/examples/state-result";
 import { EffectCode } from "@/app/components/examples/effect-code";
 import { EffectResult } from "@/app/components/examples/effect-result";
+import { StoreCode } from "@/app/components/examples/store-code";
+import { StoreResult } from "@/app/components/examples/store-result";
 
 export function HomePage(): VirtualNode {
     return (
@@ -26,6 +28,11 @@ export function HomePage(): VirtualNode {
                             codeTitle="Effect"
                             CodeCardComponent={EffectCode}
                             CodeResultComponent={EffectResult}
+                        />
+                        <Section
+                            codeTitle="Store"
+                            CodeCardComponent={StoreCode}
+                            CodeResultComponent={StoreResult}
                         />
                         <Welcome />
                     </div>
