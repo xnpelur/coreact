@@ -35,7 +35,9 @@ export function DocsPage(): VirtualNode {
                         <Paragraph
                             text={t("docsPage.paragraph.installation")}
                         />
-                        <Code text="git clone <your-repo-link>\ncd <your-project-directory>\nnpm install\nnpm run dev" />
+                        <Code
+                            text={`git clone <your-repo-link>\ncd <your-project-directory>\nnpm install\nnpm run dev`}
+                        />
                         <Paragraph
                             text={t("docsPage.paragraph.developmentServer")}
                         />
@@ -49,7 +51,9 @@ export function DocsPage(): VirtualNode {
                         <Paragraph
                             text={t("docsPage.paragraph.projectStructure")}
                         />
-                        <Code text="/src\n  ├── app         ← Your components, pages, and styles\n  ├── runtime     ← Internal framework logic\n  ├── styles      ← Base styles and theme variables\n  ├── plugins     ← Vite plugin for style scanning\n  ├── generated   ← Compiled utility-first CSS\n  └── main.ts     ← Mounts your main App component" />
+                        <Code
+                            text={`/src\n  ├── app         ← Your components, pages, and styles\n  ├── runtime     ← Internal framework logic\n  ├── styles      ← Base styles and theme variables\n  ├── plugins     ← Vite plugin for style scanning\n  ├── generated   ← Compiled utility-first CSS\n  └── main.ts     ← Mounts your main App component`}
+                        />
                         <Paragraph
                             text={t("docsPage.paragraph.separationOfLogic")}
                         />
