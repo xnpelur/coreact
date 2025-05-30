@@ -38,7 +38,7 @@ export function Navbar() {
                         </div>
                     </div>
                     <div class="text-base items-center gap-1.5 flex flex-1 flex-row justify-end">
-                        <div class="mx-2.5 gap-1.5 flex">
+                        <div class="mx-2.5 gap-1.5 hidden lg:flex">
                             <div class="flex flex-1">
                                 <Link
                                     class="scale-95 transition-transform w-full text-center outline-cyan-600 py-2 px-4 rounded-full capitalize whitespace-nowrap hover:bg-darkgray/5 hover:dark:bg-gray-50/5"

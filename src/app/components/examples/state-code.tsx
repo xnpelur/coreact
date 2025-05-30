@@ -65,17 +65,19 @@ export function StateCode() {
             <div>
                 {"        "}
                 <span class="text-gray-700 dark:text-gray-200">&lt;</span>
-                <span class="text-green-700 dark:text-green-400">
-                    input
-                </span>{" "}
+                <span class="text-green-700 dark:text-green-400">input</span>
+                <br />
+                {"          "}
                 <span class="text-blue-600">type</span>=
-                <span class="text-orange-600">"checkbox"</span>{" "}
+                <span class="text-orange-600">"checkbox"</span>
+                <br />
+                {"          "}
                 <span class="text-blue-600">value</span>=
                 <span class="text-gray-700 dark:text-gray-200">&#123;</span>
                 <span class="text-blue-600">state</span>
-                <span class="text-gray-700 dark:text-gray-200">
-                    &#125;
-                </span>{" "}
+                <span class="text-gray-700 dark:text-gray-200">&#125;</span>
+                <br />
+                {"          "}
                 <span class="text-blue-600">onClick</span>=
                 <span class="text-gray-700 dark:text-gray-200">&#123;</span>
                 <span class="text-gray-700 dark:text-gray-200">(</span>
@@ -86,9 +88,9 @@ export function StateCode() {
                 <span class="text-gray-700 dark:text-gray-200">!</span>
                 <span class="text-blue-600">state</span>
                 <span class="text-gray-700 dark:text-gray-200">)</span>
-                <span class="text-gray-700 dark:text-gray-200">
-                    &#125;
-                </span>{" "}
+                <span class="text-gray-700 dark:text-gray-200">&#125;</span>
+                <br />
+                {"        "}
                 <span class="text-gray-700 dark:text-gray-200">/&gt;</span>
                 <br />
             </div>

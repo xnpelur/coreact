@@ -8,8 +8,8 @@ export function CodeCard({
     Component: () => VirtualNode;
 }) {
     return (
-        <div class="-m-5 h-full shadow-nav dark:shadow-nav-dark rounded-2xl bg-white dark:bg-darkgray w-full flex grow flex-col">
-            <div class="w-full bg-gray-50 dark:bg-darkgray rounded-t-2xl border-b border-black/5 dark:border-white/5">
+        <div class="lg:-m-5 h-full shadow-nav dark:shadow-nav-dark lg:rounded-2xl bg-white dark:bg-darkgray w-full flex grow flex-col">
+            <div class="w-full bg-gray-50 dark:bg-darkgray lg:rounded-t-2xl border-b border-black/5 dark:border-white/5">
                 <h3 class="text-sm my-2 mx-5 text-gray-500 dark:text-gray-300 select-none text-start">
                     {title}
                 </h3>

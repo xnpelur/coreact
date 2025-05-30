@@ -2,7 +2,7 @@ import { createElement, VirtualNode } from "@/runtime/jsx-runtime";
 
 export function CodeResult({ Component }: { Component: () => VirtualNode }) {
     return (
-        <div class="relative -my-20 w-full p-10 flex grow justify-center">
+        <div class="relative lg:-my-20 w-full p-5 lg:p-10 flex grow justify-center">
             <div class="max-w-3xl rounded-2xl mx-auto text-gray-700 leading-normal bg-white overflow-hidden w-full overflow-y-auto shadow-nav dark:shadow-nav-dark">
                 <div class="flex flex-col p-10 items-center">
                     <Component />
