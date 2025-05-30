@@ -13,40 +13,72 @@ export function DocsRenderingPage(): VirtualNode {
     return (
         <div class="min-h-screen flex flex-col text-lg bg-white dark:bg-darkgray text-gray-700 dark:text-gray-100 leading-base">
             <Navbar />
-            <div class="flex flex-1 pt-4 justify-between">
+            <div class="flex flex-col lg:flex-row flex-1 pt-4 justify-between w-full">
                 <DocsSidebar currentPage="rendering" />
-                <main class="flex-2 max-w-4xl px-8 pt-2 mx-auto">
-                    <Heading level={1} text={t("docsRendering.heading.title")} />
+                <main class="w-full max-w-full lg:max-w-4xl px-4 sm:px-8 pt-2 mx-auto flex-1">
+                    <Heading
+                        level={1}
+                        text={t("docsRendering.heading.title")}
+                    />
                     <section class="mb-8">
                         <Paragraph text={t("docsRendering.paragraph.intro")} />
                     </section>
 
                     <section class="mb-8">
-                        <Heading level={2} text={t("docsRendering.heading.definingComponents")} />
-                        <Paragraph text={t("docsRendering.paragraph.definingComponents")} />
+                        <Heading
+                            level={2}
+                            text={t("docsRendering.heading.definingComponents")}
+                        />
+                        <Paragraph
+                            text={t(
+                                "docsRendering.paragraph.definingComponents"
+                            )}
+                        />
                         <Code
                             text={`const Button = () => {
   return <button class="bg-blue-500 text-white px-4 py-2 rounded">Click me</button>;
 }`}
                         />
-                        <Paragraph text={t("docsRendering.paragraph.noClassSyntax")} />
-                        <Paragraph text={t("docsRendering.paragraph.nesting")} />
+                        <Paragraph
+                            text={t("docsRendering.paragraph.noClassSyntax")}
+                        />
+                        <Paragraph
+                            text={t("docsRendering.paragraph.nesting")}
+                        />
                     </section>
 
                     <section class="mb-8">
-                        <Heading level={2} text={t("docsRendering.heading.conditionalRendering")} />
-                        <Paragraph text={t("docsRendering.paragraph.conditionalRendering")} />
+                        <Heading
+                            level={2}
+                            text={t(
+                                "docsRendering.heading.conditionalRendering"
+                            )}
+                        />
+                        <Paragraph
+                            text={t(
+                                "docsRendering.paragraph.conditionalRendering"
+                            )}
+                        />
                         <Code
                             text={`const Welcome = ({ loggedIn }) => {
   return <div>{loggedIn ? "Welcome back!" : "Please sign in."}</div>;
 };`}
                         />
-                        <Paragraph text={t("docsRendering.paragraph.conditionalRendering2")} />
+                        <Paragraph
+                            text={t(
+                                "docsRendering.paragraph.conditionalRendering2"
+                            )}
+                        />
                     </section>
 
                     <section class="mb-8">
-                        <Heading level={2} text={t("docsRendering.heading.useState")} />
-                        <Paragraph text={t("docsRendering.paragraph.useState")} />
+                        <Heading
+                            level={2}
+                            text={t("docsRendering.heading.useState")}
+                        />
+                        <Paragraph
+                            text={t("docsRendering.paragraph.useState")}
+                        />
                         <Code
                             text={`const Counter = () => {
   const [count, setCount] = useState(0);
@@ -58,12 +90,19 @@ export function DocsRenderingPage(): VirtualNode {
   );
 };`}
                         />
-                        <Paragraph text={t("docsRendering.paragraph.useState2")} />
+                        <Paragraph
+                            text={t("docsRendering.paragraph.useState2")}
+                        />
                     </section>
 
                     <section class="mb-8">
-                        <Heading level={2} text={t("docsRendering.heading.useEffect")} />
-                        <Paragraph text={t("docsRendering.paragraph.useEffect")} />
+                        <Heading
+                            level={2}
+                            text={t("docsRendering.heading.useEffect")}
+                        />
+                        <Paragraph
+                            text={t("docsRendering.paragraph.useEffect")}
+                        />
                         <Code
                             text={`const Logger = () => {
   const [value, setValue] = useState("");
@@ -75,9 +114,14 @@ export function DocsRenderingPage(): VirtualNode {
   return <input value={value} onInput={e => setValue(e.target.value)} />;
 };`}
                         />
-                        <Paragraph text={t("docsRendering.paragraph.useEffect2")} />
+                        <Paragraph
+                            text={t("docsRendering.paragraph.useEffect2")}
+                        />
                     </section>
-                    <NextLink href="/docs/styling" text={t("docsRendering.link.nextStyling")} />
+                    <NextLink
+                        href="/docs/styling"
+                        text={t("docsRendering.link.nextStyling")}
+                    />
                 </main>
                 <div class="flex-1 hidden 2xl:block max-w-80"></div>
             </div>

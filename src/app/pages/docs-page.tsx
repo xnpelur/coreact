@@ -13,9 +13,9 @@ export function DocsPage(): VirtualNode {
     return (
         <div class="min-h-screen flex flex-col text-lg bg-white dark:bg-darkgray text-gray-700 dark:text-gray-100 leading-base">
             <Navbar />
-            <div class="flex flex-1 pt-4 justify-between">
+            <div class="flex flex-col lg:flex-row flex-1 pt-4 justify-between w-full">
                 <DocsSidebar currentPage="overview" />
-                <main class="flex-2 max-w-4xl px-8 pt-2 mx-auto">
+                <main class="w-full max-w-full lg:max-w-4xl px-4 sm:px-8 pt-2 mx-auto flex-1">
                     <Heading
                         level={1}
                         text={t("docsPage.heading.gettingStarted")}
@@ -35,12 +35,7 @@ export function DocsPage(): VirtualNode {
                         <Paragraph
                             text={t("docsPage.paragraph.installation")}
                         />
-                        <Code
-                            text="git clone <your-repo-link>
-cd <your-project-directory>
-npm install
-npm run dev"
-                        />
+                        <Code text="git clone <your-repo-link>\ncd <your-project-directory>\nnpm install\nnpm run dev" />
                         <Paragraph
                             text={t("docsPage.paragraph.developmentServer")}
                         />
@@ -54,15 +49,7 @@ npm run dev"
                         <Paragraph
                             text={t("docsPage.paragraph.projectStructure")}
                         />
-                        <Code
-                            text="/src
-  ├── app         ← Your components, pages, and styles
-  ├── runtime     ← Internal framework logic
-  ├── styles      ← Base styles and theme variables
-  ├── plugins     ← Vite plugin for style scanning
-  ├── generated   ← Compiled utility-first CSS
-  └── main.ts     ← Mounts your main App component"
-                        />
+                        <Code text="/src\n  ├── app         ← Your components, pages, and styles\n  ├── runtime     ← Internal framework logic\n  ├── styles      ← Base styles and theme variables\n  ├── plugins     ← Vite plugin for style scanning\n  ├── generated   ← Compiled utility-first CSS\n  └── main.ts     ← Mounts your main App component" />
                         <Paragraph
                             text={t("docsPage.paragraph.separationOfLogic")}
                         />
@@ -139,7 +126,7 @@ npm run dev"
                         </ul>
                     </section>
                 </main>
-                <div class="flex-1 hidden 2xl:block max-w-80"></div>
+                <div class="hidden 2xl:block flex-1 max-w-80"></div>
             </div>
             <Footer />
         </div>

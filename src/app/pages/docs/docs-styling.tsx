@@ -13,18 +13,25 @@ export function DocsStylingPage(): VirtualNode {
     return (
         <div class="min-h-screen flex flex-col text-lg bg-white dark:bg-darkgray text-gray-700 dark:text-gray-100 leading-base">
             <Navbar />
-            <div class="flex flex-1 pt-4">
+            <div class="flex flex-col lg:flex-row flex-1 pt-4 justify-between w-full">
                 <DocsSidebar currentPage="styling" />
-                <main class="flex-2 max-w-4xl px-8 pt-2 mx-auto">
+                <main class="w-full max-w-full lg:max-w-4xl px-4 sm:px-8 pt-2 mx-auto flex-1">
                     <Heading level={1} text={t("docsStyling.heading.title")} />
                     <section class="mb-8">
                         <Paragraph text={t("docsStyling.paragraph.intro")} />
                     </section>
 
                     <section class="mb-8">
-                        <Heading level={2} text={t("docsStyling.heading.utilityFirst")} />
-                        <Paragraph text={t("docsStyling.paragraph.utilityFirst")} />
-                        <Paragraph text={t("docsStyling.paragraph.insteadOf")} />
+                        <Heading
+                            level={2}
+                            text={t("docsStyling.heading.utilityFirst")}
+                        />
+                        <Paragraph
+                            text={t("docsStyling.paragraph.utilityFirst")}
+                        />
+                        <Paragraph
+                            text={t("docsStyling.paragraph.insteadOf")}
+                        />
                         <Code
                             text={`<style>
   .hero-text {
@@ -36,7 +43,9 @@ export function DocsStylingPage(): VirtualNode {
 </style>
 <div class="hero-text">Welcome!</div>`}
                         />
-                        <Paragraph text={t("docsStyling.paragraph.writeThis")} />
+                        <Paragraph
+                            text={t("docsStyling.paragraph.writeThis")}
+                        />
                         <Code
                             text={`<div class="text-xl font-bold text-center text-blue-600">
   Hello, styled world!
@@ -46,12 +55,23 @@ export function DocsStylingPage(): VirtualNode {
                     </section>
 
                     <section class="mb-8">
-                        <Heading level={2} text={t("docsStyling.heading.commonUtilities")} />
+                        <Heading
+                            level={2}
+                            text={t("docsStyling.heading.commonUtilities")}
+                        />
                         <ul class="list-disc list-inside mb-4">
-                            <li className="mb-2">{t("docsStyling.list.typography")}</li>
-                            <li className="mb-2">{t("docsStyling.list.color")}</li>
-                            <li className="mb-2">{t("docsStyling.list.spacing")}</li>
-                            <li className="mb-2">{t("docsStyling.list.layout")}</li>
+                            <li className="mb-2">
+                                {t("docsStyling.list.typography")}
+                            </li>
+                            <li className="mb-2">
+                                {t("docsStyling.list.color")}
+                            </li>
+                            <li className="mb-2">
+                                {t("docsStyling.list.spacing")}
+                            </li>
+                            <li className="mb-2">
+                                {t("docsStyling.list.layout")}
+                            </li>
                             <li>{t("docsStyling.list.effects")}</li>
                         </ul>
 
@@ -64,29 +84,46 @@ export function DocsStylingPage(): VirtualNode {
                     </section>
 
                     <section class="mb-8">
-                        <Heading level={2} text={t("docsStyling.heading.responsive")} />
-                        <Paragraph text={t("docsStyling.paragraph.breakpoints")} />
+                        <Heading
+                            level={2}
+                            text={t("docsStyling.heading.responsive")}
+                        />
+                        <Paragraph
+                            text={t("docsStyling.paragraph.breakpoints")}
+                        />
                         <Code
                             text={`<div class="flex flex-col md:flex-row gap-4">
   <div class="flex-1 bg-gray-100 p-4">Sidebar</div>
   <div class="flex-3 bg-white p-4">Content</div>
 </div>`}
                         />
-                        <Paragraph text={t("docsStyling.paragraph.responsive")} />
+                        <Paragraph
+                            text={t("docsStyling.paragraph.responsive")}
+                        />
                     </section>
 
                     <section class="mb-8">
-                        <Heading level={2} text={t("docsStyling.heading.theming")} />
-                        <Paragraph text={t("docsStyling.paragraph.defaultStyles")} />
+                        <Heading
+                            level={2}
+                            text={t("docsStyling.heading.theming")}
+                        />
+                        <Paragraph
+                            text={t("docsStyling.paragraph.defaultStyles")}
+                        />
                         <ul class="list-disc list-inside mb-4">
-                            <li className="mb-2">{t("docsStyling.list.preflight")}</li>
+                            <li className="mb-2">
+                                {t("docsStyling.list.preflight")}
+                            </li>
                             <li>{t("docsStyling.list.themeVars")}</li>
                         </ul>
-                        <Paragraph text={t("docsStyling.paragraph.customize")} />
+                        <Paragraph
+                            text={t("docsStyling.paragraph.customize")}
+                        />
                     </section>
                     <NextLink
                         href="/docs/state-management"
-                        text={t("docsStyling.link.nextState")} />
+                        text={t("docsStyling.link.nextState")}
+                    />
                 </main>
                 <div class="flex-1 hidden 2xl:block max-w-80"></div>
             </div>

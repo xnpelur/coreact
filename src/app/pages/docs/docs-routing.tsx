@@ -13,9 +13,9 @@ export function DocsRoutingPage(): VirtualNode {
     return (
         <div class="min-h-screen flex flex-col text-lg bg-white dark:bg-darkgray text-gray-700 dark:text-gray-100 leading-base">
             <Navbar />
-            <div class="flex flex-1 pt-4">
+            <div class="flex flex-col lg:flex-row flex-1 pt-4 justify-between w-full">
                 <DocsSidebar currentPage="routing" />
-                <main class="flex-2 max-w-4xl px-8 pt-2 mx-auto">
+                <main class="w-full max-w-full lg:max-w-4xl px-4 sm:px-8 pt-2 mx-auto flex-1">
                     <Heading level={1} text={t("docsRouting.heading.title")} />
                     <section class="mb-8">
                         <Paragraph text={t("docsRouting.paragraph.intro")} />
@@ -24,14 +24,24 @@ export function DocsRoutingPage(): VirtualNode {
                     <section class="mb-8">
                         <Heading
                             level={2}
-                            text={t("docsRouting.heading.clientSide")} />
-                        <Paragraph text={t("docsRouting.paragraph.clientSide")} />
-                        <Paragraph text={t("docsRouting.paragraph.clientSide2")} />
+                            text={t("docsRouting.heading.clientSide")}
+                        />
+                        <Paragraph
+                            text={t("docsRouting.paragraph.clientSide")}
+                        />
+                        <Paragraph
+                            text={t("docsRouting.paragraph.clientSide2")}
+                        />
                     </section>
 
                     <section class="mb-8">
-                        <Heading level={2} text={t("docsRouting.heading.definingRoutes")} />
-                        <Paragraph text={t("docsRouting.paragraph.definingRoutes")} />
+                        <Heading
+                            level={2}
+                            text={t("docsRouting.heading.definingRoutes")}
+                        />
+                        <Paragraph
+                            text={t("docsRouting.paragraph.definingRoutes")}
+                        />
                         <Code
                             text={`const routes = {
   "/": Home,
@@ -39,58 +49,91 @@ export function DocsRoutingPage(): VirtualNode {
   "/users/:id": UserProfile,
 };`}
                         />
-                        <Paragraph text={t("docsRouting.paragraph.createRouter")} />
+                        <Paragraph
+                            text={t("docsRouting.paragraph.createRouter")}
+                        />
                         <Code
                             text={`const CurrentPage = createRouter(routes);`}
                         />
-                        <Paragraph text={t("docsRouting.paragraph.currentPage")} />
+                        <Paragraph
+                            text={t("docsRouting.paragraph.currentPage")}
+                        />
                     </section>
 
                     <section class="mb-8">
-                        <Heading level={2} text={t("docsRouting.heading.programmatic")} />
-                        <Paragraph text={t("docsRouting.paragraph.programmatic")} />
+                        <Heading
+                            level={2}
+                            text={t("docsRouting.heading.programmatic")}
+                        />
+                        <Paragraph
+                            text={t("docsRouting.paragraph.programmatic")}
+                        />
                         <Code
                             text={`<button onClick={() => navigate("/about")}>Go to About</button>`}
                         />
-                        <Paragraph text={t("docsRouting.paragraph.programmatic2")} />
+                        <Paragraph
+                            text={t("docsRouting.paragraph.programmatic2")}
+                        />
                     </section>
 
                     <section class="mb-8">
-                        <Heading level={2} text={t("docsRouting.heading.links")} />
+                        <Heading
+                            level={2}
+                            text={t("docsRouting.heading.links")}
+                        />
                         <Paragraph text={t("docsRouting.paragraph.links")} />
                         <Code text={`<Link href="/about">About</Link>`} />
                         <Paragraph text={t("docsRouting.paragraph.links2")} />
                     </section>
 
                     <section class="mb-8">
-                        <Heading level={2} text={t("docsRouting.heading.dynamic")} />
+                        <Heading
+                            level={2}
+                            text={t("docsRouting.heading.dynamic")}
+                        />
                         <Paragraph text={t("docsRouting.paragraph.dynamic")} />
                         <Code
                             text={`const routes = {
   "/users/:id": UserProfile,
 };`}
                         />
-                        <Paragraph text={t("docsRouting.paragraph.useParams")} />
+                        <Paragraph
+                            text={t("docsRouting.paragraph.useParams")}
+                        />
                         <Code
                             text={`const UserProfile = () => {
   const { id } = useParams();
   return <h1>Viewing profile for user {id}</h1>;
 };`}
                         />
-                        <Paragraph text={t("docsRouting.paragraph.useParams2")} />
+                        <Paragraph
+                            text={t("docsRouting.paragraph.useParams2")}
+                        />
                     </section>
 
                     <section class="mb-8">
-                        <Heading level={2} text={t("docsRouting.heading.tips")} />
+                        <Heading
+                            level={2}
+                            text={t("docsRouting.heading.tips")}
+                        />
                         <ul class="list-disc list-inside mb-4">
-                            <li className="mb-2">{t("docsRouting.list.useLink")}</li>
-                            <li className="mb-2">{t("docsRouting.list.groupRoutes")}</li>
-                            <li className="mb-2">{t("docsRouting.list.dynamicParams")}</li>
+                            <li className="mb-2">
+                                {t("docsRouting.list.useLink")}
+                            </li>
+                            <li className="mb-2">
+                                {t("docsRouting.list.groupRoutes")}
+                            </li>
+                            <li className="mb-2">
+                                {t("docsRouting.list.dynamicParams")}
+                            </li>
                             <li>{t("docsRouting.list.wrapRouter")}</li>
                         </ul>
                     </section>
 
-                    <NextLink href="/docs" text={t("docsRouting.link.backOverview")} />
+                    <NextLink
+                        href="/docs"
+                        text={t("docsRouting.link.backOverview")}
+                    />
                 </main>
                 <div class="flex-1 hidden 2xl:block max-w-80"></div>
             </div>

@@ -13,15 +13,18 @@ export function DocsStateManagementPage(): VirtualNode {
     return (
         <div class="min-h-screen flex flex-col text-lg bg-white dark:bg-darkgray text-gray-700 dark:text-gray-100 leading-base">
             <Navbar />
-            <div class="flex flex-1 pt-4">
+            <div class="flex flex-col lg:flex-row flex-1 pt-4 justify-between w-full">
                 <DocsSidebar currentPage="state-management" />
-                <main class="flex-2 max-w-4xl px-8 pt-2 mx-auto">
+                <main class="w-full max-w-full lg:max-w-4xl px-4 sm:px-8 pt-2 mx-auto flex-1">
                     <Heading level={1} text={t("docsState.heading.title")} />
                     <section class="mb-8">
                         <Paragraph text={t("docsState.paragraph.intro")} />
                     </section>
                     <section class="mb-8">
-                        <Heading level={2} text={t("docsState.heading.whyGlobal")} />
+                        <Heading
+                            level={2}
+                            text={t("docsState.heading.whyGlobal")}
+                        />
                         <Paragraph text={t("docsState.paragraph.scenarios")} />
                         <ul class="list-disc list-inside mb-4">
                             <li class="mb-2">{t("docsState.list.sidebar")}</li>
@@ -31,8 +34,13 @@ export function DocsStateManagementPage(): VirtualNode {
                         <Paragraph text={t("docsState.paragraph.storeIntro")} />
                     </section>
                     <section class="mb-8">
-                        <Heading level={2} text={t("docsState.heading.createStore")} />
-                        <Paragraph text={t("docsState.paragraph.createStore")} />
+                        <Heading
+                            level={2}
+                            text={t("docsState.heading.createStore")}
+                        />
+                        <Paragraph
+                            text={t("docsState.paragraph.createStore")}
+                        />
                         <Code
                             text={`export const useTheme = createStore("light");`}
                         />
@@ -50,19 +58,31 @@ export function DocsStateManagementPage(): VirtualNode {
   );
 };`}
                         />
-                        <Paragraph text={t("docsState.paragraph.storeBehavior")} />
+                        <Paragraph
+                            text={t("docsState.paragraph.storeBehavior")}
+                        />
                     </section>
 
                     <section class="mb-8">
-                        <Heading level={2} text={t("docsState.heading.bestPractices")} />
+                        <Heading
+                            level={2}
+                            text={t("docsState.heading.bestPractices")}
+                        />
                         <ul class="list-disc list-inside mb-4">
-                            <li class="mb-2">{t("docsState.list.globalData")}</li>
-                            <li class="mb-2">{t("docsState.list.focusedStores")}</li>
+                            <li class="mb-2">
+                                {t("docsState.list.globalData")}
+                            </li>
+                            <li class="mb-2">
+                                {t("docsState.list.focusedStores")}
+                            </li>
                             <li>{t("docsState.list.customHooks")}</li>
                         </ul>
                     </section>
 
-                    <NextLink href="/docs/routing" text={t("docsState.link.nextRouting")} />
+                    <NextLink
+                        href="/docs/routing"
+                        text={t("docsState.link.nextRouting")}
+                    />
                 </main>
                 <div class="flex-1 hidden 2xl:block max-w-80"></div>
             </div>

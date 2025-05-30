@@ -3,7 +3,7 @@ import { Link } from "@/runtime/router";
 
 export function NextLink({ href, text }: { href: string; text: string }) {
     return (
-        <div class="mt-12 pt-8 border-t border-gray-200 dark:border-gray-700">
+        <div class="mt-12 pt-8 mb-8 border-t border-gray-200 dark:border-gray-700">
             <Link
                 href={href}
                 class="inline-flex items-center text-cyan-500 hover:underline"
