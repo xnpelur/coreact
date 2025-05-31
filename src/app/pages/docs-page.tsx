@@ -36,7 +36,7 @@ export function DocsPage(): VirtualNode {
                             text={t("docsPage.paragraph.installation")}
                         />
                         <Code
-                            text={`git clone <your-repo-link>\ncd <your-project-directory>\nnpm install\nnpm run dev`}
+                            text={`git clone https://github.com/xnpelur/coreact.git\ncd coreact\nnpm install\nnpm run dev`}
                         />
                         <Paragraph
                             text={t("docsPage.paragraph.developmentServer")}
