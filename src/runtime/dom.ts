@@ -98,9 +98,7 @@ export function unmount(vnode: VirtualNode, keepEffects: boolean = false) {
     if (vnode.componentInstance) {
         unmount(vnode.componentInstance.node, keepEffects);
     } else {
-        vnode.children.forEach((child, childIndex) =>
-            unmount(child, keepEffects)
-        );
+        vnode.children.forEach((child) => unmount(child, keepEffects));
     }
 }
 
