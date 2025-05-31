@@ -33,10 +33,9 @@ export function mount(
     vnode: VirtualNode,
     parent: HTMLElement,
     index?: number,
-    parentPath: number[] = [],
     inSVG: boolean = false
 ) {
-    const rendered = render(vnode, parent, index ?? 0, parentPath, inSVG);
+    const rendered = render(vnode, parent, index ?? 0, inSVG);
 
     let child: Element | undefined;
     if (index !== undefined) {
@@ -61,11 +60,7 @@ export function mount(
  * @param {boolean} [keepEffects=false] - Whether to keep effects when unmounting
  * @throws {Error} If the unmounted element doesn't have a parent element
  */
-export function unmount(
-    vnode: VirtualNode,
-    keepEffects: boolean = false,
-    parentPath: number[] = []
-) {
+export function unmount(vnode: VirtualNode, keepEffects: boolean = false) {
     if (!isElement(vnode)) {
         return;
     }
@@ -101,10 +96,10 @@ export function unmount(
     }
 
     if (vnode.componentInstance) {
-        unmount(vnode.componentInstance.node, keepEffects, parentPath);
+        unmount(vnode.componentInstance.node, keepEffects);
     } else {
         vnode.children.forEach((child, childIndex) =>
-            unmount(child, keepEffects, parentPath.concat(childIndex))
+            unmount(child, keepEffects)
         );
     }
 }
@@ -148,16 +143,15 @@ export function rerender(componentContext: Context) {
             newComponentNode,
             componentContext.parentElement,
             componentContext.index,
-            (v, p, i) => mount(v, p, i, []),
-            (v, k) => unmount(v, k, [])
+            mount,
+            unmount
         );
     } else {
         // Fallback to mount if there's no old node to reconcile with
         mount(
             newComponentNode,
             componentContext.parentElement,
-            componentContext.index,
-            []
+            componentContext.index
         );
     }
 }
@@ -166,7 +160,6 @@ function render(
     vnode: VirtualNode,
     parentElement: HTMLElement,
     index: number,
-    parentPath: number[] = [],
     inSVG: boolean = false
 ): DOMNode[] {
     if (typeof vnode === "boolean" || vnode === null || vnode === undefined) {
@@ -186,7 +179,6 @@ function render(
                 child,
                 parentElement,
                 childIndex,
-                parentPath.concat(childIndex),
                 inSVG
             );
             rendered.push(...renderedPart);
@@ -211,13 +203,7 @@ function render(
         setProps(element, vnode.props);
 
         vnode.children.forEach((child, childIndex) => {
-            mount(
-                child,
-                element,
-                childIndex,
-                parentPath.concat(childIndex),
-                isSVG
-            );
+            mount(child, element, childIndex, isSVG);
         });
 
         vnode.element = element;
@@ -226,8 +212,6 @@ function render(
     }
 
     const Component = vnode.tag;
-
-    const fullPath = parentPath.concat(index);
 
     setContext(parentElement, index);
 
@@ -245,7 +229,7 @@ function render(
         node: componentNode,
     };
 
-    return render(componentNode, parentElement, index, fullPath, inSVG);
+    return render(componentNode, parentElement, index, inSVG);
 }
 
 function setProps(element: HTMLElement, props: Props) {
