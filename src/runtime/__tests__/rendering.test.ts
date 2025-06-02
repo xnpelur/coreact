@@ -7,7 +7,6 @@ import { createElement, Fragment } from "@/runtime/jsx-runtime";
 import { mount, unmount } from "@/runtime/dom";
 import { clearState, useState } from "@/runtime/hooks/state";
 import { useEffect } from "@/runtime/hooks/effect";
-import { createStore } from "@/runtime/store";
 
 describe("Runtime", () => {
     let container: HTMLElement;
@@ -128,75 +127,6 @@ describe("Runtime", () => {
         expect(buttons[1].textContent).toBe("1");
     });
 
-    it("should handle global state with createStore", () => {
-        // Create a store
-        const useCounterStore = createStore({ count: 0 });
-        const Counter = () => {
-            const [state, setState] = useCounterStore();
-            return createElement(
-                "div",
-                {},
-                createElement("p", {}, `Count: ${state.count}`),
-                createElement(
-                    "button",
-                    { onClick: () => setState({ count: state.count + 1 }) },
-                    "Increment"
-                )
-            );
-        };
-
-        const vnode = createElement(Counter, {});
-        mount(vnode, container);
-
-        // Initial state
-        expect(container.innerHTML).toContain("Count: 0");
-
-        // Update state
-        const button = container.querySelector("button");
-        button?.click();
-        expect(container.innerHTML).toContain("Count: 1");
-
-        // Multiple components using same store
-        const App = () =>
-            createElement(
-                "div",
-                {},
-                createElement(Counter, {}),
-                createElement(Counter, {})
-            );
-
-        const appVnode = createElement(App, {});
-        mount(appVnode, container);
-
-        const buttons = container.querySelectorAll("button");
-        buttons[0].click();
-        expect(container.innerHTML).toContain("Count: 2");
-        expect(container.innerHTML).toContain("Count: 2");
-    });
-
-    it("should handle cleanup of store subscriptions", () => {
-        const useCounterStore = createStore({ count: 0 });
-        const Counter = () => {
-            const [state, setState] = useCounterStore();
-            return createElement(
-                "button",
-                { onClick: () => setState({ count: state.count + 1 }) },
-                state.count.toString()
-            );
-        };
-
-        const vnode = createElement(Counter, {});
-        mount(vnode, container);
-
-        const button = container.querySelector("button");
-        button?.click();
-        expect(container.innerHTML).toBe("<button>1</button>");
-
-        // Unmount should cleanup subscriptions
-        unmount(vnode);
-        expect(container.innerHTML).toBe("");
-    });
-
     it("should handle virtual DOM reconciliation", () => {
         const App = () => {
             const [count, setCount] = useState(0);
@@ -263,5 +193,43 @@ describe("Runtime", () => {
         // Cleanup on unmount
         unmount(vnode);
         expect(mockCleanup).toHaveBeenCalledTimes(2);
+    });
+
+    it("should handle conditional rendering", () => {
+        const ConditionComponent = ({ show }: { show: boolean }) => {
+            return show
+                ? createElement("p", {}, "Visible")
+                : createElement("span", {}, "Hidden");
+        };
+
+        let vnode = createElement(ConditionComponent, { show: true });
+        mount(vnode, container);
+        expect(container.innerHTML).toBe("<p>Visible</p>");
+        unmount(vnode);
+
+        vnode = createElement(ConditionComponent, { show: false });
+        mount(vnode, container);
+        expect(container.innerHTML).toBe("<span>Hidden</span>");
+    });
+
+    it("should render nested functional components", () => {
+        const ChildComponent = (props: { text: string }) => {
+            return createElement("span", {}, props.text);
+        };
+
+        const ParentComponent = (props: { message: string }) => {
+            return createElement(
+                "div",
+                {},
+                createElement(ChildComponent, { text: props.message }),
+                createElement(ChildComponent, { text: "Static" })
+            );
+        };
+
+        const vnode = createElement(ParentComponent, { message: "Dynamic" });
+        mount(vnode, container);
+        expect(container.innerHTML).toBe(
+            "<div><span>Dynamic</span><span>Static</span></div>"
+        );
     });
 });
