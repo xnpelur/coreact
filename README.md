@@ -1,4 +1,4 @@
-# Coreact Frontend Framework
+# Coreact
 
 Coreact is a modern frontend framework using TypeScript and Vite for high-performance, scalable, and maintainable UIs.
 
