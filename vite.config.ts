@@ -1,5 +1,5 @@
 import { defineConfig } from "vite";
-import GenerateCSSPlugin from "./src/plugins/vite-generate-css";
+import { CssGeneratorPlugin } from "./src/runtime/vite-plugins/css-generator";
 
 export default defineConfig({
     esbuild: {
@@ -11,5 +11,5 @@ export default defineConfig({
             "@": "/src",
         },
     },
-    plugins: [GenerateCSSPlugin()],
+    plugins: [CssGeneratorPlugin()],
 });

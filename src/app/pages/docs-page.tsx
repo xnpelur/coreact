@@ -52,7 +52,7 @@ export function DocsPage(): VirtualNode {
                             text={t("docsPage.paragraph.projectStructure")}
                         />
                         <Code
-                            text={`/src\n  ├── app         ← Your components, pages, and styles\n  ├── runtime     ← Internal framework logic\n  ├── styles      ← Base styles and theme variables\n  ├── plugins     ← Vite plugin for style scanning\n  ├── generated   ← Compiled utility-first CSS\n  └── main.ts     ← Mounts your main App component`}
+                            text={`/src\n  ├── app         ← Your components, pages, and styles\n  ├── runtime     ← Internal framework logic\n  ├── styles      ← Base styles, theme variables and styles generated from classes\n  └── main.ts     ← Mounts your main App component`}
                         />
                         <Paragraph
                             text={t("docsPage.paragraph.separationOfLogic")}

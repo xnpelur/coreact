@@ -2,7 +2,7 @@ import { App } from "@/app/index";
 import { mount } from "@/runtime/dom";
 import { createElement } from "@/runtime/jsx-runtime";
 import "@/styles/index.css";
-import "@/generated/styles.css";
+import "@/styles/generated.css";
 
 function mountApp() {
     const root = document.getElementById("app");

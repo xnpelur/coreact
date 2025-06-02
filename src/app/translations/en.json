@@ -127,7 +127,7 @@
     "docsPage.paragraph.installation": "To begin using the framework, clone the repository and install dependencies using the following commands:",
     "docsPage.paragraph.developmentServer": "This will start the development server and automatically reload the browser when you make changes. The framework is powered by modern tooling (Vite, TypeScript), enabling blazing-fast builds and efficient development cycles.",
     "docsPage.heading.projectStructure": "Project Structure",
-    "docsPage.paragraph.projectStructure": "User-defined application code lives in the `/src/app` directory. All other folders house internal runtime logic or auto-generated code and should not be modified manually.",
+    "docsPage.paragraph.projectStructure": "Your application code lives in the `app` folder. The `runtime` folder contains internal framework logic and should not be modified. The `styles` folder holds base styles, theme files, and a generated CSS file — feel free to edit the theme and base styles, but editing the auto-generated CSS file is not recommended.",
     "docsPage.paragraph.separationOfLogic": "This clear separation allows you to upgrade framework internals independently of your own project logic and maintain a clean development environment.",
     "docsPage.heading.whatsNext": "What's Next?",
     "docsPage.paragraph.exploreCoreModules": "Explore the core modules of the framework:",

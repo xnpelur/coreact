@@ -1,10 +1,10 @@
 import path from "path";
 import fs from "fs";
 import { Plugin } from "vite";
-import { tw } from "../runtime/tailwind";
+import { tw } from "../tailwind";
 
-export default function GenerateCSSPlugin(): Plugin {
-    const virtualCssPath = path.resolve("src/generated/styles.css");
+export function CssGeneratorPlugin(): Plugin {
+    const virtualCssPath = path.resolve("src/styles/generated.css");
 
     return {
         name: "vite-plugin-generate-css",
