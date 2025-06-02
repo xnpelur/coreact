@@ -1,140 +1,96 @@
-# Coreact
+# Coreact Frontend Framework
 
-A lightweight, React-like framework implemented in TypeScript.
+Coreact is a modern frontend framework using TypeScript and Vite for high-performance, scalable, and maintainable UIs.
 
-## Features
+## Core Philosophy
 
--   **JSX Support**: Write components using familiar JSX syntax
--   **Virtual DOM**: Efficient DOM manipulation with reconciliation
--   **State Management**: Component-level state with useState hook
--   **Hooks**: Custom hooks for managing component behavior
--   **Router**: Client-side routing with dynamic routes
--   **Effects**: Side effects management with useEffect
--   **Global State**: Store-based global state management
+-   **Developer Experience:** Fast builds (HMR), modular architecture.
+-   **Performance:** Efficient VDOM, lazy loading, optimized builds.
+-   **Modularity:** Clear separation of concerns.
+-   **Modern Tooling:** TypeScript & Vite.
+
+## Key Features
+
+### Rendering (Inspired by React)
+
+-   **JSX Syntax:** UI description, transpiled by esbuild/Vite.
+-   **DOM Layer:** Manages real DOM elements.
+-   **JSX Runtime:** Interprets JSX for HTML tags, components, fragments.
+-   **Reconciliation:** Diffs virtual trees for efficient DOM updates.
+-   **Component Context:** Uniquely identifies component instances for state and hook management.
+
+### Hooks (Inspired by React)
+
+-   **`useState(initialState)`:** Local component state. Returns `[state, setState]`.
+-   **`useEffect(effectFn, dependencies?)`:** Side effects management. Optional cleanup function.
+-   **`useTranslation()` (Inspired by i18n libraries):** Internationalization. Returns `[t, language, setLanguage]`. Translations registered via `registerTranslations()`.
+
+### State Management
+
+-   **Local State:** Via `useState` hook (React-inspired).
+-   **Global State (Inspired by Zustand):** `createStore(initialState)` returns a hook for shared global state.
+
+### Routing (Inspired by React Router)
+
+-   **`createRouter(routes, fallbackComponent)`:** SPA routing component.
+-   **Browser History API:** Integrated for back/forward navigation.
+-   **Dynamic Routes:** Supports path parameters.
+-   **`Link` Component:** Optimized client-side navigation, preventing full page reloads.
+
+### Styling (Inspired by Tailwind CSS)
+
+-   **Utility-First CSS:** Tailwind-like classes in JSX.
+-   **Vite Plugin:** Generates `generated.css` from used utility classes.
+-   **Responsive Design:** Breakpoint prefixes.
+-   **Pseudo-classes & Dark Mode:** Supported via prefixes/modifiers.
+-   **Theming:** CSS variables for dynamic theming.
+-   **Preflight Styles:** Base style reset included.
 
 ## Project Structure
 
-```
-coreact/
-├── src/
-│   ├── app/           # Application components and pages
-│   └── runtime/       # Framework core implementation
-│       ├── dom.ts     # DOM operations and mounting
-│       ├── effect.ts  # Side effects management
-│       ├── jsx-runtime.ts  # JSX implementation
-│       ├── reconciliation.ts  # Virtual DOM reconciliation
-│       ├── router.ts  # Routing implementation
-│       ├── state.ts   # Component state management
-│       └── store.ts   # Global state management
-├── dist/              # Build output
-├── index.html         # Entry point
-└── package.json       # Project dependencies
-```
+-   `src/main.ts`: Application entry point.
+-   `src/app/`: User application code.
+-   `src/runtime/`: Framework core (VDOM, rendering, state, routing, hooks).
+-   `src/styles/`: Base styles and theme variables.
 
 ## Getting Started
 
 ### Prerequisites
 
--   Node.js (latest LTS version recommended)
--   npm or yarn
+-   Node.js (LTS version recommended)
+-   A JavaScript package manager (e.g., npm, yarn, pnpm, bun)
+-   Git
 
-### Installation
+### Installation & Setup
 
-1. Clone the repository
-2. Install dependencies:
+1.  **Clone the repository:**
+
+    ```bash
+    git clone https://github.com/xnpelur/coreact.git
+    cd coreact
+    ```
+
+2.  **Install dependencies** (using your preferred package manager):
     ```bash
     npm install
     ```
 
 ### Development
 
-Start the development server:
+Start the development server with Hot Module Replacement (using your preferred package manager):
 
 ```bash
 npm run dev
 ```
 
-This will start a development server with hot module replacement.
+The application will typically be available at `http://localhost:5173` (this port might vary depending on Vite's configuration or availability).
 
-### Building
+### Building for Production
 
-To build the project for production:
+To create an optimized production build (using your preferred package manager):
 
 ```bash
 npm run build
 ```
 
-### Testing
-
-Run tests:
-
-```bash
-npm test
-```
-
-## Core Concepts
-
-### Components
-
-Components are the building blocks of the framework.
-
-```typescript
-// Functional component example
-function MyComponent(props: { message: string }) {
-    return <div>{props.message}</div>;
-}
-```
-
-### State Management
-
-Use the `useState` hook to manage component state:
-
-```typescript
-function Counter() {
-    const [count, setCount] = useState(0);
-
-    return (
-        <div>
-            <p>Count: {count}</p>
-            <button onClick={() => setCount(count + 1)}>Increment</button>
-        </div>
-    );
-}
-```
-
-### Routing
-
-Set up routing using the `createRouter` function:
-
-```typescript
-createRouter({
-    routes: [
-        { path: "/home", component: HomePage },
-        { path: "/about", component: AboutPage },
-        { path: "/user/:id", component: UserProfile },
-    ],
-});
-```
-
-### Global State
-
-Use `createStore` to manage global state:
-
-```typescript
-const useUserStore = createStore({
-    user: null,
-    isLoggedIn: false,
-});
-
-function UserProfile() {
-    const [user, setUser] = useUserStore();
-    // ...
-}
-```
-
-## Development Tools
-
--   **TypeScript**: For type safety and better development experience
--   **Vite**: For fast development server and build tool
--   **Vitest**: For testing
--   **JSDOM**: For DOM testing in Node.js
+The output will be in the `dist/` directory.
