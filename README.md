@@ -1,6 +1,10 @@
+English | [Русский](README.ru.md)
+
 # Coreact
 
 Coreact is a modern frontend framework using TypeScript and Vite for high-performance, scalable, and maintainable UIs.
+
+Experience Coreact firsthand and explore its capabilities through the live **[Demo](https://coreact-five.vercel.app/)**.
 
 ## Core Philosophy
 
@@ -23,7 +27,7 @@ Coreact is a modern frontend framework using TypeScript and Vite for high-perfor
 
 -   **`useState(initialState)`:** Local component state. Returns `[state, setState]`.
 -   **`useEffect(effectFn, dependencies?)`:** Side effects management. Optional cleanup function.
--   **`useTranslation()` (Inspired by i18n libraries):** Internationalization. Returns `[t, language, setLanguage]`. Translations registered via `registerTranslations()`.
+-   **`useTranslation()`:** Internationalization. Returns `[t, language, setLanguage]`. Translations registered via `registerTranslations()`.
 
 ### State Management
 
